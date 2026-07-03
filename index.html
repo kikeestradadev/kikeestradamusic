@@ -288,21 +288,23 @@
             <p class="mx-auto mt-4 max-w-2xl text-zinc-400">¿Tienes un proyecto musical? Escríbeme y conversemos.</p>
           </div>
           <div class="mx-auto mt-12 max-w-xl">
-            <form class="space-y-4" id="contact-form" action="#" method="post">
+            <form class="space-y-4" id="contact-form" novalidate>
+              <input class="hidden" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
               <div>
                 <label class="mb-1.5 block text-sm font-medium text-zinc-400" for="contact-name">Nombre</label>
-                <input class="w-full rounded-lg border border-stage-border bg-stage px-4 py-3 text-zinc-300 placeholder-zinc-600 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" id="contact-name" type="text" name="nombre" required placeholder="Tu nombre">
+                <input class="w-full rounded-lg border border-stage-border bg-stage px-4 py-3 text-zinc-300 placeholder-zinc-600 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" id="contact-name" type="text" name="name" required autocomplete="name" placeholder="Tu nombre">
               </div>
               <div>
                 <label class="mb-1.5 block text-sm font-medium text-zinc-400" for="contact-email">Email</label>
-                <input class="w-full rounded-lg border border-stage-border bg-stage px-4 py-3 text-zinc-300 placeholder-zinc-600 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" id="contact-email" type="email" name="email" required placeholder="tu@email.com">
+                <input class="w-full rounded-lg border border-stage-border bg-stage px-4 py-3 text-zinc-300 placeholder-zinc-600 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" id="contact-email" type="email" name="email" required autocomplete="email" placeholder="tu@email.com">
               </div>
               <div>
                 <label class="mb-1.5 block text-sm font-medium text-zinc-400" for="contact-message">Mensaje</label>
-                <textarea class="w-full resize-none rounded-lg border border-stage-border bg-stage px-4 py-3 text-zinc-300 placeholder-zinc-600 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" id="contact-message" name="mensaje" rows="5" required placeholder="Cuéntame sobre tu proyecto..."></textarea>
+                <textarea class="w-full resize-none rounded-lg border border-stage-border bg-stage px-4 py-3 text-zinc-300 placeholder-zinc-600 transition-colors focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent" id="contact-message" name="message" rows="5" required placeholder="Cuéntame sobre tu proyecto..."></textarea>
               </div>
+              <p class="contact-status" id="contact-status" hidden role="status" aria-live="polite"></p>
               <div class="text-center sm:text-left">
-                <button class="w-full rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-stage transition-all hover:bg-accent-light sm:w-auto" type="submit">Enviar mensaje</button>
+                <button class="w-full rounded-lg bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-stage transition-all hover:bg-accent-light sm:w-auto" id="contact-submit" type="submit">Enviar mensaje</button>
               </div>
             </form>
           </div>
