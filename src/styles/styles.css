@@ -122,3 +122,27 @@ textarea {
   font-size: 0.75rem;
   color: #52525b;
 }
+
+.contact-status {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.contact-status--success {
+  color: #bbf7d0;
+  background-color: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+.contact-status--error {
+  color: #fecaca;
+  background-color: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+.hidden {
+  display: none !important;
+}
