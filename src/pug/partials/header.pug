@@ -1,31 +1,18 @@
-//- Header / Nav fijo con menú hamburguesa en mobile
-header#header(class="fixed top-0 left-0 right-0 z-50 border-b border-stage-border/50 bg-stage/90 backdrop-blur-md transition-all duration-300")
-	nav.container(class="flex h-[var(--header-height)] items-center justify-between" aria-label="Navegación principal")
-		a(href="#inicio" class="group flex items-center gap-2" aria-label="Kike Estrada — Inicio")
-			//- Reemplazar con logo real: img(src="img/logo.svg" alt="Kike Estrada" class="h-8")
-			span(class="font-display text-xl font-bold tracking-wide text-white transition-colors group-hover:text-accent sm:text-2xl") Kike Estrada
+//- Header / Nav fijo (solo barra superior)
+header.site-header#header
+	nav.site-nav.container(aria-label="Navegación principal")
+		a.site-nav__logo(href="#inicio" aria-label="Kike Estrada — Inicio")
+			span Kike Estrada
 
-		//- Desktop nav
-		ul(class="hidden items-center gap-6 lg:flex" role="list")
+		ul.site-nav__desktop(role="list")
 			each item in [{href: '#inicio', label: 'Inicio'}, {href: '#bio', label: 'Bio'}, {href: '#bandas', label: 'Bandas'}, {href: '#discografia', label: 'Discografía'}, {href: '#musica', label: 'Música'}, {href: '#galeria', label: 'Galería'}, {href: '#', label: 'Contacto', trigger: true}]
 				li
 					if item.trigger
-						a.contact-trigger.nav-link(href="#" class="text-sm font-medium text-zinc-400 transition-colors hover:text-accent")= item.label
+						a.site-nav__link.contact-trigger(href="#")= item.label
 					else
-						a(href=item.href class="text-sm font-medium text-zinc-400 transition-colors hover:text-accent")= item.label
+						a.site-nav__link(href=item.href)= item.label
 
-		//- Mobile hamburger
-		button#nav-toggle(type="button" class="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-stage-border bg-stage-light transition-colors hover:border-accent lg:hidden" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú")
-			span(class="nav-bar block h-0.5 w-5 bg-zinc-300 transition-all duration-300")
-			span(class="nav-bar block h-0.5 w-5 bg-zinc-300 transition-all duration-300")
-			span(class="nav-bar block h-0.5 w-5 bg-zinc-300 transition-all duration-300")
-
-	//- Mobile menu
-	#nav-menu(class="fixed inset-0 top-[var(--header-height)] z-40 hidden flex-col bg-stage/98 backdrop-blur-lg lg:hidden" aria-hidden="true")
-		ul(class="flex flex-col gap-1 p-6" role="list")
-			each item in [{href: '#inicio', label: 'Inicio'}, {href: '#bio', label: 'Bio'}, {href: '#bandas', label: 'Bandas'}, {href: '#discografia', label: 'Discografía'}, {href: '#musica', label: 'Música'}, {href: '#galeria', label: 'Galería'}, {href: '#', label: 'Contacto', trigger: true}]
-				li
-					if item.trigger
-						a.contact-trigger.nav-link(href="#" class="block rounded-lg px-4 py-3 text-lg font-medium text-zinc-300 transition-colors hover:bg-stage-light hover:text-accent")= item.label
-					else
-						a.nav-link(href=item.href class="block rounded-lg px-4 py-3 text-lg font-medium text-zinc-300 transition-colors hover:bg-stage-light hover:text-accent")= item.label
+		button#nav-toggle.site-nav__toggle(type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú")
+			span.nav-bar
+			span.nav-bar
+			span.nav-bar

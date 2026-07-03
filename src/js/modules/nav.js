@@ -7,8 +7,7 @@ const initNav = () => {
 	if (!toggle || !menu) return;
 
 	const closeMenu = () => {
-		menu.classList.add('hidden');
-		menu.classList.remove('flex');
+		menu.classList.remove('is-open');
 		menu.setAttribute('aria-hidden', 'true');
 		toggle.setAttribute('aria-expanded', 'false');
 		toggle.setAttribute('aria-label', 'Abrir menú');
@@ -17,8 +16,7 @@ const initNav = () => {
 	};
 
 	const openMenu = () => {
-		menu.classList.remove('hidden');
-		menu.classList.add('flex');
+		menu.classList.add('is-open');
 		menu.setAttribute('aria-hidden', 'false');
 		toggle.setAttribute('aria-expanded', 'true');
 		toggle.setAttribute('aria-label', 'Cerrar menú');
@@ -41,8 +39,7 @@ const initNav = () => {
 
 	window.addEventListener('scroll', () => {
 		if (!header) return;
-		header.classList.toggle('shadow-lg', window.scrollY > 50);
-		header.classList.toggle('shadow-accent/5', window.scrollY > 50);
+		header.classList.toggle('has-shadow', window.scrollY > 50);
 	});
 };
 

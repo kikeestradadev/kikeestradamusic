@@ -13,8 +13,7 @@ var initNav = function initNav() {
   var header = document.getElementById('header');
   if (!toggle || !menu) return;
   var closeMenu = function closeMenu() {
-    menu.classList.add('hidden');
-    menu.classList.remove('flex');
+    menu.classList.remove('is-open');
     menu.setAttribute('aria-hidden', 'true');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Abrir menú');
@@ -22,8 +21,7 @@ var initNav = function initNav() {
     document.body.classList.remove('overflow-hidden');
   };
   var openMenu = function openMenu() {
-    menu.classList.remove('hidden');
-    menu.classList.add('flex');
+    menu.classList.add('is-open');
     menu.setAttribute('aria-hidden', 'false');
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Cerrar menú');
@@ -42,8 +40,7 @@ var initNav = function initNav() {
   });
   window.addEventListener('scroll', function () {
     if (!header) return;
-    header.classList.toggle('shadow-lg', window.scrollY > 50);
-    header.classList.toggle('shadow-accent/5', window.scrollY > 50);
+    header.classList.toggle('has-shadow', window.scrollY > 50);
   });
 };
 /* harmony default export */ __webpack_exports__["default"] = (initNav);
@@ -160,6 +157,96 @@ var initStickyContact = function initStickyContact() {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+var initBandsSwiper = function initBandsSwiper() {
+  var el = document.querySelector('.bands-swiper');
+  if (!el || typeof Swiper === 'undefined') return;
+  var swiper = null;
+  var mql = window.matchMedia('(max-width: 959px)');
+  var enable = function enable() {
+    if (swiper) return;
+    swiper = new Swiper(el, {
+      slidesPerView: 1.12,
+      spaceBetween: 16,
+      grabCursor: true,
+      pagination: {
+        el: '.bands-swiper__pagination',
+        clickable: true
+      },
+      breakpoints: {
+        480: {
+          slidesPerView: 1.35,
+          spaceBetween: 20
+        },
+        640: {
+          slidesPerView: 1.6,
+          spaceBetween: 24
+        }
+      }
+    });
+  };
+  var disable = function disable() {
+    if (!swiper) return;
+    swiper.destroy(true, true);
+    swiper = null;
+  };
+  var handleChange = function handleChange() {
+    mql.matches ? enable() : disable();
+  };
+  handleChange();
+  mql.addEventListener('change', handleChange);
+};
+/* harmony default export */ __webpack_exports__["default"] = (initBandsSwiper);
+
+/***/ }),
+/* 5 */
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+var initDiscographySwiper = function initDiscographySwiper() {
+  var el = document.querySelector('.discography-swiper');
+  if (!el || typeof Swiper === 'undefined') return;
+  var swiper = null;
+  var mql = window.matchMedia('(max-width: 959px)');
+  var enable = function enable() {
+    if (swiper) return;
+    swiper = new Swiper(el, {
+      slidesPerView: 2.15,
+      spaceBetween: 12,
+      grabCursor: true,
+      pagination: {
+        el: '.discography-swiper__pagination',
+        clickable: true
+      },
+      breakpoints: {
+        480: {
+          slidesPerView: 2.5,
+          spaceBetween: 16
+        },
+        640: {
+          slidesPerView: 3.2,
+          spaceBetween: 20
+        }
+      }
+    });
+  };
+  var disable = function disable() {
+    if (!swiper) return;
+    swiper.destroy(true, true);
+    swiper = null;
+  };
+  var handleChange = function handleChange() {
+    mql.matches ? enable() : disable();
+  };
+  handleChange();
+  mql.addEventListener('change', handleChange);
+};
+/* harmony default export */ __webpack_exports__["default"] = (initDiscographySwiper);
+
+/***/ }),
+/* 6 */
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
 var initUtils = function initUtils() {
   var yearEl = document.getElementById('footer-year');
   if (yearEl) {
@@ -215,7 +302,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_nav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _lightbox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 /* harmony import */ var _modules_sticky_contact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony import */ var _modules_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var _modules_bands_swiper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var _modules_discography_swiper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5);
+/* harmony import */ var _modules_utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(6);
+
+
 
 
 
@@ -224,7 +315,9 @@ __webpack_require__.r(__webpack_exports__);
   (0,_modules_nav__WEBPACK_IMPORTED_MODULE_0__["default"])();
   (0,_lightbox__WEBPACK_IMPORTED_MODULE_1__["default"])();
   (0,_modules_sticky_contact__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  (0,_modules_utils__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  (0,_modules_bands_swiper__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  (0,_modules_discography_swiper__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  (0,_modules_utils__WEBPACK_IMPORTED_MODULE_5__["default"])();
 })();
 }();
 /******/ })()

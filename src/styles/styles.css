@@ -50,6 +50,158 @@ textarea {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+body.overflow-hidden {
+  overflow: hidden;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.5);
+  background-color: rgba(13, 13, 13, 0.92);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s ease;
+}
+
+.site-header.has-shadow {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+.site-nav__logo {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-nav__logo:hover {
+  color: #d4a853;
+}
+
+.site-nav__desktop {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #a1a1aa;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-nav__link:hover {
+  color: #d4a853;
+}
+
+.site-nav__toggle {
+  position: relative;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #333333;
+  border-radius: 0.5rem;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.site-nav__toggle:hover {
+  border-color: #d4a853;
+}
+
+.site-nav__toggle .nav-bar {
+  display: block;
+  width: 1.25rem;
+  height: 2px;
+  background-color: #d4d4d8;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.site-nav__mobile {
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: #0d0d0d;
+}
+
+.site-nav__mobile.is-open {
+  display: flex;
+}
+
+.site-nav__mobile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+.site-nav__mobile-link {
+  display: block;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #d4d4d8;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.site-nav__mobile-link:hover {
+  background-color: #1a1a1a;
+  color: #d4a853;
+}
+
+@media (min-width: 640px) {
+  .site-nav__logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .site-nav__desktop {
+    display: flex;
+  }
+
+  .site-nav__toggle,
+  .site-nav__mobile {
+    display: none !important;
+  }
+}
+
 .site-footer {
   padding-top: 4rem;
   padding-bottom: 5.5rem;
@@ -232,4 +384,297 @@ textarea {
 .contact-sticky.is-open .contact-sticky__toggle:hover {
   background-color: #2a2a2a;
   color: #d4a853;
+}
+
+.bands-section {
+  border-top: 1px solid #333333;
+  background-color: #1a1a1a;
+  padding: 5rem 0;
+}
+
+@media (min-width: 960px) {
+  .bands-section {
+    padding: 7rem 0;
+  }
+}
+
+.bands-section__header {
+  text-align: center;
+}
+
+.bands-section__title {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .bands-section__title {
+    font-size: 2.25rem;
+  }
+}
+
+.bands-section__divider {
+  width: 4rem;
+  height: 4px;
+  margin: 0.5rem auto 0;
+  border-radius: 9999px;
+  background-color: #d4a853;
+}
+
+.bands-section__desc {
+  max-width: 42rem;
+  margin: 1rem auto 0;
+  color: #a1a1aa;
+}
+
+.band-card {
+  overflow: hidden;
+  border: 1px solid #333333;
+  border-radius: 0.75rem;
+  background-color: #0d0d0d;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.band-card:hover {
+  border-color: rgba(212, 168, 83, 0.4);
+  box-shadow: 0 20px 40px rgba(212, 168, 83, 0.05);
+  transform: translateY(-4px);
+}
+
+.band-card__image-wrap {
+  overflow: hidden;
+}
+
+.band-card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.band-card:hover .band-card__image {
+  transform: scale(1.05);
+}
+
+.band-card__body {
+  padding: 1.25rem;
+}
+
+.band-card__title {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.band-card__role {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: #d4a853;
+}
+
+.band-card__year {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  color: #71717a;
+}
+
+.bands-swiper-wrap {
+  display: block;
+  margin-top: 3rem;
+  padding-bottom: 2.5rem;
+}
+
+.bands-swiper {
+  overflow: hidden;
+  padding-bottom: 0.5rem;
+}
+
+.bands-swiper .swiper-slide {
+  height: auto;
+}
+
+.bands-swiper__pagination {
+  position: static;
+  margin-top: 1.5rem;
+}
+
+.bands-swiper .swiper-pagination-bullet {
+  background: #71717a;
+  opacity: 1;
+}
+
+.bands-swiper .swiper-pagination-bullet-active {
+  background: #d4a853;
+}
+
+.bands-grid {
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 640px) {
+  .bands-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .bands-swiper-wrap {
+    display: none;
+  }
+
+  .bands-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.discography-section {
+  padding: 5rem 0;
+}
+
+@media (min-width: 960px) {
+  .discography-section {
+    padding: 7rem 0;
+  }
+}
+
+.discography-section__header {
+  text-align: center;
+}
+
+.discography-section__title {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .discography-section__title {
+    font-size: 2.25rem;
+  }
+}
+
+.discography-section__divider {
+  width: 4rem;
+  height: 4px;
+  margin: 0.5rem auto 0;
+  border-radius: 9999px;
+  background-color: #d4a853;
+}
+
+.discography-section__desc {
+  max-width: 42rem;
+  margin: 1rem auto 0;
+  color: #a1a1aa;
+}
+
+.discography-card {
+  text-align: center;
+}
+
+.discography-card__cover-wrap {
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.discography-card__cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.discography-card:hover .discography-card__cover {
+  transform: scale(1.05);
+}
+
+.discography-card__title {
+  margin: 0.75rem 0 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .discography-card__title {
+    font-size: 1rem;
+  }
+}
+
+.discography-card__year {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: #71717a;
+}
+
+@media (min-width: 640px) {
+  .discography-card__year {
+    font-size: 0.875rem;
+  }
+}
+
+.discography-swiper-wrap {
+  display: block;
+  margin-top: 3rem;
+  padding-bottom: 2.5rem;
+}
+
+.discography-swiper {
+  overflow: hidden;
+}
+
+.discography-swiper .swiper-slide {
+  height: auto;
+}
+
+.discography-swiper__pagination {
+  position: static;
+  margin-top: 1.5rem;
+}
+
+.discography-swiper .swiper-pagination-bullet {
+  background: #71717a;
+  opacity: 1;
+}
+
+.discography-swiper .swiper-pagination-bullet-active {
+  background: #d4a853;
+}
+
+.discography-grid {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 960px) {
+  .discography-swiper-wrap {
+    display: none;
+  }
+
+  .discography-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .discography-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
