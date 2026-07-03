@@ -1,11 +1,11 @@
 import initNav from './modules/nav';
 import initLightbox from './lightbox';
-import initContactForm from './modules/contact';
+import initStickyContact from './modules/sticky-contact';
 import initUtils from './modules/utils';
 
 (() => {
 	initNav();
 	initLightbox();
-	initContactForm();
+	initStickyContact();
 	initUtils();
 })();

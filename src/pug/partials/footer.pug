@@ -5,9 +5,12 @@ footer.site-footer(class="border-t border-stage-border bg-stage")
 
 		nav.site-footer__nav(aria-label="Links rápidos")
 			ul.footer-nav(role="list")
-				each link in [{href: '#inicio', label: 'Inicio'}, {href: '#bio', label: 'Bio'}, {href: '#bandas', label: 'Bandas'}, {href: '#discografia', label: 'Discografía'}, {href: '#musica', label: 'Música'}, {href: '#galeria', label: 'Galería'}, {href: '#contacto', label: 'Contacto'}]
+				each link in [{href: '#inicio', label: 'Inicio'}, {href: '#bio', label: 'Bio'}, {href: '#bandas', label: 'Bandas'}, {href: '#discografia', label: 'Discografía'}, {href: '#musica', label: 'Música'}, {href: '#galeria', label: 'Galería'}, {href: '#', label: 'Contacto', trigger: true}]
 					li
-						a(href=link.href)= link.label
+						if link.trigger
+							a.contact-trigger(href="#")= link.label
+						else
+							a(href=link.href)= link.label
 
 		div.site-footer__social(aria-label="Redes sociales")
 			-socialClasses = "justify-center gap-4"
