@@ -1,145 +1,155 @@
-/******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ([
-/* 0 */,
-/* 1 */
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+const initNav = () => {
+	const toggle = document.getElementById('nav-toggle');
+	const menu = document.getElementById('nav-menu');
+	const navLinks = document.querySelectorAll('.nav-link');
+	const header = document.getElementById('header');
 
-__webpack_require__.r(__webpack_exports__);
-var coreModule = function coreModule() {
-  console.log('Hola Core Module');
+	if (!toggle || !menu) return;
+
+	const closeMenu = () => {
+		menu.classList.add('hidden');
+		menu.classList.remove('flex');
+		menu.setAttribute('aria-hidden', 'true');
+		toggle.setAttribute('aria-expanded', 'false');
+		toggle.setAttribute('aria-label', 'Abrir menú');
+		toggle.classList.remove('is-open');
+		document.body.classList.remove('overflow-hidden');
+	};
+
+	const openMenu = () => {
+		menu.classList.remove('hidden');
+		menu.classList.add('flex');
+		menu.setAttribute('aria-hidden', 'false');
+		toggle.setAttribute('aria-expanded', 'true');
+		toggle.setAttribute('aria-label', 'Cerrar menú');
+		toggle.classList.add('is-open');
+		document.body.classList.add('overflow-hidden');
+	};
+
+	toggle.addEventListener('click', () => {
+		const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+		isOpen ? closeMenu() : openMenu();
+	});
+
+	navLinks.forEach((link) => {
+		link.addEventListener('click', closeMenu);
+	});
+
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') closeMenu();
+	});
+
+	window.addEventListener('scroll', () => {
+		if (!header) return;
+		header.classList.toggle('shadow-lg', window.scrollY > 50);
+		header.classList.toggle('shadow-accent/5', window.scrollY > 50);
+	});
 };
-/* harmony default export */ __webpack_exports__["default"] = (coreModule);
 
-/***/ }),
-/* 2 */
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ darkMode; }
-/* harmony export */ });
-function darkMode() {
-  var themeToggle = document.getElementById('theme-toggle');
-  var htmlElement = document.documentElement;
 
-  // Check for saved theme preference or default to system preference
-  var savedTheme = localStorage.getItem('theme');
-  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+const initLightbox = () => {
+	const lightbox = document.getElementById('lightbox');
+	const lightboxImg = document.getElementById('lightbox-img');
+	const closeBtn = document.getElementById('lightbox-close');
+	const prevBtn = document.getElementById('lightbox-prev');
+	const nextBtn = document.getElementById('lightbox-next');
+	const galleryItems = document.querySelectorAll('.gallery-item');
 
-  // Apply the theme on page load
-  if (currentTheme === 'dark') {
-    htmlElement.classList.add('dark');
-  }
+	if (!lightbox || !lightboxImg || !galleryItems.length) return;
 
-  // Toggle theme when button is clicked
-  if (themeToggle) {
-    themeToggle.addEventListener('click', function () {
-      htmlElement.classList.toggle('dark');
+	const images = Array.from(galleryItems).map((item) => {
+		const img = item.querySelector('img');
+		return { src: img.src, alt: img.alt };
+	});
 
-      // Save the user's preference
-      var theme = htmlElement.classList.contains('dark') ? 'dark' : 'light';
-      localStorage.setItem('theme', theme);
-    });
-  }
-}
+	let currentIndex = 0;
 
-/***/ }),
-/* 3 */
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+	const showImage = (index) => {
+		currentIndex = (index + images.length) % images.length;
+		lightboxImg.src = images[currentIndex].src;
+		lightboxImg.alt = images[currentIndex].alt;
+	};
 
-__webpack_require__.r(__webpack_exports__);
-var internalModule = function internalModule() {
-  console.log('Hola internal Module');
+	const openLightbox = (index) => {
+		showImage(index);
+		lightbox.classList.remove('hidden');
+		lightbox.classList.add('flex');
+		document.body.classList.add('overflow-hidden');
+		closeBtn.focus();
+	};
+
+	const closeLightbox = () => {
+		lightbox.classList.add('hidden');
+		lightbox.classList.remove('flex');
+		document.body.classList.remove('overflow-hidden');
+		lightboxImg.src = '';
+	};
+
+	galleryItems.forEach((item, index) => {
+		item.addEventListener('click', () => openLightbox(index));
+	});
+
+	closeBtn.addEventListener('click', closeLightbox);
+
+	lightbox.addEventListener('click', (e) => {
+		if (e.target === lightbox) closeLightbox();
+	});
+
+	prevBtn.addEventListener('click', (e) => {
+		e.stopPropagation();
+		showImage(currentIndex - 1);
+	});
+
+	nextBtn.addEventListener('click', (e) => {
+		e.stopPropagation();
+		showImage(currentIndex + 1);
+	});
+
+	document.addEventListener('keydown', (e) => {
+		if (lightbox.classList.contains('hidden')) return;
+
+		if (e.key === 'Escape') closeLightbox();
+		if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+		if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+	});
 };
-/* harmony default export */ __webpack_exports__["default"] = (internalModule);
-
-/***/ })
-/******/ 	]);
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	}();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	}();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _core_modules_coreModule__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _core_modules_darkMode__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var _internal_modules_internalModule__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/*here start core layout ui scripts imports*/
 
 
-/*here finish core layout ui scripts imports*/
 
-/*here start internal layout ui components scripts imports*/
+const initUtils = () => {
+	const yearEl = document.getElementById('footer-year');
+	if (yearEl) {
+		yearEl.textContent = new Date().getFullYear();
+	}
 
-/*here finish internal layout ui components scripts imports*/
+	const contactForm = document.getElementById('contact-form');
+	if (contactForm) {
+		contactForm.addEventListener('submit', (e) => {
+			e.preventDefault();
 
-(function () {
-  /*here start core layout ui scripts functions*/
-  (0,_core_modules_coreModule__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  (0,_core_modules_darkMode__WEBPACK_IMPORTED_MODULE_1__["default"])();
-  /*here finish core layout ui scripts functions*/
+			const name = document.getElementById('contact-name').value.trim();
+			const email = document.getElementById('contact-email').value.trim();
+			const message = document.getElementById('contact-message').value.trim();
+
+			const subject = encodeURIComponent('Contacto desde kikeestradamusic.com');
+			const body = encodeURIComponent(
+				`Nombre: ${name}\nEmail: ${email}\n\n${message}`
+			);
+
+			window.location.href = `mailto:kikeestradamusic@gmail.com?subject=${subject}&body=${body}`;
+		});
+	}
+};
+
+
+
+
+
+
+
+(() => {
+	initNav();
+	initLightbox();
+	initUtils();
 })();
-(function () {
-  /*here start internal layout ui components functions*/
-  (0,_internal_modules_internalModule__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  /*here finish internal layout ui components functions*/
-})();
-}();
-/******/ })()
-;
-//# sourceMappingURL=index-dist.js.map

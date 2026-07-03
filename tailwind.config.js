@@ -9,6 +9,7 @@ export default {
 		screens: {
 			's': '0px',
 			'sm': '480px',
+			'md': '768px',
 			'm': '640px',
 			'l': '960px',
 			'lg': '1280px',
@@ -16,9 +17,22 @@ export default {
 			'xxl': '1920px',
 		},
 		extend: {
+			colors: {
+				stage: {
+					DEFAULT: "#0d0d0d",
+					light: "#1a1a1a",
+					muted: "#2a2a2a",
+					border: "#333333",
+				},
+				accent: {
+					DEFAULT: "#d4a853",
+					light: "#e8c77b",
+					dark: "#b8922f",
+				},
+			},
 			fontFamily: {
-				sans: ["Montserrat", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
-				secondary: ["Roboto", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
+				sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+				display: ["Playfair Display", "Georgia", "Times New Roman", "serif"],
 			},
 		},
 	},

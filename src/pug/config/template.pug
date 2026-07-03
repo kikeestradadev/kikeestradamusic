@@ -1,51 +1,31 @@
 block config
 	-let currentPage 		= 'home'
-	-let content 			= 'My Page'
-	-let siteName 			= 'GulpBoilerplate'
-	-let pageDescription 	= 'Here is the description Page.'
+	-let pageTitle 			= 'Portafolio Musical'
+	-let siteName 			= 'Kike Estrada'
+	-let pageDescription 	= 'Kike Estrada — Cantante, guitarrista, arreglista y productor musical de Costa Rica.'
+	-let siteUrl 			= 'https://kikeestradadev.github.io/kikeestradamusic/'
+	-let ogImage 			= 'https://placehold.co/1200x630/0d0d0d/d4a853?text=Kike+Estrada'
 doctype html
-html(lang='en' prefix='og: http://ogp.me/ns#', class='no-js')
+html(lang='es' class='scroll-smooth')
 	head
-		meta(charset="utf-8")
-		meta(name="description", content="Your page description here")
-		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-		meta(name="apple-mobile-web-app-status-bar-style", content="default")
-		meta(name="format-detection", content="telephone=no")
-		link(rel="shortcut icon", type="image/x-icon", href="img/favicon.png")
-		link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css")
-		link(rel="preconnect" href="https://fonts.googleapis.com")
-		link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
-		link(href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet")
-		link(rel="stylesheet" href="./tailwind-dist.css")
-		//- Prism.js CSS (tema Tomorrow Night)
-		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css")
-		title= currentPage.slice(0,1).toUpperCase() + currentPage.slice(1) + " | " + siteName
-	body(class=`${currentPage} bg-[var(--bg-body)] flex flex-col min-h-screen pt-[var(--header-height)]`, itemscope itemtype="http://schema.org/WebPage")
-		//- here start the Main Header
-		header(class='fixed top-0 left-0 right-0 w-full min-h-[var(--header-height)] flex flex-col justify-between z-[1000000] bg-[var(--base-color)]')
-			block main-header
-		//- here ends the Main Header
-		//- here start the Main Container
-		main(class='flex-1')
-			block main-container 
-		//- here ends the Main Container
-		//- here start the Main Footer
-		footer(class='bg-[var(--base-color)] h-[var(--footer-height)] text-white')
-			block main-footer
-		//- here ends the Main Footer
-		script(src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js")
-		//- Prism.js Core
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js")
-		//- Prism.js Language Support
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-tsx.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-scss.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js")
+		include head
+	body(class=`${currentPage} bg-stage text-zinc-300 font-sans antialiased`, itemscope itemtype="http://schema.org/WebPage")
+		block main-header
+		main
+			block main-container
+		block main-footer
+		include ../partials/whatsapp-sticky
+		//- Lightbox overlay (galería)
+		#lightbox(class="fixed inset-0 z-[9999] hidden items-center justify-center bg-black/95 p-4" role="dialog" aria-modal="true" aria-label="Visor de imagen")
+			button#lightbox-close(type="button" class="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-stage-light text-zinc-300 transition-colors hover:bg-accent hover:text-stage" aria-label="Cerrar")
+				svg(class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24")
+					path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12")
+			button#lightbox-prev(type="button" class="absolute left-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-stage-light text-zinc-300 transition-colors hover:bg-accent hover:text-stage max-sm:hidden" aria-label="Imagen anterior")
+				svg(class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24")
+					path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7")
+			button#lightbox-next(type="button" class="absolute right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-stage-light text-zinc-300 transition-colors hover:bg-accent hover:text-stage max-sm:hidden" aria-label="Imagen siguiente")
+				svg(class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24")
+					path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7")
+			img#lightbox-img(src="" alt="" class="max-h-[85vh] max-w-full rounded-lg object-contain shadow-2xl")
 		script(src="./index-dist.js")
 		block scripts

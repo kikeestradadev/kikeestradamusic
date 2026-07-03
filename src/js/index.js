@@ -1,21 +1,9 @@
-/*here start core layout ui scripts imports*/
-import coreModule from './core-modules/coreModule';
-import darkMode from './core-modules/darkMode';
-/*here finish core layout ui scripts imports*/
-
-/*here start internal layout ui components scripts imports*/
-import internalModule from './internal-modules/internalModule';
-/*here finish internal layout ui components scripts imports*/
+import initNav from './modules/nav';
+import initLightbox from './lightbox';
+import initUtils from './modules/utils';
 
 (() => {
-	/*here start core layout ui scripts functions*/
-    coreModule();
-	darkMode();
-	/*here finish core layout ui scripts functions*/
-})();
-
-(() => {
-	/*here start internal layout ui components functions*/
-	internalModule();
-	/*here finish internal layout ui components functions*/
+	initNav();
+	initLightbox();
+	initUtils();
 })();

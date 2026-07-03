@@ -1,0 +1,32 @@
+//- Hero: retrato de fondo, nombre, roles y CTAs
+section#inicio(class="relative flex min-h-screen items-center justify-center overflow-hidden pt-[var(--header-height)]")
+	//- Imagen de fondo — reemplazar con foto real del artista
+	.bg-hero(class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://placehold.co/1920x1080/1a1a1a/333333?text=Foto+Hero')")
+	div(class="absolute inset-0 bg-gradient-to-b from-stage/70 via-stage/85 to-stage")
+
+	.container(class="relative z-10 py-20 text-center")
+		p(class="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-accent") Costa Rica
+		h1(class="font-display text-5xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl")
+			| Kike Estrada
+		p(class="mt-2 text-lg text-zinc-400 sm:text-xl") Enrique Estrada
+		p(class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg")
+			| Cantante · Guitarrista · Arreglista · Productor musical
+
+		.flex(class="mt-10 flex-col items-center justify-center gap-4 sm:flex-row")
+			a(href="#musica" class="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-stage transition-all hover:bg-accent-light hover:shadow-lg hover:shadow-accent/20")
+				svg(class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24")
+					path(d="M8 5v14l11-7z")
+				| Escuchar música
+			a(href="#contacto" class="inline-flex items-center gap-2 rounded-full border border-zinc-600 px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-zinc-300 transition-all hover:border-accent hover:text-accent")
+				| Contacto
+
+		//- Redes sociales
+		div(class="mt-10 flex justify-center" aria-label="Redes sociales")
+			-socialClasses = "justify-center gap-3"
+			include social-links
+
+		//- Scroll indicator
+		a(href="#bio" class="mt-16 inline-flex animate-bounce flex-col items-center gap-2 text-zinc-500 transition-colors hover:text-accent" aria-label="Ir a la sección Bio")
+			span(class="text-xs uppercase tracking-widest") Explorar
+			svg(class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24")
+				path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3")
