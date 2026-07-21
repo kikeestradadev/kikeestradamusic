@@ -1,9 +1,0 @@
-//- Menú mobile (fuera del header para evitar recorte por backdrop-filter)
-#nav-menu.site-nav__mobile(aria-hidden="true")
-	ul.site-nav__mobile-list(role="list")
-		each item in [{href: '#inicio', label: 'Inicio'}, {href: '#bio', label: 'Bio'}, {href: '#bandas', label: 'Bandas'}, {href: '#discografia', label: 'Discografía'}, {href: '#musica', label: 'Música'}, {href: '#galeria', label: 'Galería'}, {href: '#', label: 'Contacto', trigger: true}]
-			li
-				if item.trigger
-					a.site-nav__mobile-link.contact-trigger.nav-link(href="#")= item.label
-				else
-					a.site-nav__mobile-link.nav-link(href=item.href)= item.label
