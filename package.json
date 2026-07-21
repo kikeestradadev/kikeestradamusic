@@ -1,0 +1,24 @@
+{
+	"name": "front-end-prepros-boilerplate",
+	"version": "1.0.0",
+	"description": "gh=pages link: https://kikeestradadev.github.io/front-end-prepros-boilerplate",
+	"main": "index.js",
+	"homepage": "https://kikeestradadev.github.io/front-end-prepros-boilerplate/",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"deploy": "gh-pages -d public"
+	},
+	"dependencies": {
+		"gh-pages": "^6.3.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kikeestradadev/front-end-prepros-boilerplate.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/kikeestradadev/front-end-prepros-boilerplate/issues"
+	}
+}
