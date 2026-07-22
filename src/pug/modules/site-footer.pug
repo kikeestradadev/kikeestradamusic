@@ -16,4 +16,13 @@ div(class='site-footer' id=siteFooterData.id)
 				li(class='site-footer__social-item')
 					a(class='site-footer__social-link' href=social.href target='_blank' rel='noopener noreferrer' aria-label=social.label)
 						+socialIcon(social.icon, 'site-footer__social-icon')
+		ul(class='site-footer__contacts')
+			each contact in siteFooterData.contacts
+				li(class='site-footer__contact-item')
+					a(
+						class=`site-footer__contact-link site-footer__contact-link--${contact.type}`
+						href=contact.href
+						target=(contact.type === 'whatsapp' ? '_blank' : false)
+						rel=(contact.type === 'whatsapp' ? 'noopener noreferrer' : false)
+					)= contact.label
 		p(class='site-footer__copyright')= siteFooterData.copyright
