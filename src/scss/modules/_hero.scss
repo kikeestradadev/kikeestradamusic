@@ -102,32 +102,4 @@
 		width: 1rem;
 		height: 1rem;
 	}
-
-	&__scroll {
-		display: flex;
-		justify-content: center;
-		margin-top: 3rem;
-	}
-
-	&__scroll-arrow {
-		width: 0.7rem;
-		height: 0.7rem;
-		border-right: 1.5px solid var(--color-muted);
-		border-bottom: 1.5px solid var(--color-muted);
-		transform: rotate(45deg);
-		animation: hero-scroll 1.8s ease-in-out infinite;
-	}
-}
-
-@keyframes hero-scroll {
-	0%,
-	100% {
-		opacity: 0.35;
-		transform: translateY(0) rotate(45deg);
-	}
-
-	50% {
-		opacity: 1;
-		transform: translateY(6px) rotate(45deg);
-	}
 }

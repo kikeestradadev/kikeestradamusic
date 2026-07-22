@@ -3,36 +3,93 @@
 		locale = 'es'
 	}
 
+	const galleryItems = [
+		{
+			label: 'Foto 1',
+			tone: 'light',
+			src: './images/fotos/foto_1.jpg',
+			alt: 'Foto 1'
+		},
+		{
+			label: 'Foto 2',
+			tone: 'mid',
+			src: './images/fotos/foto_2.jpg',
+			alt: 'Foto 2'
+		},
+		{
+			label: 'Foto 3',
+			tone: 'light',
+			src: './images/fotos/foto_3.jpg',
+			alt: 'Foto 3'
+		},
+		{
+			label: 'Foto 4',
+			tone: 'dark',
+			src: './images/fotos/foto_4.jpg',
+			alt: 'Foto 4'
+		},
+		{
+			label: 'Foto 5',
+			tone: 'mid',
+			src: './images/fotos/foto_5.JPG',
+			alt: 'Foto 5'
+		},
+		{
+			label: 'Foto 6',
+			tone: 'light',
+			src: './images/fotos/foto_6.JPG',
+			alt: 'Foto 6'
+		},
+		{
+			label: 'Foto 7',
+			tone: 'dark',
+			src: './images/fotos/foto_7.JPG',
+			alt: 'Foto 7'
+		},
+		{
+			label: 'Foto 8',
+			tone: 'mid',
+			src: './images/fotos/foto_8.JPG',
+			alt: 'Foto 8'
+		},
+		{
+			label: 'Foto 9',
+			tone: 'light',
+			src: './images/fotos/foto_9.JPG',
+			alt: 'Foto 9'
+		},
+		{
+			label: 'Foto 10',
+			tone: 'dark',
+			src: './images/fotos/foto_10.JPG',
+			alt: 'Foto 10'
+		},
+		{
+			label: 'Foto 11',
+			tone: 'mid',
+			src: './images/fotos/foto_11.jpg',
+			alt: 'Foto 11'
+		}
+	]
+
 	const galleryContent = {
 		es: {
 			id: 'galeria',
 			title: 'Galería',
 			lead: 'Retratos, escenarios y momentos detrás de cámaras.',
-			items: [
-				{ label: 'Galería 1', tone: 'light' },
-				{ label: 'Galería 2', tone: 'mid' },
-				{ label: 'Galería 3', tone: 'light' },
-				{ label: 'Galería 4', tone: 'dark' },
-				{ label: 'Galería 5', tone: 'mid' },
-				{ label: 'Galería 6', tone: 'light' },
-				{ label: 'Galería 7', tone: 'dark' },
-				{ label: 'Galería 8', tone: 'mid' }
-			]
+			closeLabel: 'Cerrar galería',
+			prevLabel: 'Imagen anterior',
+			nextLabel: 'Imagen siguiente',
+			items: galleryItems
 		},
 		en: {
 			id: 'gallery',
 			title: 'Gallery',
 			lead: 'Portraits, stages, and behind-the-scenes moments.',
-			items: [
-				{ label: 'Gallery 1', tone: 'light' },
-				{ label: 'Gallery 2', tone: 'mid' },
-				{ label: 'Gallery 3', tone: 'light' },
-				{ label: 'Gallery 4', tone: 'dark' },
-				{ label: 'Gallery 5', tone: 'mid' },
-				{ label: 'Gallery 6', tone: 'light' },
-				{ label: 'Gallery 7', tone: 'dark' },
-				{ label: 'Gallery 8', tone: 'mid' }
-			]
+			closeLabel: 'Close gallery',
+			prevLabel: 'Previous image',
+			nextLabel: 'Next image',
+			items: galleryItems
 		}
 	}
 

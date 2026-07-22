@@ -5,20 +5,33 @@ section(class='youtube-portfolio' id=youtubePortfolioData.id)
 		header(class='section-intro youtube-portfolio__intro')
 			h2(class='section-intro__title')= youtubePortfolioData.title
 			span(class='section-intro__line')
-			p(class='section-intro__lead')= youtubePortfolioData.lead
-		ul(class='youtube-portfolio__grid')
-			each item in youtubePortfolioData.items
-				li(class='youtube-portfolio__item')
-					article(class='youtube-portfolio__card')
-						div(class='youtube-portfolio__embed')
-							iframe(
-								class='youtube-portfolio__iframe'
-								src=item.embedUrl
-								title=item.title
-								loading='lazy'
-								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-								referrerpolicy='strict-origin-when-cross-origin'
-								allowfullscreen
-							)
-						h3(class='youtube-portfolio__title')
-							a(class='youtube-portfolio__link' href=item.watchUrl target='_blank' rel='noopener noreferrer')= item.title
+		div(class='youtube-portfolio__slider swiper')
+			ul(class='youtube-portfolio__grid swiper-wrapper')
+				each item in youtubePortfolioData.items
+					li(class='youtube-portfolio__item swiper-slide')
+						article(class='youtube-portfolio__card')
+							div(class='youtube-portfolio__embed')
+								iframe(
+									class='youtube-portfolio__iframe'
+									src=item.embedUrl
+									title=item.title
+									loading='lazy'
+									allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+									referrerpolicy='strict-origin-when-cross-origin'
+									allowfullscreen
+								)
+							h3(class='youtube-portfolio__title')
+								a(class='youtube-portfolio__link' href=item.watchUrl target='_blank' rel='noopener noreferrer')= item.title
+			button(
+				class='youtube-portfolio__nav youtube-portfolio__nav--prev'
+				type='button'
+				aria-label=youtubePortfolioData.prevLabel
+			)
+				span(class='youtube-portfolio__nav-icon' aria-hidden='true') ‹
+			button(
+				class='youtube-portfolio__nav youtube-portfolio__nav--next'
+				type='button'
+				aria-label=youtubePortfolioData.nextLabel
+			)
+				span(class='youtube-portfolio__nav-icon' aria-hidden='true') ›
+		div(class='youtube-portfolio__pagination swiper-pagination')

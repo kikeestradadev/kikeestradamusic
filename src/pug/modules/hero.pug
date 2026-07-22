@@ -8,13 +8,14 @@ section(class='hero' id=heroData.id)
 		p(class='hero__eyebrow')= heroData.eyebrow
 		h1(class='hero__title')= heroData.title
 		p(class='hero__text')= heroData.text
-		div(class='hero__actions')
-			a(class='btn btn--primary hero__cta' href=heroData.primaryCta.href)= heroData.primaryCta.label
-			a(class='btn btn--outline hero__cta' href=heroData.secondaryCta.href)= heroData.secondaryCta.label
+		if heroData.primaryCta || heroData.secondaryCta
+			div(class='hero__actions')
+				if heroData.primaryCta
+					a(class='btn btn--primary hero__cta' href=heroData.primaryCta.href)= heroData.primaryCta.label
+				if heroData.secondaryCta
+					a(class='btn btn--outline hero__cta' href=heroData.secondaryCta.href)= heroData.secondaryCta.label
 		ul(class='hero__socials')
 			each social in socialsData
 				li(class='hero__social-item')
 					a(class='hero__social-link' href=social.href target='_blank' rel='noopener noreferrer' aria-label=social.label)
 						+socialIcon(social.icon, 'hero__social-icon')
-		div(class='hero__scroll' aria-hidden='true')
-			span(class='hero__scroll-arrow')

@@ -6,32 +6,50 @@
 		padding: 7rem 0 6rem;
 	}
 
+	&__slider {
+		position: relative;
+		overflow: hidden;
+
+		@media (width >= $l) {
+			overflow: visible;
+		}
+	}
+
 	&__grid {
-		display: grid;
-		gap: 1rem;
+		display: flex;
 		margin: 0;
 		padding: 0;
 		list-style: none;
 
-		@media (width >= $sm) {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
 		@media (width >= $l) {
+			display: grid !important;
+			gap: 1rem;
 			grid-template-columns: repeat(4, minmax(0, 1fr));
+			transform: none !important;
+			width: 100% !important;
+			height: auto !important;
+			box-sizing: border-box;
 		}
-	}
-
-	&__figure {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		aspect-ratio: 4 / 3;
-		margin: 0;
-		transition: transform 0.25s ease, filter 0.25s ease;
 	}
 
 	&__item {
+		@media (width < $l) {
+			height: auto;
+		}
+
+		@media (width >= $l) {
+			width: auto !important;
+			margin: 0 !important;
+			height: auto !important;
+			transform: none !important;
+
+			&:hover .gallery__figure,
+			&:focus-within .gallery__figure {
+				transform: scale(1.015);
+				filter: brightness(1.05);
+			}
+		}
+
 		&--light .gallery__figure {
 			background: #cfcfcf;
 		}
@@ -43,11 +61,47 @@
 		&--dark .gallery__figure {
 			background: #6f6f6f;
 		}
+	}
 
-		&:hover .gallery__figure {
-			transform: scale(1.015);
-			filter: brightness(1.05);
+	&__trigger {
+		display: block;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		text-align: inherit;
+		appearance: none;
+
+		@media (width < $l) {
+			cursor: default;
+			pointer-events: none;
 		}
+
+		@media (width >= $l) {
+			cursor: pointer;
+
+			&:focus-visible {
+				outline: 3px solid var(--color-gold);
+				outline-offset: 3px;
+			}
+		}
+	}
+
+	&__figure {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		aspect-ratio: 4 / 3;
+		margin: 0;
+		transition: transform 0.25s ease, filter 0.25s ease;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	&__label {
@@ -56,5 +110,236 @@
 		font-size: 0.95rem;
 		font-weight: 500;
 		letter-spacing: 0.04em;
+	}
+
+	&__pagination {
+		position: static;
+		display: flex;
+		justify-content: center;
+		gap: 0.35rem;
+		margin-top: 1.25rem;
+
+		@media (width >= $l) {
+			display: none;
+		}
+	}
+
+	&__nav {
+		position: absolute;
+		top: 50%;
+		z-index: 2;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		padding: 0;
+		margin: 0;
+		transform: translateY(-50%);
+		border: 2px solid rgba(255, 255, 255, 0.75);
+		background: rgba(26, 26, 26, 0.92);
+		color: var(--color-white);
+		font-size: 1.75rem;
+		line-height: 1;
+		cursor: pointer;
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.45);
+		transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+
+		&:hover:not(:disabled) {
+			border-color: var(--color-gold);
+			color: var(--color-gold);
+		}
+
+		&:focus-visible {
+			outline: 3px solid var(--color-gold);
+			outline-offset: 2px;
+		}
+
+		&:disabled,
+		&.swiper-button-disabled {
+			opacity: 0.35;
+			cursor: default;
+			pointer-events: none;
+		}
+
+		&--prev {
+			left: 0.5rem;
+		}
+
+		&--next {
+			right: 0.5rem;
+		}
+
+		@media (width >= $l) {
+			display: none;
+		}
+	}
+
+	&__nav-icon {
+		display: block;
+		line-height: 1;
+		transform: translateY(-0.06em);
+	}
+
+	.swiper-pagination-bullet {
+		width: 0.55rem;
+		height: 0.55rem;
+		margin: 0 !important;
+		background: rgba(255, 255, 255, 0.35);
+		opacity: 1;
+	}
+
+	.swiper-pagination-bullet-active {
+		background: var(--color-gold);
+	}
+
+	&__dialog {
+		display: none;
+		width: min(100% - 1.5rem, 64rem);
+		max-width: 100%;
+		max-height: calc(100dvh - 1.5rem);
+		margin: auto;
+		padding: 0;
+		border: 1px solid var(--color-border);
+		background: transparent;
+		color: var(--color-white);
+
+		@media (width >= $l) {
+			&::backdrop {
+				background: rgba(0, 0, 0, 0.86);
+				backdrop-filter: blur(4px);
+			}
+
+			&[open] {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+
+	&__dialog-shell {
+		position: relative;
+		display: grid;
+		width: 100%;
+		max-height: calc(100dvh - 1.5rem);
+		padding: 3.5rem 3.5rem 1.5rem;
+		background: var(--color-ink);
+		box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.45);
+	}
+
+	&__dialog-close,
+	&__dialog-nav {
+		position: absolute;
+		z-index: 2;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--color-border);
+		background: rgba(26, 26, 26, 0.92);
+		color: var(--color-white);
+		cursor: pointer;
+		transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+		&:hover {
+			border-color: var(--color-gold);
+			color: var(--color-gold);
+		}
+
+		&:focus-visible {
+			outline: 3px solid var(--color-gold);
+			outline-offset: 2px;
+		}
+	}
+
+	&__dialog-close {
+		top: 0.85rem;
+		right: 0.85rem;
+		width: 2.5rem;
+		height: 2.5rem;
+		font-size: 1.5rem;
+		line-height: 1;
+	}
+
+	&__dialog-nav {
+		top: 50%;
+		width: 2.75rem;
+		height: 2.75rem;
+		transform: translateY(-50%);
+		font-size: 1.75rem;
+		line-height: 1;
+
+		&--prev {
+			left: 0.75rem;
+		}
+
+		&--next {
+			right: 0.75rem;
+		}
+	}
+
+	&__dialog-figure {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.85rem;
+		min-height: 0;
+		margin: 0;
+	}
+
+	&__dialog-image {
+		display: block;
+		width: auto;
+		max-width: 100%;
+		max-height: min(75dvh, 42rem);
+		height: auto;
+		object-fit: contain;
+
+		&[hidden] {
+			display: none;
+		}
+	}
+
+	&__dialog-placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: min(100%, 36rem);
+		aspect-ratio: 4 / 3;
+		max-height: min(75dvh, 42rem);
+		color: rgba(0, 0, 0, 0.55);
+		font-family: var(--font-sans);
+		font-size: clamp(1rem, 2.5vw, 1.35rem);
+		font-weight: 500;
+		letter-spacing: 0.04em;
+
+		&[hidden] {
+			display: none;
+		}
+
+		&--light {
+			background: #cfcfcf;
+		}
+
+		&--mid {
+			background: #9a9a9a;
+		}
+
+		&--dark {
+			background: #6f6f6f;
+		}
+	}
+
+	&__dialog-caption {
+		max-width: 36rem;
+		margin: 0;
+		padding: 0 0.5rem;
+		color: var(--color-muted);
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		font-weight: 400;
+		letter-spacing: 0.02em;
+		text-align: center;
 	}
 }

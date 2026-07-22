@@ -6,8 +6,67 @@ section(class='gallery' id=galleryData.id)
 			h2(class='section-intro__title')= galleryData.title
 			span(class='section-intro__line')
 			p(class='section-intro__lead')= galleryData.lead
-		ul(class='gallery__grid')
-			each item in galleryData.items
-				li(class=`gallery__item gallery__item--${item.tone}`)
-					figure(class='gallery__figure')
-						span(class='gallery__label')= item.label
+		div(class='gallery__slider swiper')
+			ul(class='gallery__grid swiper-wrapper')
+				each item, index in galleryData.items
+					li(class=`gallery__item gallery__item--${item.tone} swiper-slide`)
+						button(
+							class='gallery__trigger'
+							type='button'
+							data-gallery-index=index
+							data-gallery-label=item.label
+							data-gallery-tone=item.tone
+							data-gallery-src=item.src || ''
+							data-gallery-alt=item.alt || item.label
+							aria-haspopup='dialog'
+							aria-controls=`${galleryData.id}-dialog`
+						)
+							figure(class='gallery__figure')
+								if item.src
+									img(class='gallery__image' src=item.src alt=item.alt || item.label loading='lazy')
+								else
+									span(class='gallery__label')= item.label
+			button(
+				class='gallery__nav gallery__nav--prev'
+				type='button'
+				aria-label=galleryData.prevLabel
+			)
+				span(class='gallery__nav-icon' aria-hidden='true') ‹
+			button(
+				class='gallery__nav gallery__nav--next'
+				type='button'
+				aria-label=galleryData.nextLabel
+			)
+				span(class='gallery__nav-icon' aria-hidden='true') ›
+		div(class='gallery__pagination swiper-pagination')
+		dialog(
+			class='gallery__dialog'
+			id=`${galleryData.id}-dialog`
+			aria-label=galleryData.title
+		)
+			div(class='gallery__dialog-shell')
+				button(
+					class='gallery__dialog-close'
+					type='button'
+					aria-label=galleryData.closeLabel
+					data-gallery-close
+				)
+					span(aria-hidden='true') ×
+				button(
+					class='gallery__dialog-nav gallery__dialog-nav--prev'
+					type='button'
+					aria-label=galleryData.prevLabel
+					data-gallery-prev
+				)
+					span(aria-hidden='true') ‹
+				button(
+					class='gallery__dialog-nav gallery__dialog-nav--next'
+					type='button'
+					aria-label=galleryData.nextLabel
+					data-gallery-next
+				)
+					span(aria-hidden='true') ›
+				figure(class='gallery__dialog-figure' data-gallery-figure)
+					img(class='gallery__dialog-image' data-gallery-image alt='' hidden)
+					span(class='gallery__dialog-placeholder' data-gallery-placeholder)
+					figcaption(class='gallery__dialog-caption' data-gallery-caption)
