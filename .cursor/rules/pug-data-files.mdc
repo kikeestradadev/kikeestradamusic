@@ -28,3 +28,4 @@ include ../data/main-menu-data
 - No crees `src/data/` ni archivos JSON para datos de plantillas.
 - No declares arrays extensos dentro de módulos Pug.
 - Los módulos UI van en `src/pug/modules/`; los demos del style guide en `src/pug/style-guide/`.
+- `site-data.pug` guarda `assetVersion` para cache-busting de CSS/JS; no lo edites a mano, usa `npm run build`.

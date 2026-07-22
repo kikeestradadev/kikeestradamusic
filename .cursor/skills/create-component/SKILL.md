@@ -63,6 +63,7 @@ export default mainMenu;
 6. Impórtalo en `src/js/index.js` y ejecútalo dentro de `initComponents`.
 7. Incluye el Pug desde la página correspondiente con `include ../modules/{name}`.
 8. Documenta en `README.md` cualquier asset o CDN nuevo.
+9. Si el cambio afecta CSS o JS publicados, ejecuta `npm run build` para subir `assetVersion` (ver skill `bump-assets`).
 
 ## Restricciones
 
