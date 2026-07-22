@@ -1,0 +1,42 @@
+include ../data/music-data
+
+section(class='music' id=musicData.id)
+	div(class='container music__container')
+		header(class='section-intro music__intro')
+			h2(class='section-intro__title')= musicData.title
+			span(class='section-intro__line')
+			p(class='section-intro__lead')= musicData.lead
+		div(class='music__grid')
+			article(class='music__card music__card--spotify')
+				h3(class='music__card-title')= musicData.spotifyFollow.title
+				div(class='music__embed music__embed--follow')
+					iframe(
+						class='music__iframe'
+						src=musicData.spotifyFollow.embedUrl
+						title=musicData.spotifyFollow.title
+						loading='lazy'
+						allow='encrypted-media'
+					)
+				a(class='btn btn--primary music__follow' href=musicData.spotifyFollow.ctaHref target='_blank' rel='noopener noreferrer')= musicData.spotifyFollow.ctaLabel
+			article(class='music__card music__card--youtube')
+				h3(class='music__card-title')= musicData.youtube.title
+				div(class='music__embed music__embed--video')
+					iframe(
+						class='music__iframe'
+						src=musicData.youtube.embedUrl
+						title=musicData.youtube.title
+						loading='lazy'
+						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+						allowfullscreen
+					)
+				p(class='music__caption')= musicData.youtube.caption
+			article(class='music__card music__card--playlist')
+				h3(class='music__card-title')= musicData.spotifyPlaylist.title
+				div(class='music__embed music__embed--playlist')
+					iframe(
+						class='music__iframe'
+						src=musicData.spotifyPlaylist.embedUrl
+						title=musicData.spotifyPlaylist.title
+						loading='lazy'
+						allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture'
+					)

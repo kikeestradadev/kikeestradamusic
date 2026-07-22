@@ -1,0 +1,17 @@
+include ../data/about-data
+
+section(class='about' id=aboutData.id)
+	div(class='container about__container')
+		div(class='about__media')
+			div(class='about__photo')
+				if aboutData.imageSrc
+					img(class='about__image' src=aboutData.imageSrc alt=aboutData.title)
+				else
+					span(class='about__photo-label')= aboutData.imageLabel
+		div(class='about__content')
+			header(class='section-intro section-intro--left about__intro')
+				h2(class='section-intro__title')= aboutData.title
+				span(class='section-intro__line')
+			div(class='about__copy')
+				each paragraph in aboutData.paragraphs
+					p(class='about__text')= paragraph

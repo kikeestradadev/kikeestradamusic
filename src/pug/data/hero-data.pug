@@ -1,0 +1,47 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const heroContent = {
+		es: {
+			id: 'inicio',
+			eyebrow: 'Cantante y Músico',
+			title: 'Kike Estrada',
+			watermark: 'Fortunero',
+			text: 'Voz, composición y escena. Una trayectoria que une tradición y sonido contemporáneo en cada presentación.',
+			primaryCta: {
+				label: 'Escuchar ahora',
+				href: '#musica'
+			},
+			secondaryCta: {
+				label: 'Mi Portafolio',
+				href: '#proyectos'
+			},
+			socials: [
+				{ label: 'Spotify', href: 'https://open.spotify.com/', icon: 'spotify' },
+				{ label: 'TikTok', href: 'https://www.tiktok.com/', icon: 'tiktok' }
+			]
+		},
+		en: {
+			id: 'home',
+			eyebrow: 'Singer and Musician',
+			title: 'Kike Estrada',
+			watermark: 'Fortunero',
+			text: 'Voice, songwriting, and stage presence. A path that brings tradition and contemporary sound together in every performance.',
+			primaryCta: {
+				label: 'Listen now',
+				href: '#music'
+			},
+			secondaryCta: {
+				label: 'My Portfolio',
+				href: '#projects'
+			},
+			socials: [
+				{ label: 'Spotify', href: 'https://open.spotify.com/', icon: 'spotify' },
+				{ label: 'TikTok', href: 'https://www.tiktok.com/', icon: 'tiktok' }
+			]
+		}
+	}
+
+	const heroData = heroContent[locale] || heroContent.es

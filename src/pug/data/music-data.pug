@@ -1,0 +1,49 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const musicContent = {
+		es: {
+			id: 'musica',
+			title: 'Música',
+			lead: 'Escucha en Spotify y mira presentaciones en YouTube.',
+			spotifyFollow: {
+				title: 'Sígueme en Spotify',
+				embedUrl: 'https://open.spotify.com/follow/1/?uri=spotify:artist:0LyfQWJT6nXafLPZqxe9Of&size=detail&theme=dark',
+				ctaLabel: 'Follow',
+				ctaHref: 'https://open.spotify.com/'
+			},
+			youtube: {
+				title: 'Video destacado',
+				embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+				caption: 'Presentación en vivo'
+			},
+			spotifyPlaylist: {
+				title: 'Playlist destacada',
+				embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0'
+			}
+		},
+		en: {
+			id: 'music',
+			title: 'Music',
+			lead: 'Listen on Spotify and watch performances on YouTube.',
+			spotifyFollow: {
+				title: 'Follow me on Spotify',
+				embedUrl: 'https://open.spotify.com/follow/1/?uri=spotify:artist:0LyfQWJT6nXafLPZqxe9Of&size=detail&theme=dark',
+				ctaLabel: 'Follow',
+				ctaHref: 'https://open.spotify.com/'
+			},
+			youtube: {
+				title: 'Featured video',
+				embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+				caption: 'Live performance'
+			},
+			spotifyPlaylist: {
+				title: 'Featured playlist',
+				embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0'
+			}
+		}
+	}
+
+	const musicData = musicContent[locale] || musicContent.es

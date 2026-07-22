@@ -1,0 +1,13 @@
+include ../data/gallery-data
+
+section(class='gallery' id=galleryData.id)
+	div(class='container gallery__container')
+		header(class='section-intro gallery__intro')
+			h2(class='section-intro__title')= galleryData.title
+			span(class='section-intro__line')
+			p(class='section-intro__lead')= galleryData.lead
+		ul(class='gallery__grid')
+			each item in galleryData.items
+				li(class=`gallery__item gallery__item--${item.tone}`)
+					figure(class='gallery__figure')
+						span(class='gallery__label')= item.label

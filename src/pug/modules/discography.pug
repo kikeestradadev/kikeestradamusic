@@ -1,0 +1,16 @@
+include ../data/discography-data
+
+section(class='discography' id=discographyData.id)
+	div(class='container discography__container')
+		header(class='section-intro discography__intro')
+			h2(class='section-intro__title')= discographyData.title
+			span(class='section-intro__line')
+			p(class='section-intro__lead')= discographyData.lead
+		ul(class='discography__grid')
+			each item in discographyData.items
+				li(class='discography__item')
+					article(class='discography__card')
+						div(class='discography__cover')
+							span(class='discography__cover-label')= item.coverLabel
+						h3(class='discography__title')= item.title
+						p(class='discography__meta')= item.year + ' · ' + item.role

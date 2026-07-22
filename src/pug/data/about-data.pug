@@ -1,0 +1,31 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const aboutContent = {
+		es: {
+			id: 'sobre-mi',
+			title: 'Sobre mí',
+			imageLabel: 'Foto Bio',
+			imageSrc: '',
+			paragraphs: [
+				'Kike Estrada es cantante y músico con una propuesta que cruza la tradición popular y el sonido contemporáneo. Su trabajo se construye desde la voz, la composición y la presencia escénica.',
+				'Ha colaborado en bandas, proyectos propios y producciones discográficas, explorando formatos en vivo y grabaciones de estudio con la misma intensidad.',
+				'Esta página reúne su trayectoria, discografía, música y momentos visuales para acercarte a su universo artístico.'
+			]
+		},
+		en: {
+			id: 'about',
+			title: 'About',
+			imageLabel: 'Bio Photo',
+			imageSrc: '',
+			paragraphs: [
+				'Kike Estrada is a singer and musician whose work bridges popular tradition and contemporary sound. His craft is built on voice, songwriting, and stage presence.',
+				'He has collaborated with bands, personal projects, and recorded releases, exploring live formats and studio work with the same intensity.',
+				'This page brings together his journey, discography, music, and visual moments to introduce you to his artistic world.'
+			]
+		}
+	}
+
+	const aboutData = aboutContent[locale] || aboutContent.es

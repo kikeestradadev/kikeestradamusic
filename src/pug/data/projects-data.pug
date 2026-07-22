@@ -1,0 +1,63 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const projectsContent = {
+		es: {
+			id: 'proyectos',
+			title: 'Bandas y proyectos',
+			lead: 'Colaboraciones, formaciones y proyectos donde la voz y la escena toman forma.',
+			items: [
+				{
+					title: 'Banda 1',
+					description: 'Proyecto en vivo con repertorio original y arreglos contemporáneos.',
+					meta: '2019 — Presente'
+				},
+				{
+					title: 'Proyecto 2',
+					description: 'Exploración sonora entre tradición y producción moderna.',
+					meta: 'Ciudad de México'
+				},
+				{
+					title: 'Banda 3',
+					description: 'Formación colaborativa orientada a presentaciones y festivales.',
+					meta: '2021 — 2024'
+				},
+				{
+					title: 'Proyecto 4',
+					description: 'Sesiones íntimas, composición y narrativa musical en escena.',
+					meta: 'En gira'
+				}
+			]
+		},
+		en: {
+			id: 'projects',
+			title: 'Bands and projects',
+			lead: 'Collaborations, ensembles, and projects where voice and stage take shape.',
+			items: [
+				{
+					title: 'Band 1',
+					description: 'A live project with original repertoire and contemporary arrangements.',
+					meta: '2019 — Present'
+				},
+				{
+					title: 'Project 2',
+					description: 'A sonic exploration between tradition and modern production.',
+					meta: 'Mexico City'
+				},
+				{
+					title: 'Band 3',
+					description: 'A collaborative lineup focused on shows and festivals.',
+					meta: '2021 — 2024'
+				},
+				{
+					title: 'Project 4',
+					description: 'Intimate sessions, songwriting, and musical storytelling on stage.',
+					meta: 'On tour'
+				}
+			]
+		}
+	}
+
+	const projectsData = projectsContent[locale] || projectsContent.es

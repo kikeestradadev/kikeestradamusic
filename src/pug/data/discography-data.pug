@@ -1,0 +1,35 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const discographyContent = {
+		es: {
+			id: 'discografia',
+			title: 'Discografía',
+			lead: 'Álbumes, sencillos y colaboraciones disponibles para escuchar.',
+			items: [
+				{ title: 'Album 1', year: '2024', role: 'Artista', coverLabel: 'Album 1' },
+				{ title: 'Single 2', year: '2023', role: 'Sencillo', coverLabel: 'Single 2' },
+				{ title: 'Album 3', year: '2022', role: 'Artista', coverLabel: 'Album 3' },
+				{ title: 'Single 4', year: '2022', role: 'Colaboración', coverLabel: 'Single 4' },
+				{ title: 'Album 5', year: '2021', role: 'Artista', coverLabel: 'Album 5' },
+				{ title: 'Single 6', year: '2020', role: 'Sencillo', coverLabel: 'Single 6' }
+			]
+		},
+		en: {
+			id: 'discography',
+			title: 'Discography',
+			lead: 'Albums, singles, and collaborations ready to listen to.',
+			items: [
+				{ title: 'Album 1', year: '2024', role: 'Artist', coverLabel: 'Album 1' },
+				{ title: 'Single 2', year: '2023', role: 'Single', coverLabel: 'Single 2' },
+				{ title: 'Album 3', year: '2022', role: 'Artist', coverLabel: 'Album 3' },
+				{ title: 'Single 4', year: '2022', role: 'Feature', coverLabel: 'Single 4' },
+				{ title: 'Album 5', year: '2021', role: 'Artist', coverLabel: 'Album 5' },
+				{ title: 'Single 6', year: '2020', role: 'Single', coverLabel: 'Single 6' }
+			]
+		}
+	}
+
+	const discographyData = discographyContent[locale] || discographyContent.es

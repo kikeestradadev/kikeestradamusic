@@ -1,0 +1,15 @@
+include ../data/projects-data
+
+section(class='projects' id=projectsData.id)
+	div(class='container projects__container')
+		header(class='section-intro projects__intro')
+			h2(class='section-intro__title')= projectsData.title
+			span(class='section-intro__line')
+			p(class='section-intro__lead')= projectsData.lead
+		ul(class='projects__grid')
+			each item in projectsData.items
+				li(class='projects__item')
+					article(class='projects__card')
+						h3(class='projects__card-title')= item.title
+						p(class='projects__card-text')= item.description
+						p(class='projects__card-meta')= item.meta

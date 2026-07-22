@@ -1,0 +1,39 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const galleryContent = {
+		es: {
+			id: 'galeria',
+			title: 'Galería',
+			lead: 'Retratos, escenarios y momentos detrás de cámaras.',
+			items: [
+				{ label: 'Galería 1', tone: 'light' },
+				{ label: 'Galería 2', tone: 'mid' },
+				{ label: 'Galería 3', tone: 'light' },
+				{ label: 'Galería 4', tone: 'dark' },
+				{ label: 'Galería 5', tone: 'mid' },
+				{ label: 'Galería 6', tone: 'light' },
+				{ label: 'Galería 7', tone: 'dark' },
+				{ label: 'Galería 8', tone: 'mid' }
+			]
+		},
+		en: {
+			id: 'gallery',
+			title: 'Gallery',
+			lead: 'Portraits, stages, and behind-the-scenes moments.',
+			items: [
+				{ label: 'Gallery 1', tone: 'light' },
+				{ label: 'Gallery 2', tone: 'mid' },
+				{ label: 'Gallery 3', tone: 'light' },
+				{ label: 'Gallery 4', tone: 'dark' },
+				{ label: 'Gallery 5', tone: 'mid' },
+				{ label: 'Gallery 6', tone: 'light' },
+				{ label: 'Gallery 7', tone: 'dark' },
+				{ label: 'Gallery 8', tone: 'mid' }
+			]
+		}
+	}
+
+	const galleryData = galleryContent[locale] || galleryContent.es

@@ -1,86 +1,64 @@
-/******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ([
-/* 0 */,
-/* 1 */
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+(() => {
+  // src/js/modules/coreModule.js
+  var coreModule = () => {
+    document.querySelectorAll(".core-module").forEach((root) => {
+      root.dataset.coreModuleReady = "true";
+    });
+  };
+  var coreModule_default = coreModule;
 
-__webpack_require__.r(__webpack_exports__);
-var coreModule = function coreModule() {
-  document.querySelectorAll('.core-module').forEach(function (root) {
-    // Toda consulta y listener queda acotado a root.
-    root.dataset.coreModuleReady = 'true';
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (coreModule);
+  // src/js/modules/internalModule.js
+  var internalModule = () => {
+    document.querySelectorAll(".internal-module").forEach((root) => {
+      root.dataset.internalModuleReady = "true";
+    });
+  };
+  var internalModule_default = internalModule;
 
-/***/ }),
-/* 2 */
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+  // src/js/modules/mainMenu.js
+  var mainMenu = () => {
+    document.querySelectorAll(".main-menu").forEach((root) => {
+      if (root.dataset.mainMenuReady === "true") {
+        return;
+      }
+      const toggle = root.querySelector(".main-menu__toggle");
+      const links = root.querySelectorAll(".main-menu__link, .main-menu__lang");
+      const openLabel = toggle?.dataset.labelOpen || "Open menu";
+      const closeLabel = toggle?.dataset.labelClose || "Close menu";
+      const setOpen = (isOpen) => {
+        root.classList.toggle("main-menu--open", isOpen);
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", String(isOpen));
+          toggle.setAttribute("aria-label", isOpen ? closeLabel : openLabel);
+        }
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      };
+      if (toggle) {
+        toggle.addEventListener("click", () => {
+          setOpen(!root.classList.contains("main-menu--open"));
+        });
+      }
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          setOpen(false);
+        });
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          setOpen(false);
+        }
+      });
+      root.dataset.mainMenuReady = "true";
+    });
+  };
+  var mainMenu_default = mainMenu;
 
-__webpack_require__.r(__webpack_exports__);
-var internalModule = function internalModule() {
-  document.querySelectorAll('.internal-module').forEach(function (root) {
-    // Toda consulta y listener queda acotado a root.
-    root.dataset.internalModuleReady = 'true';
-  });
-};
-/* harmony default export */ __webpack_exports__["default"] = (internalModule);
-
-/***/ })
-/******/ 	]);
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	}();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_coreModule__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _modules_internalModule__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-
-
-var initComponents = function initComponents() {
-  (0,_modules_coreModule__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  (0,_modules_internalModule__WEBPACK_IMPORTED_MODULE_1__["default"])();
-};
-document.addEventListener('DOMContentLoaded', initComponents);
-}();
-/******/ })()
-;
+  // src/js/index.js
+  var initComponents = () => {
+    coreModule_default();
+    internalModule_default();
+    mainMenu_default();
+  };
+  document.addEventListener("DOMContentLoaded", initComponents);
+})();
 //# sourceMappingURL=index.js.map

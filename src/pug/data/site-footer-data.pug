@@ -1,0 +1,57 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const siteFooterContent = {
+		es: {
+			id: 'contacto',
+			brand: 'Kike Estrada',
+			navLabel: 'Navegación del pie',
+			langsLabel: 'Idioma',
+			items: [
+				{ label: 'Inicio', href: '#inicio' },
+				{ label: 'Sobre mí', href: '#sobre-mi' },
+				{ label: 'Proyectos', href: '#proyectos' },
+				{ label: 'Discografía', href: '#discografia' },
+				{ label: 'Música', href: '#musica' },
+				{ label: 'Galería', href: '#galeria' },
+				{ label: 'Contacto', href: '#contacto' },
+			],
+			languages: [
+				{ code: 'es', label: 'ES', href: './index.html' },
+				{ code: 'en', label: 'EN', href: './en.html' },
+			],
+			socials: [
+				{ label: 'Spotify', href: 'https://open.spotify.com/', icon: 'spotify' },
+				{ label: 'TikTok', href: 'https://www.tiktok.com/', icon: 'tiktok' }
+			],
+			copyright: '© 2024 Kike Estrada. Todos los derechos reservados.'
+		},
+		en: {
+			id: 'contact',
+			brand: 'Kike Estrada',
+			navLabel: 'Footer navigation',
+			langsLabel: 'Language',
+			items: [
+				{ label: 'Home', href: '#home' },
+				{ label: 'About', href: '#about' },
+				{ label: 'Projects', href: '#projects' },
+				{ label: 'Discography', href: '#discography' },
+				{ label: 'Music', href: '#music' },
+				{ label: 'Gallery', href: '#gallery' },
+				{ label: 'Contact', href: '#contact' },
+			],
+			languages: [
+				{ code: 'es', label: 'ES', href: './index.html' },
+				{ code: 'en', label: 'EN', href: './en.html' },
+			],
+			socials: [
+				{ label: 'Spotify', href: 'https://open.spotify.com/', icon: 'spotify' },
+				{ label: 'TikTok', href: 'https://www.tiktok.com/', icon: 'tiktok' }
+			],
+			copyright: '© 2024 Kike Estrada. All rights reserved.'
+		}
+	}
+
+	const siteFooterData = siteFooterContent[locale] || siteFooterContent.es
