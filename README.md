@@ -28,7 +28,7 @@ El contenido editable vive en `src/pug/data/*-data.pug`.
 - Español: `public/index.html` (`locale = 'es'`)
 - English: `public/en.html` (`locale = 'en'`)
 
-El copy vive en `src/pug/data/*-data.pug` con claves `es` / `en`. El selector ES | EN aparece en el menú y el footer.
+El copy vive en `src/pug/data/*-data.pug` con claves `es` / `en`. El toggle de idioma (`lang-toggle`) usa banderas de España y EE. UU. en el menú y el footer.
 
 ## Desarrollo
 

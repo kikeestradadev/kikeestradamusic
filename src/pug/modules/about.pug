@@ -5,7 +5,7 @@ section(class='about' id=aboutData.id)
 		div(class='about__media')
 			div(class='about__photo')
 				if aboutData.imageSrc
-					img(class='about__image' src=aboutData.imageSrc alt=aboutData.title)
+					img(class='about__image' src=aboutData.imageSrc alt=aboutData.imageAlt || aboutData.title)
 				else
 					span(class='about__photo-label')= aboutData.imageLabel
 		div(class='about__content')

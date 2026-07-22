@@ -22,7 +22,7 @@
         return;
       }
       const toggle = root.querySelector(".main-menu__toggle");
-      const links = root.querySelectorAll(".main-menu__link, .main-menu__lang");
+      const links = root.querySelectorAll(".main-menu__link, .lang-toggle__option");
       const openLabel = toggle?.dataset.labelOpen || "Open menu";
       const closeLabel = toggle?.dataset.labelClose || "Close menu";
       const setOpen = (isOpen) => {

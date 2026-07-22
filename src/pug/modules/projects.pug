@@ -12,4 +12,5 @@ section(class='projects' id=projectsData.id)
 					article(class='projects__card')
 						h3(class='projects__card-title')= item.title
 						p(class='projects__card-text')= item.description
-						p(class='projects__card-meta')= item.meta
+						if item.meta
+							p(class='projects__card-meta')= item.meta

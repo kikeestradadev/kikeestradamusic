@@ -27,9 +27,19 @@
 		white-space: nowrap;
 	}
 
-	&__toggle {
+	&__tools {
 		position: relative;
 		z-index: 2;
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+
+		@media (width >= $l) {
+			order: 3;
+		}
+	}
+
+	&__toggle {
 		display: inline-flex;
 		flex-direction: column;
 		justify-content: center;
@@ -74,6 +84,7 @@
 			flex-direction: row;
 			align-items: center;
 			justify-content: flex-end;
+			flex: 1 1 auto;
 			padding: 0;
 			background: transparent;
 			opacity: 1;
@@ -107,38 +118,6 @@
 
 		&:hover,
 		&:focus-visible {
-			color: var(--color-gold);
-		}
-	}
-
-	&__langs {
-		display: flex;
-		align-items: center;
-		gap: 0.65rem;
-		margin-top: 1.75rem;
-
-		@media (width >= $l) {
-			margin-top: 0;
-			margin-left: 0.75rem;
-			padding-left: 1rem;
-			border-left: 1px solid rgba(255, 255, 255, 0.18);
-		}
-	}
-
-	&__lang {
-		color: var(--color-muted);
-		font-size: 0.7rem;
-		font-weight: 600;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		transition: color 0.2s ease;
-
-		&:hover,
-		&:focus-visible {
-			color: var(--color-gold);
-		}
-
-		&--active {
 			color: var(--color-gold);
 		}
 	}

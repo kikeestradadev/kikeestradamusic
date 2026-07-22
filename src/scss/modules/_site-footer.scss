@@ -42,30 +42,6 @@
 		}
 	}
 
-	&__langs {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
-	}
-
-	&__lang {
-		color: var(--color-muted);
-		font-size: 0.7rem;
-		font-weight: 600;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		transition: color 0.2s ease;
-
-		&:hover {
-			color: var(--color-gold);
-		}
-
-		&--active {
-			color: var(--color-gold);
-		}
-	}
-
 	&__socials {
 		display: flex;
 		gap: 0.85rem;

@@ -1,0 +1,23 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	var langToggleContent = {
+		es: {
+			ariaLabel: 'Idioma',
+			items: [
+				{ code: 'es', label: 'Español', href: './index.html', flag: 'es' },
+				{ code: 'en', label: 'English', href: './en.html', flag: 'us' },
+			]
+		},
+		en: {
+			ariaLabel: 'Language',
+			items: [
+				{ code: 'es', label: 'Español', href: './index.html', flag: 'es' },
+				{ code: 'en', label: 'English', href: './en.html', flag: 'us' },
+			]
+		}
+	}
+
+	var langToggleData = langToggleContent[locale] || langToggleContent.es

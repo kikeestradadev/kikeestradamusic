@@ -1,0 +1,84 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	var youtubePortfolioVideos = [
+		{
+			id: '83V1s0BgYNI',
+			title: 'Olvidar',
+			embedUrl: 'https://www.youtube.com/embed/83V1s0BgYNI',
+			watchUrl: 'https://www.youtube.com/watch?v=83V1s0BgYNI'
+		},
+		{
+			id: 'fmJmdzR6csE',
+			title: 'Señor Bartender',
+			embedUrl: 'https://www.youtube.com/embed/fmJmdzR6csE',
+			watchUrl: 'https://www.youtube.com/watch?v=fmJmdzR6csE'
+		},
+		{
+			id: 'QEvubzshEGI',
+			title: 'Canción de la esperanza',
+			embedUrl: 'https://www.youtube.com/embed/QEvubzshEGI',
+			watchUrl: 'https://www.youtube.com/watch?v=QEvubzshEGI'
+		},
+		{
+			id: 'wuvbvIKPDww',
+			title: 'Sigo aquí',
+			embedUrl: 'https://www.youtube.com/embed/wuvbvIKPDww',
+			watchUrl: 'https://www.youtube.com/watch?v=wuvbvIKPDww'
+		},
+		{
+			id: '0aB2eaJeCbk',
+			title: 'Mi alma gemela',
+			embedUrl: 'https://www.youtube.com/embed/0aB2eaJeCbk',
+			watchUrl: 'https://www.youtube.com/watch?v=0aB2eaJeCbk'
+		},
+		{
+			id: 'DIWgrMs9oLE',
+			title: 'La noche pregunta dónde estás',
+			embedUrl: 'https://www.youtube.com/embed/DIWgrMs9oLE',
+			watchUrl: 'https://www.youtube.com/watch?v=DIWgrMs9oLE'
+		},
+		{
+			id: '4yoiXTDSY4A',
+			title: 'Si tú no estás',
+			embedUrl: 'https://www.youtube.com/embed/4yoiXTDSY4A',
+			watchUrl: 'https://www.youtube.com/watch?v=4yoiXTDSY4A'
+		},
+		{
+			id: 'bRjqF6_QCcQ',
+			title: 'Te pido perdón',
+			embedUrl: 'https://www.youtube.com/embed/bRjqF6_QCcQ',
+			watchUrl: 'https://www.youtube.com/watch?v=bRjqF6_QCcQ'
+		},
+		{
+			id: '9f4Nrl99cyA',
+			title: 'La ruta a ti',
+			embedUrl: 'https://www.youtube.com/embed/9f4Nrl99cyA',
+			watchUrl: 'https://www.youtube.com/watch?v=9f4Nrl99cyA'
+		},
+		{
+			id: 'wbf6ncsBIfU',
+			title: 'Te dirán maestro',
+			embedUrl: 'https://www.youtube.com/embed/wbf6ncsBIfU',
+			watchUrl: 'https://www.youtube.com/watch?v=wbf6ncsBIfU'
+		}
+	]
+
+	var youtubePortfolioContent = {
+		es: {
+			id: 'youtube',
+			title: 'Portafolio YouTube',
+			lead: 'Producción Otto Vargas',
+			items: youtubePortfolioVideos
+		},
+		en: {
+			id: 'youtube',
+			title: 'YouTube Portfolio',
+			lead: 'Production by Otto Vargas',
+			items: youtubePortfolioVideos
+		}
+	}
+
+	var youtubePortfolioData = youtubePortfolioContent[locale] || youtubePortfolioContent.es

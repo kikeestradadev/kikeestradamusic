@@ -1,0 +1,24 @@
+include ../data/youtube-portfolio-data
+
+section(class='youtube-portfolio' id=youtubePortfolioData.id)
+	div(class='container youtube-portfolio__container')
+		header(class='section-intro youtube-portfolio__intro')
+			h2(class='section-intro__title')= youtubePortfolioData.title
+			span(class='section-intro__line')
+			p(class='section-intro__lead')= youtubePortfolioData.lead
+		ul(class='youtube-portfolio__grid')
+			each item in youtubePortfolioData.items
+				li(class='youtube-portfolio__item')
+					article(class='youtube-portfolio__card')
+						div(class='youtube-portfolio__embed')
+							iframe(
+								class='youtube-portfolio__iframe'
+								src=item.embedUrl
+								title=item.title
+								loading='lazy'
+								allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+								referrerpolicy='strict-origin-when-cross-origin'
+								allowfullscreen
+							)
+						h3(class='youtube-portfolio__title')
+							a(class='youtube-portfolio__link' href=item.watchUrl target='_blank' rel='noopener noreferrer')= item.title
