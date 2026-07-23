@@ -124,21 +124,15 @@
 		background: transparent;
 		text-align: left;
 		appearance: none;
+		cursor: pointer;
 
-		@media (width < $l) {
-			cursor: default;
-			pointer-events: none;
+		&:focus-visible {
+			outline: 3px solid var(--color-gold);
+			outline-offset: 3px;
+			border-radius: 1rem;
 		}
 
 		@media (width >= $l) {
-			cursor: pointer;
-
-			&:focus-visible {
-				outline: 3px solid var(--color-gold);
-				outline-offset: 3px;
-				border-radius: 1rem;
-			}
-
 			&:hover .media-gallery__figure {
 				transform: scale(1.02);
 				border-color: rgba(197, 160, 89, 0.45);
@@ -326,28 +320,26 @@
 
 	&__dialog {
 		display: none;
-		width: min(100% - 1.5rem, 64rem);
+		width: min(100% - 1rem, 64rem);
 		max-width: 100%;
-		max-height: calc(100dvh - 1.5rem);
+		max-height: calc(100dvh - 1rem);
 		margin: auto;
 		padding: 0;
 		border: 0;
 		background: transparent;
 		color: var(--color-white);
 
-		@media (width >= $l) {
-			&::backdrop {
-				background: rgba(0, 0, 0, 0.88);
-				backdrop-filter: blur(6px);
-				animation: media-gallery-fade-in 0.25s ease;
-			}
+		&::backdrop {
+			background: rgba(0, 0, 0, 0.88);
+			backdrop-filter: blur(6px);
+			animation: media-gallery-fade-in 0.25s ease;
+		}
 
-			&[open] {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				animation: media-gallery-fade-in 0.28s ease;
-			}
+		&[open] {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			animation: media-gallery-fade-in 0.28s ease;
 		}
 	}
 
@@ -355,14 +347,19 @@
 		position: relative;
 		display: grid;
 		width: 100%;
-		max-height: calc(100dvh - 1.5rem);
-		padding: 3.5rem 3.5rem 1.5rem;
+		max-height: calc(100dvh - 1rem);
+		padding: 3.25rem 1rem 1.25rem;
 		overflow: hidden;
 		border: 1px solid rgba(255, 255, 255, 0.1);
 		border-radius: 1.25rem;
 		background: var(--color-ink);
 		box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.45);
 		animation: media-gallery-scale-in 0.3s ease;
+
+		@media (width >= $l) {
+			max-height: calc(100dvh - 1.5rem);
+			padding: 3.5rem 3.5rem 1.5rem;
+		}
 	}
 
 	&__dialog-close,

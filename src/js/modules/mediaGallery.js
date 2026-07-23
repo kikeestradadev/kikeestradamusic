@@ -105,10 +105,6 @@ const mediaGallery = () => {
 		};
 
 		const openAt = (index) => {
-			if (!isDesktop()) {
-				return;
-			}
-
 			visibleItems = getVisibleItems();
 			if (!visibleItems.length) {
 				return;
@@ -186,6 +182,8 @@ const mediaGallery = () => {
 				watchOverflow: true,
 				observer: true,
 				observeParents: true,
+				preventClicks: false,
+				preventClicksPropagation: false,
 				speed: 450,
 				navigation: {
 					prevEl: prevNav,
@@ -275,12 +273,7 @@ const mediaGallery = () => {
 
 		items.forEach((item) => {
 			const trigger = item.querySelector('[data-media-open]');
-			trigger?.addEventListener('click', (event) => {
-				if (!isDesktop()) {
-					event.preventDefault();
-					return;
-				}
-
+			trigger?.addEventListener('click', () => {
 				visibleItems = getVisibleItems();
 				const index = visibleItems.indexOf(item);
 				if (index >= 0) {
@@ -294,18 +287,10 @@ const mediaGallery = () => {
 		});
 
 		prevButton?.addEventListener('click', () => {
-			if (!isDesktop()) {
-				return;
-			}
-
 			showRelative(-1);
 		});
 
 		nextButton?.addEventListener('click', () => {
-			if (!isDesktop()) {
-				return;
-			}
-
 			showRelative(1);
 		});
 
