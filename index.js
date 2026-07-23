@@ -174,9 +174,6 @@ var mediaGallery = function mediaGallery() {
       dialogImage.alt = item.dataset.mediaAlt || label;
     };
     var openAt = function openAt(index) {
-      if (!isDesktop()) {
-        return;
-      }
       visibleItems = getVisibleItems();
       if (!visibleItems.length) {
         return;
@@ -238,6 +235,8 @@ var mediaGallery = function mediaGallery() {
         watchOverflow: true,
         observer: true,
         observeParents: true,
+        preventClicks: false,
+        preventClicksPropagation: false,
         speed: 450,
         navigation: {
           prevEl: prevNav,
@@ -317,11 +316,7 @@ var mediaGallery = function mediaGallery() {
     });
     items.forEach(function (item) {
       var trigger = item.querySelector('[data-media-open]');
-      trigger === null || trigger === void 0 || trigger.addEventListener('click', function (event) {
-        if (!isDesktop()) {
-          event.preventDefault();
-          return;
-        }
+      trigger === null || trigger === void 0 || trigger.addEventListener('click', function () {
         visibleItems = getVisibleItems();
         var index = visibleItems.indexOf(item);
         if (index >= 0) {
@@ -333,15 +328,9 @@ var mediaGallery = function mediaGallery() {
       closeDialog();
     });
     prevButton === null || prevButton === void 0 || prevButton.addEventListener('click', function () {
-      if (!isDesktop()) {
-        return;
-      }
       showRelative(-1);
     });
     nextButton === null || nextButton === void 0 || nextButton.addEventListener('click', function () {
-      if (!isDesktop()) {
-        return;
-      }
       showRelative(1);
     });
     dialog.addEventListener('click', function (event) {
