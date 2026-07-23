@@ -3,47 +3,95 @@
 		locale = 'es'
 	}
 
-	const musicContent = {
+	if (typeof musicFacet === 'undefined') {
+		musicFacet = null
+	}
+
+	if (typeof musicEmbed === 'undefined') {
+		musicEmbed = false
+	}
+
+	/*
+		TODO: Clasifica cada bloque musical con facet: 'artista' | 'estudio'
+		- artista = presentaciones, voz/guitarra en vivo, highlights de escenario
+		- estudio = producción, sesión, arreglos, material de estudio
+		null = no aparece en ninguna faceta hasta que lo clasifiques.
+	*/
+	var musicCardsEs = [
+		{
+			type: 'spotifyFollow',
+			facet: null, // TODO: clasificar 'artista' | 'estudio'
+			title: 'Sígueme en Spotify',
+			embedUrl: 'https://open.spotify.com/follow/1/?uri=spotify:artist:0LyfQWJT6nXafLPZqxe9Of&size=detail&theme=dark',
+			ctaLabel: 'Follow',
+			ctaHref: 'https://open.spotify.com/'
+		},
+		{
+			type: 'youtube',
+			facet: null, // TODO: clasificar 'artista' | 'estudio'
+			title: 'Video destacado',
+			embedUrl: 'https://www.youtube.com/embed/83V1s0BgYNI',
+			caption: ''
+		},
+		{
+			type: 'spotifyPlaylist',
+			facet: null, // TODO: clasificar 'artista' | 'estudio'
+			title: 'Playlist destacada',
+			embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0'
+		}
+	]
+
+	var musicCardsEn = [
+		{
+			type: 'spotifyFollow',
+			facet: null, // TODO: classify 'artista' | 'estudio'
+			title: 'Follow me on Spotify',
+			embedUrl: 'https://open.spotify.com/follow/1/?uri=spotify:artist:0LyfQWJT6nXafLPZqxe9Of&size=detail&theme=dark',
+			ctaLabel: 'Follow',
+			ctaHref: 'https://open.spotify.com/'
+		},
+		{
+			type: 'youtube',
+			facet: null, // TODO: classify 'artista' | 'estudio'
+			title: 'Featured video',
+			embedUrl: 'https://www.youtube.com/embed/83V1s0BgYNI',
+			caption: ''
+		},
+		{
+			type: 'spotifyPlaylist',
+			facet: null, // TODO: classify 'artista' | 'estudio'
+			title: 'Featured playlist',
+			embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0'
+		}
+	]
+
+	var musicContent = {
 		es: {
 			id: 'musica',
 			title: 'Música',
 			lead: 'Escucha en Spotify y mira presentaciones en YouTube.',
-			spotifyFollow: {
-				title: 'Sígueme en Spotify',
-				embedUrl: 'https://open.spotify.com/follow/1/?uri=spotify:artist:0LyfQWJT6nXafLPZqxe9Of&size=detail&theme=dark',
-				ctaLabel: 'Follow',
-				ctaHref: 'https://open.spotify.com/'
-			},
-			youtube: {
-				title: 'Video destacado',
-				embedUrl: 'https://www.youtube.com/embed/83V1s0BgYNI',
-				caption: 'Producción Otto Vargas'
-			},
-			spotifyPlaylist: {
-				title: 'Playlist destacada',
-				embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0'
-			}
+			cards: musicCardsEs
 		},
 		en: {
 			id: 'music',
 			title: 'Music',
 			lead: 'Listen on Spotify and watch performances on YouTube.',
-			spotifyFollow: {
-				title: 'Follow me on Spotify',
-				embedUrl: 'https://open.spotify.com/follow/1/?uri=spotify:artist:0LyfQWJT6nXafLPZqxe9Of&size=detail&theme=dark',
-				ctaLabel: 'Follow',
-				ctaHref: 'https://open.spotify.com/'
-			},
-			youtube: {
-				title: 'Featured video',
-				embedUrl: 'https://www.youtube.com/embed/83V1s0BgYNI',
-				caption: 'Production by Otto Vargas'
-			},
-			spotifyPlaylist: {
-				title: 'Featured playlist',
-				embedUrl: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0'
-			}
+			cards: musicCardsEn
 		}
 	}
 
-	const musicData = musicContent[locale] || musicContent.es
+	var musicSource = musicContent[locale] || musicContent.es
+	var musicFilteredCards = musicFacet
+		? musicSource.cards.filter(function (card) {
+			return card.facet === musicFacet
+		})
+		: musicSource.cards
+
+	var musicData = {
+		id: musicSource.id,
+		title: musicSource.title,
+		lead: musicSource.lead,
+		cards: musicFilteredCards,
+		facet: musicFacet,
+		embed: musicEmbed
+	}

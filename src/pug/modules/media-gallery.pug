@@ -1,0 +1,132 @@
+include ../data/media-gallery-data
+
+-
+	var mediaGalleryRootClass = mediaGalleryData.embed
+		? 'media-gallery media-gallery--embed'
+		: 'media-gallery'
+	var mediaGalleryHasItems = mediaGalleryData.items.length > 0
+
+mixin mediaGalleryItem(item, index)
+	li(
+		class=`media-gallery__item media-gallery__item--${item.kind} swiper-slide`
+		data-media-index=index
+		data-media-kind=item.kind
+		data-media-label=item.label
+		data-media-src=item.src || ''
+		data-media-alt=item.alt || item.label
+		data-media-embed=item.embedUrl || ''
+		data-media-thumb=item.thumb || item.src || ''
+	)
+		button(
+			class='media-gallery__trigger'
+			type='button'
+			data-media-open
+			aria-haspopup='dialog'
+			aria-controls=mediaGalleryData.dialogId
+		)
+			figure(class='media-gallery__figure')
+				if item.kind === 'video'
+					img(
+						class='media-gallery__image'
+						src=item.thumb
+						alt=item.label
+						loading='lazy'
+					)
+					span(class='media-gallery__badge')= mediaGalleryData.videoBadge
+					span(class='media-gallery__play' aria-hidden='true')
+				else
+					img(
+						class='media-gallery__image'
+						src=item.src
+						alt=item.alt || item.label
+						loading='lazy'
+					)
+			span(class='media-gallery__caption')= item.label
+
+div(class=mediaGalleryRootClass data-media-gallery)
+	if !mediaGalleryData.embed
+		header(class='section-intro media-gallery__intro')
+			h2(class='section-intro__title')= mediaGalleryData.title
+			span(class='section-intro__line')
+			if mediaGalleryData.lead
+				p(class='section-intro__lead')= mediaGalleryData.lead
+	else
+		header(class='media-gallery__header')
+			h3(class='media-gallery__title')= mediaGalleryData.title
+			if mediaGalleryData.lead
+				p(class='media-gallery__lead')= mediaGalleryData.lead
+	div(
+		class='media-gallery__filters'
+		role='tablist'
+		aria-label=mediaGalleryData.filtersLabel
+	)
+		each filter in mediaGalleryData.filters
+			button(
+				class=filter.id === 'video' ? 'media-gallery__pill media-gallery__pill--active' : 'media-gallery__pill'
+				type='button'
+				role='tab'
+				aria-selected=filter.id === 'video' ? 'true' : 'false'
+				data-media-filter=filter.id
+			)= filter.label
+	div(class='media-gallery__slider swiper')
+		ul(class='media-gallery__grid swiper-wrapper')
+			each item, index in mediaGalleryData.items
+				+mediaGalleryItem(item, index)
+		if mediaGalleryHasItems
+			button(
+				class='media-gallery__nav media-gallery__nav--prev'
+				type='button'
+				aria-label=mediaGalleryData.prevLabel
+			)
+				span(class='media-gallery__nav-icon' aria-hidden='true') ‹
+			button(
+				class='media-gallery__nav media-gallery__nav--next'
+				type='button'
+				aria-label=mediaGalleryData.nextLabel
+			)
+				span(class='media-gallery__nav-icon' aria-hidden='true') ›
+	p(class='media-gallery__counter' data-media-counter aria-live='polite')
+	if mediaGalleryHasItems
+		p(class='media-gallery__empty' data-media-empty hidden)= mediaGalleryData.emptyLabel
+		dialog(
+			class='media-gallery__dialog'
+			id=mediaGalleryData.dialogId
+			aria-label=mediaGalleryData.title
+		)
+			div(class='media-gallery__dialog-shell')
+				button(
+					class='media-gallery__dialog-close'
+					type='button'
+					aria-label=mediaGalleryData.closeLabel
+					data-media-close
+				)
+					span(aria-hidden='true') ×
+				button(
+					class='media-gallery__dialog-nav media-gallery__dialog-nav--prev'
+					type='button'
+					aria-label=mediaGalleryData.prevLabel
+					data-media-prev
+				)
+					span(class='media-gallery__nav-icon' aria-hidden='true') ‹
+				button(
+					class='media-gallery__dialog-nav media-gallery__dialog-nav--next'
+					type='button'
+					aria-label=mediaGalleryData.nextLabel
+					data-media-next
+				)
+					span(class='media-gallery__nav-icon' aria-hidden='true') ›
+				figure(class='media-gallery__dialog-figure')
+					img(class='media-gallery__dialog-image' data-media-dialog-image alt='' hidden)
+					div(class='media-gallery__dialog-video' data-media-dialog-video hidden)
+						iframe(
+							class='media-gallery__dialog-iframe'
+							data-media-dialog-iframe
+							title=''
+							src=''
+							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+							allowfullscreen
+							referrerpolicy='strict-origin-when-cross-origin'
+						)
+					figcaption(class='media-gallery__dialog-caption' data-media-dialog-caption)
+	else
+		p(class='media-gallery__empty' data-media-empty)= mediaGalleryData.emptyGalleryLabel

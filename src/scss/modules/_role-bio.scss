@@ -1,0 +1,49 @@
+.role-bio {
+	&--embed {
+		margin: 0;
+	}
+
+	&__sections {
+		display: grid;
+		gap: 2rem;
+
+		@media (width >= $l) {
+			gap: 2.5rem;
+		}
+	}
+
+	&__section {
+		max-width: 42rem;
+		margin-inline: auto;
+		text-align: center;
+	}
+
+	&__title {
+		margin: 0;
+		color: var(--color-white);
+		font-family: var(--font-serif);
+		font-size: 1.35rem;
+		font-weight: 500;
+		line-height: 1.25;
+
+		@media (width >= $l) {
+			font-size: 1.55rem;
+		}
+
+		+ .role-bio__copy {
+			margin-top: 0.85rem;
+		}
+	}
+
+	&__copy {
+		display: grid;
+		gap: 1rem;
+	}
+
+	&__text {
+		margin: 0;
+		color: var(--color-muted);
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+}

@@ -13,11 +13,15 @@ block main-header
 block main-container
 	include ../modules/hero
 	include ../modules/about
-	include ../modules/projects
-	include ../modules/youtube-portfolio
-	include ../modules/gallery
+	-
+		roleBlockFacet = 'artista'
+	include ../modules/role-block
+	-
+		roleBlockFacet = 'estudio'
+	include ../modules/role-block
 
 block main-footer
 	include ../modules/site-footer
+	include ../modules/floating-button
 
 block scripts

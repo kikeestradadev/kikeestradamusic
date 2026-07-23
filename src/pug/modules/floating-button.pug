@@ -1,6 +1,54 @@
 include ../data/floating-button-data
+include ../data/socials-data
+include social-icon
 
--
-	const floatingButton = floatingButtonData[currentPage] || floatingButtonData.home
-
-a(class='floating-button' href=floatingButton.href)= floatingButton.label
+div(class='floating-button')
+	div(
+		class='floating-button__tooltip'
+		id='floating-button-tooltip'
+		role='dialog'
+		aria-label=floatingButtonData.tooltipLabel
+		hidden
+	)
+		p(class='floating-button__tooltip-title')= floatingButtonData.tooltipLabel
+		ul(class='floating-button__list')
+			each contact in floatingButtonData.contacts
+				li(class='floating-button__item')
+					a(
+						class=`floating-button__link floating-button__link--${contact.type}`
+						href=contact.href
+						target=(contact.type === 'whatsapp' ? '_blank' : false)
+						rel=(contact.type === 'whatsapp' ? 'noopener noreferrer' : false)
+					)= contact.label
+		ul(class='floating-button__socials')
+			each social in socialsData
+				li(class='floating-button__social-item')
+					a(
+						class='floating-button__social-link'
+						href=social.href
+						target='_blank'
+						rel='noopener noreferrer'
+						aria-label=social.label
+					)
+						+socialIcon(social.icon, 'floating-button__social-icon')
+	button(
+		class='floating-button__toggle'
+		type='button'
+		aria-expanded='false'
+		aria-controls='floating-button-tooltip'
+		aria-label=floatingButtonData.openLabel
+		data-floating-open=floatingButtonData.openLabel
+		data-floating-close=floatingButtonData.closeLabel
+	)
+		span(class='floating-button__icon floating-button__icon--chat' aria-hidden='true')
+			svg(viewBox='0 0 24 24' focusable='false')
+				path(
+					fill='currentColor'
+					d='M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z'
+				)
+		span(class='floating-button__icon floating-button__icon--close' aria-hidden='true')
+			svg(viewBox='0 0 24 24' focusable='false')
+				path(
+					fill='currentColor'
+					d='M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z'
+				)

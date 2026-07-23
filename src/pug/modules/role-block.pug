@@ -1,0 +1,26 @@
+include ../data/role-block-data
+
+section(class=`role-block role-block--${roleBlockFacet}` id=roleBlockData.id)
+	div(class='container role-block__container')
+		header(class='section-intro role-block__intro')
+			h2(class='section-intro__title')= roleBlockData.title
+			span(class='section-intro__line')
+			if roleBlockData.lead
+				p(class='section-intro__lead')= roleBlockData.lead
+		div(class='role-block__modules')
+			-
+				roleBioFacet = roleBlockFacet
+				roleBioEmbed = true
+			include role-bio
+			-
+				projectsFacet = roleBlockFacet
+				projectsEmbed = true
+			include projects
+			-
+				musicFacet = roleBlockFacet
+				musicEmbed = true
+			include music
+			-
+				mediaGalleryFacet = roleBlockFacet
+				mediaGalleryEmbed = true
+			include media-gallery

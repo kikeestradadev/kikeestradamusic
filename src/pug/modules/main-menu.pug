@@ -2,7 +2,19 @@ include ../data/main-menu-data
 
 nav(class='main-menu' aria-label=mainMenuData.ariaLabel)
 	div(class='container main-menu__container')
-		a(class='main-menu__brand' href=mainMenuData.brandHref)= mainMenuData.brand
+		a(class='main-menu__brand' href=mainMenuData.brandHref)
+			img(
+				class='main-menu__logo'
+				src=mainMenuData.brandLogo
+				alt=mainMenuData.brand
+				width='220'
+				height='63'
+			)
+		div(class='main-menu__panel' id='mainMenuPanel')
+			ul(class='main-menu__list')
+				each item in mainMenuData.items
+					li(class='main-menu__item')
+						a(class='main-menu__link' href=item.href)= item.label
 		div(class='main-menu__tools')
 			include lang-toggle
 			button(
@@ -17,8 +29,3 @@ nav(class='main-menu' aria-label=mainMenuData.ariaLabel)
 				span(class='main-menu__toggle-line')
 				span(class='main-menu__toggle-line')
 				span(class='main-menu__toggle-line')
-		div(class='main-menu__panel' id='mainMenuPanel')
-			ul(class='main-menu__list')
-				each item in mainMenuData.items
-					li(class='main-menu__item')
-						a(class='main-menu__link' href=item.href)= item.label

@@ -1,0 +1,23 @@
+.role-block {
+	padding: 5rem 0;
+	background: linear-gradient(180deg, #000 0%, #0b0b0b 100%);
+
+	@media (width >= $l) {
+		padding: 7rem 0;
+	}
+
+	&--estudio {
+		background: linear-gradient(180deg, #050505 0%, #000 100%);
+	}
+
+	&__modules {
+		display: grid;
+		gap: 2.5rem;
+	}
+
+	.projects--embed,
+	.music--embed {
+		padding: 0;
+		background: transparent;
+	}
+}

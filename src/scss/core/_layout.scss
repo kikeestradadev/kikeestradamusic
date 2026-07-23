@@ -14,7 +14,7 @@
 	--xxl: #{$xxl};
 	--xxxl: #{$xxxl};
 	--xxxxl: #{$xxxxl};
-	--header-height: 4rem;
+	--header-height: 4.75rem;
 	--main-container: 100%;
 	--container: 1120px;
 
@@ -43,7 +43,7 @@
 	--color-fuchsia: #ba1cff;
 
 	@media (width >= $l) {
-		--header-height: 4.5rem;
+		--header-height: 5.5rem;
 	}
 
 	--header-bg: rgba(0, 0, 0, 0.85);

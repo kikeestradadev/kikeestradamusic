@@ -1,15 +1,15 @@
 import coreModule from './modules/coreModule';
 import internalModule from './modules/internalModule';
 import mainMenu from './modules/mainMenu';
-import gallery from './modules/gallery';
-import youtubePortfolio from './modules/youtubePortfolio';
+import mediaGallery from './modules/mediaGallery';
+import floatingButton from './modules/floatingButton';
 
 const initComponents = () => {
 	coreModule();
 	internalModule();
 	mainMenu();
-	gallery();
-	youtubePortfolio();
+	mediaGallery();
+	floatingButton();
 };
 
 document.addEventListener('DOMContentLoaded', initComponents);

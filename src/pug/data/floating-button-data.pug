@@ -1,11 +1,43 @@
 -
-	const floatingButtonData = {
-		home: {
-			href: './style-guide.html',
-			label: 'Style Guide',
-		},
-		'style-guide': {
-			href: './index.html',
-			label: 'Home',
-		},
+	if (typeof locale === 'undefined') {
+		locale = 'es'
 	}
+
+	const floatingButtonContent = {
+		es: {
+			openLabel: 'Abrir contacto',
+			closeLabel: 'Cerrar contacto',
+			tooltipLabel: 'Contacto',
+			contacts: [
+				{
+					label: 'kikeestradamusic@gmail.com',
+					href: 'mailto:kikeestradamusic@gmail.com',
+					type: 'email'
+				},
+				{
+					label: 'WhatsApp',
+					href: 'https://wa.me/50670118183',
+					type: 'whatsapp'
+				}
+			]
+		},
+		en: {
+			openLabel: 'Open contact',
+			closeLabel: 'Close contact',
+			tooltipLabel: 'Contact',
+			contacts: [
+				{
+					label: 'kikeestradamusic@gmail.com',
+					href: 'mailto:kikeestradamusic@gmail.com',
+					type: 'email'
+				},
+				{
+					label: 'WhatsApp',
+					href: 'https://wa.me/50670118183',
+					type: 'whatsapp'
+				}
+			]
+		}
+	}
+
+	const floatingButtonData = floatingButtonContent[locale] || floatingButtonContent.es

@@ -1,0 +1,38 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	if (typeof roleBlockFacet === 'undefined') {
+		roleBlockFacet = 'artista'
+	}
+
+	var roleBlockContent = {
+		es: {
+			artista: {
+				id: 'artista',
+				title: 'Artista',
+				lead: ''
+			},
+			estudio: {
+				id: 'estudio',
+				title: 'Estudio TrigalMedia',
+				lead: ''
+			}
+		},
+		en: {
+			artista: {
+				id: 'artista',
+				title: 'Artist',
+				lead: ''
+			},
+			estudio: {
+				id: 'estudio',
+				title: 'TrigalMedia Studio',
+				lead: ''
+			}
+		}
+	}
+
+	var roleBlockLocale = roleBlockContent[locale] || roleBlockContent.es
+	var roleBlockData = roleBlockLocale[roleBlockFacet] || roleBlockLocale.artista

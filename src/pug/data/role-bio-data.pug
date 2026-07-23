@@ -1,0 +1,68 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	if (typeof roleBioFacet === 'undefined') {
+		roleBioFacet = 'artista'
+	}
+
+	if (typeof roleBioEmbed === 'undefined') {
+		roleBioEmbed = false
+	}
+
+	var roleBioContent = {
+		es: {
+			artista: {
+				sections: [
+					{
+						title: '',
+						paragraphs: [
+							'Con más de 21 años en la industria del entretenimiento, ofrezco un espectáculo musical versátil —baladas, boleros, tropical, rock y temas en inglés, portugués y música judía— para bodas, fiestas privadas y presentaciones en teatros, hoteles, bares y casinos en todo el país. Puntual, profesional y de trato respetuoso, soy un aliado confiable para que su evento sea memorable de principio a fin.'
+						]
+					}
+				]
+			},
+			estudio: {
+				sections: [
+					{
+						title: '',
+						paragraphs: [
+							'Como guitarrista, arreglista, compositor y director musical, he participado en más de 100 producciones —grabaciones, documentales, comerciales de radio y TV— y trabajo de forma remota desde mi home studio con artistas, productores y agencias dentro y fuera de Costa Rica. Si busca un músico de sesión y arreglista con experiencia comprobada, estoy listo para sumar valor a su proyecto desde el primer acorde.'
+						]
+					}
+				]
+			}
+		},
+		en: {
+			artista: {
+				sections: [
+					{
+						title: '',
+						paragraphs: [
+							'With more than 21 years in the entertainment industry, I offer a versatile musical show —ballads, boleros, tropical, rock, and songs in English, Portuguese, and Jewish music— for weddings, private parties, and performances in theaters, hotels, bars, and casinos nationwide. Punctual, professional, and respectful, I am a reliable ally to make your event memorable from start to finish.'
+						]
+					}
+				]
+			},
+			estudio: {
+				sections: [
+					{
+						title: '',
+						paragraphs: [
+							'As a guitarist, arranger, composer, and music director, I have taken part in more than 100 productions —album recordings, documentaries, radio and TV commercials— and I work remotely from my home studio with artists, producers, and agencies in and beyond Costa Rica. If you need a proven session musician and arranger, I am ready to add value to your project from the first chord.'
+						]
+					}
+				]
+			}
+		}
+	}
+
+	var roleBioLocale = roleBioContent[locale] || roleBioContent.es
+	var roleBioSource = roleBioLocale[roleBioFacet] || { sections: [] }
+
+	var roleBioData = {
+		sections: roleBioSource.sections || [],
+		facet: roleBioFacet,
+		embed: roleBioEmbed
+	}

@@ -1,16 +1,34 @@
 include ../data/projects-data
 
-section(class='projects' id=projectsData.id)
-	div(class='container projects__container')
-		header(class='section-intro projects__intro')
-			h2(class='section-intro__title')= projectsData.title
-			span(class='section-intro__line')
-			p(class='section-intro__lead')= projectsData.lead
-		ul(class='projects__grid')
-			each item in projectsData.items
-				li(class='projects__item')
-					article(class='projects__card')
-						h3(class='projects__card-title')= item.title
-						p(class='projects__card-text')= item.description
-						if item.meta
-							p(class='projects__card-meta')= item.meta
+-
+	var projectsRootClass = projectsData.embed
+		? 'projects projects--embed'
+		: 'projects'
+
+if projectsData.items.length
+	if projectsData.embed
+		div(class=projectsRootClass)
+			ul(class='projects__grid')
+				each item in projectsData.items
+					li(class='projects__item')
+						article(class='projects__card')
+							h3(class='projects__card-title')= item.title
+							p(class='projects__card-text')= item.description
+							if item.meta
+								p(class='projects__card-meta')= item.meta
+	else
+		section(class=projectsRootClass id=projectsData.id)
+			div(class='container projects__container')
+				header(class='section-intro projects__intro')
+					h2(class='section-intro__title')= projectsData.title
+					span(class='section-intro__line')
+					if projectsData.lead
+						p(class='section-intro__lead')= projectsData.lead
+				ul(class='projects__grid')
+					each item in projectsData.items
+						li(class='projects__item')
+							article(class='projects__card')
+								h3(class='projects__card-title')= item.title
+								p(class='projects__card-text')= item.description
+								if item.meta
+									p(class='projects__card-meta')= item.meta

@@ -1,0 +1,17 @@
+include ../data/role-bio-data
+
+-
+	var roleBioRootClass = roleBioData.embed
+		? 'role-bio role-bio--embed'
+		: 'role-bio'
+
+if roleBioData.sections.length
+	div(class=roleBioRootClass)
+		div(class='role-bio__sections')
+			each section in roleBioData.sections
+				article(class='role-bio__section')
+					if section.title
+						h3(class='role-bio__title')= section.title
+					div(class='role-bio__copy')
+						each paragraph in section.paragraphs
+							p(class='role-bio__text')= paragraph

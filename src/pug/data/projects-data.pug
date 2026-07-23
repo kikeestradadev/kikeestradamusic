@@ -3,77 +3,123 @@
 		locale = 'es'
 	}
 
-	const projectsContent = {
+	if (typeof projectsFacet === 'undefined') {
+		projectsFacet = null
+	}
+
+	if (typeof projectsEmbed === 'undefined') {
+		projectsEmbed = false
+	}
+
+	/*
+		TODO: Clasifica cada proyecto con facet: 'artista' | 'estudio'
+		- artista = eventos, cantante / guitarrista, escenario
+		- estudio = producción, sesión, arreglos
+		No asignes facet hasta confirmarlo; null = no aparece en ninguna faceta.
+	*/
+	var projectsItemsEs = [
+		{
+			title: 'TrigalMedia Studio',
+			description: 'Arreglista, productor musical y músico de sesión.',
+			facet: null // TODO: clasificar 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones Tierra Fértil',
+			description: 'Arreglista, productor musical y músico de sesión.',
+			facet: null // TODO: clasificar 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones Skala',
+			description: 'Colaboración musical como cantante y guitarrista.',
+			facet: null // TODO: clasificar 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones Hinestra',
+			description: 'Colaboración musical como cantante y guitarrista.',
+			facet: null // TODO: clasificar 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones AEA',
+			description: 'Colaboración musical como cantante y guitarrista.',
+			facet: null // TODO: clasificar 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones Cristoforis',
+			description: 'Colaboración musical como cantante y guitarrista.',
+			facet: null // TODO: clasificar 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones W-Arts',
+			description: 'Colaboración musical como cantante y guitarrista.',
+			facet: null // TODO: clasificar 'artista' | 'estudio'
+		}
+	]
+
+	var projectsItemsEn = [
+		{
+			title: 'TrigalMedia Studio',
+			description: 'Arranger, music producer, and session musician.',
+			facet: null // TODO: classify 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones Tierra Fértil',
+			description: 'Arranger, music producer, and session musician.',
+			facet: null // TODO: classify 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones Skala',
+			description: 'Musical collaboration as singer and guitarist.',
+			facet: null // TODO: classify 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones Hinestra',
+			description: 'Musical collaboration as singer and guitarist.',
+			facet: null // TODO: classify 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones AEA',
+			description: 'Musical collaboration as singer and guitarist.',
+			facet: null // TODO: classify 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones Cristoforis',
+			description: 'Musical collaboration as singer and guitarist.',
+			facet: null // TODO: classify 'artista' | 'estudio'
+		},
+		{
+			title: 'Producciones W-Arts',
+			description: 'Musical collaboration as singer and guitarist.',
+			facet: null // TODO: classify 'artista' | 'estudio'
+		}
+	]
+
+	var projectsContent = {
 		es: {
 			id: 'proyectos',
 			title: 'Bandas y proyectos',
 			lead: 'Colaboraciones, formaciones y proyectos donde la voz y la escena toman forma.',
-			items: [
-				{
-					title: 'TrigalMedia Studio',
-					description: 'Arreglista, productor musical y músico de sesión.'
-				},
-				{
-					title: 'Producciones Tierra Fértil',
-					description: 'Arreglista, productor musical y músico de sesión.'
-				},
-				{
-					title: 'Producciones Skala',
-					description: 'Colaboración musical como cantante y guitarrista.'
-				},
-				{
-					title: 'Producciones Hinestra',
-					description: 'Colaboración musical como cantante y guitarrista.'
-				},
-				{
-					title: 'Producciones AEA',
-					description: 'Colaboración musical como cantante y guitarrista.'
-				},
-				{
-					title: 'Producciones Cristoforis',
-					description: 'Colaboración musical como cantante y guitarrista.'
-				},
-				{
-					title: 'Producciones W-Arts',
-					description: 'Colaboración musical como cantante y guitarrista.'
-				}
-			]
+			items: projectsItemsEs
 		},
 		en: {
 			id: 'projects',
 			title: 'Bands and projects',
 			lead: 'Collaborations, ensembles, and projects where voice and stage take shape.',
-			items: [
-				{
-					title: 'TrigalMedia Studio',
-					description: 'Arranger, music producer, and session musician.'
-				},
-				{
-					title: 'Producciones Tierra Fértil',
-					description: 'Arranger, music producer, and session musician.'
-				},
-				{
-					title: 'Producciones Skala',
-					description: 'Musical collaboration as singer and guitarist.'
-				},
-				{
-					title: 'Producciones Hinestra',
-					description: 'Musical collaboration as singer and guitarist.'
-				},
-				{
-					title: 'Producciones AEA',
-					description: 'Musical collaboration as singer and guitarist.'
-				},
-				{
-					title: 'Producciones Cristoforis',
-					description: 'Musical collaboration as singer and guitarist.'
-				},
-				{
-					title: 'Producciones W-Arts',
-					description: 'Musical collaboration as singer and guitarist.'
-				}
-			]
+			items: projectsItemsEn
 		}
 	}
 
-	const projectsData = projectsContent[locale] || projectsContent.es
+	var projectsSource = projectsContent[locale] || projectsContent.es
+	var projectsFilteredItems = projectsFacet
+		? projectsSource.items.filter(function (item) {
+			return item.facet === projectsFacet
+		})
+		: projectsSource.items
+
+	var projectsData = {
+		id: projectsSource.id,
+		title: projectsSource.title,
+		lead: projectsSource.lead,
+		items: projectsFilteredItems,
+		facet: projectsFacet,
+		embed: projectsEmbed
+	}

@@ -1,0 +1,355 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	if (typeof mediaGalleryFacet === 'undefined') {
+		mediaGalleryFacet = null
+	}
+
+	if (typeof mediaGalleryEmbed === 'undefined') {
+		mediaGalleryEmbed = false
+	}
+
+	/*
+		Dos galerías independientes (una por role-block):
+		- mediaGalleryItemsByFacet.artista → sección Artista
+		- mediaGalleryItemsByFacet.estudio → sección Estudio
+	*/
+	var mediaGalleryItemsByFacet = {
+		artista: [
+			{
+				kind: 'photo',
+				label: 'Amauri Guitierrez',
+				src: './images/fotos_artista/Amauri_Guitierrez.JPG',
+				alt: 'Amauri Guitierrez'
+			},
+			{
+				kind: 'photo',
+				label: 'Broadway',
+				src: './images/fotos_artista/Broadway.JPG',
+				alt: 'Broadway'
+			},
+			{
+				kind: 'photo',
+				label: 'Grupo Fase Alterna',
+				src: './images/fotos_artista/Grupo_Fase_Alterna.jpg',
+				alt: 'Grupo Fase Alterna'
+			},
+			{
+				kind: 'photo',
+				label: 'Grupo Carpediem',
+				src: './images/fotos_artista/Grupo CarpeDiem.jpg',
+				alt: 'Grupo Carpediem'
+			},
+			{
+				kind: 'photo',
+				label: 'Jazz Cafe',
+				src: './images/fotos_artista/Jazz_cafe.JPG',
+				alt: 'Jazz Cafe'
+			},
+			{
+				kind: 'photo',
+				label: 'Rumba Jam',
+				src: './images/fotos_artista/rumba jam.jpg',
+				alt: 'Rumba Jam'
+			},
+			{
+				kind: 'photo',
+				label: 'Boda 1',
+				src: './images/fotos_artista/boda1.jpg',
+				alt: 'Boda 1'
+			},
+			{
+				kind: 'photo',
+				label: 'Boda 7',
+				src: './images/fotos_artista/boda7.jpg',
+				alt: 'Boda 7'
+			},
+			{
+				kind: 'photo',
+				label: 'Grupo Skala',
+				src: './images/fotos_artista/grupo_skala.jpg',
+				alt: 'Grupo Skala'
+			},
+			{
+				kind: 'photo',
+				label: 'Jam Session',
+				src: './images/fotos_artista/jam_session.JPG',
+				alt: 'Jam Session'
+			},
+			{
+				kind: 'photo',
+				label: 'Moto 0011',
+				src: './images/fotos_artista/moto_0011.jpg',
+				alt: 'Moto 0011'
+			},
+			{
+				kind: 'photo',
+				label: 'Presidente Laura Chinchilla',
+				src: './images/fotos_artista/presidente_laura_chinchilla.JPG',
+				alt: 'Presidente Laura Chinchilla'
+			},
+			{
+				kind: 'photo',
+				label: 'Walter Flores',
+				src: './images/fotos_artista/walter_flores.JPG',
+				alt: 'Walter Flores'
+			},
+			{
+				kind: 'video',
+				id: '94700JW2-c0',
+				label: 'Crazy Little Thing Called Love',
+				thumb: 'https://i.ytimg.com/vi/94700JW2-c0/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/94700JW2-c0',
+				watchUrl: 'https://www.youtube.com/watch?v=94700JW2-c0'
+			},
+			{
+				kind: 'video',
+				id: 'aRDLAtOBI4Y',
+				label: 'Vereda Tropical',
+				thumb: 'https://i.ytimg.com/vi/aRDLAtOBI4Y/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/aRDLAtOBI4Y',
+				watchUrl: 'https://www.youtube.com/watch?v=aRDLAtOBI4Y'
+			},
+			{
+				kind: 'video',
+				id: 'oc6w9WeGe7I',
+				label: 'La Travesía',
+				thumb: 'https://i.ytimg.com/vi/oc6w9WeGe7I/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/oc6w9WeGe7I',
+				watchUrl: 'https://www.youtube.com/watch?v=oc6w9WeGe7I'
+			},
+			{
+				kind: 'video',
+				id: 'Qeq0pSV8seQ',
+				label: 'Amor De La Calle',
+				thumb: 'https://i.ytimg.com/vi/Qeq0pSV8seQ/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/Qeq0pSV8seQ',
+				watchUrl: 'https://www.youtube.com/watch?v=Qeq0pSV8seQ'
+			},
+			{
+				kind: 'video',
+				id: 'YeyQ8y06TTY',
+				label: 'Idilio',
+				thumb: 'https://i.ytimg.com/vi/YeyQ8y06TTY/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/YeyQ8y06TTY',
+				watchUrl: 'https://www.youtube.com/watch?v=YeyQ8y06TTY'
+			},
+			{
+				kind: 'video',
+				id: 'pAmzELC5aJY',
+				label: 'Frío Frío',
+				thumb: 'https://i.ytimg.com/vi/pAmzELC5aJY/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/pAmzELC5aJY',
+				watchUrl: 'https://www.youtube.com/watch?v=pAmzELC5aJY'
+			}
+		],
+		estudio: [
+			{
+				kind: 'photo',
+				label: 'album Historia Añeja',
+				src: './images/fotos_studio/studio_1.jpg',
+				alt: 'album Historia Añeja'
+			},
+			{
+				kind: 'photo',
+				label: 'My Home Studio',
+				src: './images/fotos_studio/studio_2.png',
+				alt: 'My Home Studio'
+			},
+			{
+				kind: 'photo',
+				label: 'Album Historia Añeja',
+				src: './images/fotos_studio/studio_3.jpg',
+				alt: 'Album Historia Añeja'
+			},
+			{
+				kind: 'photo',
+				label: 'Homenaje Otto Vargas',
+				src: './images/fotos_studio/studio_4.jpeg',
+				alt: 'Homenaje Otto Vargas'
+			},
+			{
+				kind: 'photo',
+				label: 'Homenaje Otto Vargas',
+				src: './images/fotos_studio/studio_5.jpeg',
+				alt: 'Homenaje Otto Vargas'
+			},
+			{
+				kind: 'photo',
+				label: 'Homenaje Otto Vargas',
+				src: './images/fotos_studio/studio_6.jpeg',
+				alt: 'Homenaje Otto Vargas'
+			},
+			{
+				kind: 'photo',
+				label: 'Homenaje Otto Vargas',
+				src: './images/fotos_studio/studio_7.jpeg',
+				alt: 'Homenaje Otto Vargas'
+			},
+			{
+				kind: 'photo',
+				label: 'Homenaje Otto Vargas',
+				src: './images/fotos_studio/studio_8.jpeg',
+				alt: 'Homenaje Otto Vargas'
+			},
+			{
+				kind: 'video',
+				id: 'wbf6ncsBIfU',
+				label: 'Te dirán maestro',
+				thumb: 'https://i.ytimg.com/vi/wbf6ncsBIfU/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/wbf6ncsBIfU',
+				watchUrl: 'https://www.youtube.com/watch?v=wbf6ncsBIfU'
+			},
+			{
+				kind: 'video',
+				id: '0y1TK0lTXbo',
+				label: 'Historia de una canción',
+				thumb: 'https://i.ytimg.com/vi/0y1TK0lTXbo/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/0y1TK0lTXbo',
+				watchUrl: 'https://www.youtube.com/watch?v=0y1TK0lTXbo'
+			},
+			{
+				kind: 'video',
+				id: '9f4Nrl99cyA',
+				label: 'La ruta a ti',
+				thumb: 'https://i.ytimg.com/vi/9f4Nrl99cyA/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/9f4Nrl99cyA',
+				watchUrl: 'https://www.youtube.com/watch?v=9f4Nrl99cyA'
+			},
+			{
+				kind: 'video',
+				id: '83V1s0BgYNI',
+				label: 'Olvidar',
+				thumb: 'https://i.ytimg.com/vi/83V1s0BgYNI/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/83V1s0BgYNI',
+				watchUrl: 'https://www.youtube.com/watch?v=83V1s0BgYNI'
+			},
+			{
+				kind: 'video',
+				id: 'fmJmdzR6csE',
+				label: 'Señor Bartender',
+				thumb: 'https://i.ytimg.com/vi/fmJmdzR6csE/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/fmJmdzR6csE',
+				watchUrl: 'https://www.youtube.com/watch?v=fmJmdzR6csE'
+			},
+			{
+				kind: 'video',
+				id: 'QEvubzshEGI',
+				label: 'Canción de la esperanza',
+				thumb: 'https://i.ytimg.com/vi/QEvubzshEGI/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/QEvubzshEGI',
+				watchUrl: 'https://www.youtube.com/watch?v=QEvubzshEGI'
+			},
+			{
+				kind: 'video',
+				id: 'wuvbvIKPDww',
+				label: 'Sigo aquí',
+				thumb: 'https://i.ytimg.com/vi/wuvbvIKPDww/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/wuvbvIKPDww',
+				watchUrl: 'https://www.youtube.com/watch?v=wuvbvIKPDww'
+			},
+			{
+				kind: 'video',
+				id: '0aB2eaJeCbk',
+				label: 'Mi alma gemela',
+				thumb: 'https://i.ytimg.com/vi/0aB2eaJeCbk/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/0aB2eaJeCbk',
+				watchUrl: 'https://www.youtube.com/watch?v=0aB2eaJeCbk'
+			},
+			{
+				kind: 'video',
+				id: 'DIWgrMs9oLE',
+				label: 'La noche pregunta dónde estás',
+				thumb: 'https://i.ytimg.com/vi/DIWgrMs9oLE/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/DIWgrMs9oLE',
+				watchUrl: 'https://www.youtube.com/watch?v=DIWgrMs9oLE'
+			},
+			{
+				kind: 'video',
+				id: '4yoiXTDSY4A',
+				label: 'Si tú no estás',
+				thumb: 'https://i.ytimg.com/vi/4yoiXTDSY4A/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/4yoiXTDSY4A',
+				watchUrl: 'https://www.youtube.com/watch?v=4yoiXTDSY4A'
+			},
+			{
+				kind: 'video',
+				id: 'bRjqF6_QCcQ',
+				label: 'Te pido perdón',
+				thumb: 'https://i.ytimg.com/vi/bRjqF6_QCcQ/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/bRjqF6_QCcQ',
+				watchUrl: 'https://www.youtube.com/watch?v=bRjqF6_QCcQ'
+			}
+		]
+	}
+
+	var mediaGalleryContent = {
+		es: {
+			artista: {
+				title: 'Galería artista',
+				lead: 'Fotos y videos de escenario, eventos y presentaciones.'
+			},
+			estudio: {
+				title: 'Galería estudio',
+				lead: 'Fotos y videos de producción, sesión y estudio de grabación.'
+			},
+			filtersLabel: 'Filtrar galería',
+			filters: [
+				{ id: 'video', label: 'Videos' },
+				{ id: 'photo', label: 'Fotos' }
+			],
+			closeLabel: 'Cerrar',
+			prevLabel: 'Anterior',
+			nextLabel: 'Siguiente',
+			videoBadge: 'Video',
+			emptyLabel: 'No hay elementos en este filtro.',
+			emptyGalleryLabel: 'Pronto habrá fotos y videos aquí.'
+		},
+		en: {
+			artista: {
+				title: 'Artist gallery',
+				lead: 'Photos and videos from stage, events, and performances.'
+			},
+			estudio: {
+				title: 'Studio gallery',
+				lead: 'Photos and videos from production, sessions, and the recording studio.'
+			},
+			filtersLabel: 'Filter gallery',
+			filters: [
+				{ id: 'video', label: 'Videos' },
+				{ id: 'photo', label: 'Photos' }
+			],
+			closeLabel: 'Close',
+			prevLabel: 'Previous',
+			nextLabel: 'Next',
+			videoBadge: 'Video',
+			emptyLabel: 'No items in this filter.',
+			emptyGalleryLabel: 'Photos and videos coming soon.'
+		}
+	}
+
+	var mediaGalleryLocale = mediaGalleryContent[locale] || mediaGalleryContent.es
+	var mediaGalleryFacetKey = mediaGalleryFacet || 'artista'
+	var mediaGalleryCopy = mediaGalleryLocale[mediaGalleryFacetKey] || mediaGalleryLocale.artista
+	var mediaGalleryFilteredItems = mediaGalleryFacet
+		? (mediaGalleryItemsByFacet[mediaGalleryFacet] || [])
+		: mediaGalleryItemsByFacet.artista.concat(mediaGalleryItemsByFacet.estudio)
+
+	var mediaGalleryData = {
+		title: mediaGalleryCopy.title,
+		lead: mediaGalleryCopy.lead,
+		filtersLabel: mediaGalleryLocale.filtersLabel,
+		filters: mediaGalleryLocale.filters,
+		closeLabel: mediaGalleryLocale.closeLabel,
+		prevLabel: mediaGalleryLocale.prevLabel,
+		nextLabel: mediaGalleryLocale.nextLabel,
+		videoBadge: mediaGalleryLocale.videoBadge,
+		emptyLabel: mediaGalleryLocale.emptyLabel,
+		emptyGalleryLabel: mediaGalleryLocale.emptyGalleryLabel,
+		items: mediaGalleryFilteredItems,
+		facet: mediaGalleryFacet,
+		embed: mediaGalleryEmbed,
+		dialogId: 'media-gallery-dialog-' + (mediaGalleryFacet || 'all')
+	}
