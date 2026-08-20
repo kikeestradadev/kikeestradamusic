@@ -7,14 +7,28 @@ section(class='reviews' id=reviewsData.id)
 			span(class='section-intro__line')
 			if reviewsData.lead
 				p(class='section-intro__lead')= reviewsData.lead
-		ul(class='reviews__list')
-			each item in reviewsData.items
-				li(class='reviews__item')
-					figure(class='reviews__card')
-						if item.sample
-							span(class='reviews__badge')= reviewsData.sampleLabel
-						blockquote(class='reviews__quote')
-							p(class='reviews__text')= item.quote
-						figcaption(class='reviews__meta')
-							span(class='reviews__name')= item.name
-							span(class='reviews__context')= item.context
+		div(class='reviews__slider swiper')
+			ul(class='reviews__list swiper-wrapper')
+				each item in reviewsData.items
+					li(class='reviews__item swiper-slide')
+						figure(class='reviews__card')
+							if item.sample
+								span(class='reviews__badge')= reviewsData.sampleLabel
+							blockquote(class='reviews__quote')
+								p(class='reviews__text')= item.quote
+							figcaption(class='reviews__meta')
+								span(class='reviews__name')= item.name
+								span(class='reviews__context')= item.context
+			button(
+				class='reviews__nav reviews__nav--prev'
+				type='button'
+				aria-label=reviewsData.prevLabel
+			)
+				span(class='reviews__nav-icon' aria-hidden='true') ‹
+			button(
+				class='reviews__nav reviews__nav--next'
+				type='button'
+				aria-label=reviewsData.nextLabel
+			)
+				span(class='reviews__nav-icon' aria-hidden='true') ›
+		div(class='reviews__pagination swiper-pagination')
