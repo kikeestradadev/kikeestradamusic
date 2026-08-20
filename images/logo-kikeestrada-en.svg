@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Kike Estrada — logo prototype</title>
+  <desc id="desc">KE monogram inspired by a guitar pick, paired with the Kike Estrada wordmark.</desc>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9C96B"/>
+      <stop offset="0.48" stop-color="#C99D3E"/>
+      <stop offset="1" stop-color="#9D6F21"/>
+    </linearGradient>
+    <filter id="soft-shadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#000000" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <g transform="translate(64 50)" filter="url(#soft-shadow)">
+    <path d="M153 8C74 8 14 67 14 146c0 87 67 160 139 202 72-42 139-115 139-202C292 67 232 8 153 8Z" fill="#101010" stroke="url(#gold)" stroke-width="7"/>
+    <path d="M83 94v151M91 169l77-75M101 170l78 75" fill="none" stroke="url(#gold)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M220 101c-19-11-44-13-65-4-39 17-57 62-40 102 17 39 62 57 102 40 13-6 24-15 32-27M140 170h78" fill="none" stroke="#F5E8C8" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M83 271c39 16 84 16 123 0" fill="none" stroke="#C99D3E" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(410 112)">
+    <text x="0" y="92" fill="#181818" font-family="Cormorant Garamond, Georgia, serif" font-size="118" font-weight="600" letter-spacing="-3">Kike</text>
+    <text x="222" y="92" fill="url(#gold)" font-family="Cormorant Garamond, Georgia, serif" font-size="118" font-style="italic" font-weight="600" letter-spacing="-3">Estrada</text>
+    <path d="M4 119h694" stroke="#C99D3E" stroke-width="3"/>
+    <text x="5" y="166" fill="#5B4A2D" font-family="Outfit, Arial, sans-serif" font-size="24" font-weight="600" letter-spacing="5">SINGER · GUITARIST · PIANIST</text>
+  </g>
+</svg>
