@@ -1,0 +1,18 @@
+include ../data/trajectory-data
+
+section(class='trajectory' id=trajectoryData.id)
+	div(class='container trajectory__container')
+		header(class='section-intro trajectory__intro')
+			h2(class='section-intro__title')= trajectoryData.title
+			span(class='section-intro__line')
+			if trajectoryData.lead
+				p(class='section-intro__lead')= trajectoryData.lead
+		ul(class='trajectory__milestones')
+			each milestone in trajectoryData.milestones
+				li(class='trajectory__milestone')
+					p(class='trajectory__value')= milestone.value
+					p(class='trajectory__label')= milestone.label
+		h3(class='trajectory__collaborations-title')= trajectoryData.collaborationsTitle
+		ul(class='trajectory__collaborations')
+			each name in trajectoryData.collaborations
+				li(class='trajectory__collaboration')= name

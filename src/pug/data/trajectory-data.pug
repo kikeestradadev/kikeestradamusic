@@ -1,0 +1,57 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const trajectoryContent = {
+		es: {
+			id: 'trayectoria',
+			title: 'Trayectoria y colaboraciones',
+			lead: 'Hitos breves de un camino construido en escenarios y producciones.',
+			milestones: [
+				{
+					value: '+20',
+					label: 'años de experiencia'
+				},
+				{
+					value: '+100',
+					label: 'producciones'
+				}
+			],
+			collaborationsTitle: 'Proyectos seleccionados',
+			collaborations: [
+				'Tierra Fértil',
+				'Skala',
+				'Hinestra',
+				'AEA',
+				'Cristoforis',
+				'W-Arts'
+			]
+		},
+		en: {
+			id: 'trajectory',
+			title: 'Career and collaborations',
+			lead: 'Brief milestones from a path built on stages and productions.',
+			milestones: [
+				{
+					value: '+20',
+					label: 'years of experience'
+				},
+				{
+					value: '+100',
+					label: 'productions'
+				}
+			],
+			collaborationsTitle: 'Selected projects',
+			collaborations: [
+				'Tierra Fértil',
+				'Skala',
+				'Hinestra',
+				'AEA',
+				'Cristoforis',
+				'W-Arts'
+			]
+		}
+	}
+
+	const trajectoryData = trajectoryContent[locale] || trajectoryContent.es

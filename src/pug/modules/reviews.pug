@@ -1,0 +1,20 @@
+include ../data/reviews-data
+
+section(class='reviews' id=reviewsData.id)
+	div(class='container reviews__container')
+		header(class='section-intro reviews__intro')
+			h2(class='section-intro__title')= reviewsData.title
+			span(class='section-intro__line')
+			if reviewsData.lead
+				p(class='section-intro__lead')= reviewsData.lead
+		ul(class='reviews__list')
+			each item in reviewsData.items
+				li(class='reviews__item')
+					figure(class='reviews__card')
+						if item.sample
+							span(class='reviews__badge')= reviewsData.sampleLabel
+						blockquote(class='reviews__quote')
+							p(class='reviews__text')= item.quote
+						figcaption(class='reviews__meta')
+							span(class='reviews__name')= item.name
+							span(class='reviews__context')= item.context

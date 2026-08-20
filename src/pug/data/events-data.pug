@@ -1,0 +1,71 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const eventsContent = {
+		es: {
+			id: 'eventos',
+			title: 'Música para eventos',
+			lead: 'Un show pensado para el espacio, los invitados y el tono de su celebración.',
+			types: [
+				{ name: 'Bodas' },
+				{ name: 'Eventos privados' },
+				{ name: 'Corporativos' },
+				{ name: 'Hoteles' },
+				{ name: 'Bares' },
+				{ name: 'Teatros' }
+			],
+			points: [
+				{
+					title: 'Repertorio versátil',
+					text: 'Baladas, boleros, tropical y rock; en español, inglés, portugués y música judía.'
+				},
+				{
+					title: 'Profesionalismo',
+					text: 'Puntualidad, trato respetuoso y una presencia que cuida el evento de principio a fin.'
+				},
+				{
+					title: 'Adaptación',
+					text: 'El show se ajusta al recinto, a los invitados y a la atmósfera que usted necesita.'
+				},
+				{
+					title: 'Experiencia',
+					text: 'Noches de boda, teatro, hotel y bar en todo Costa Rica, con la serenidad de quien ya ha sostenido muchas celebraciones importantes.'
+				}
+			]
+		},
+		en: {
+			id: 'events',
+			title: 'Music for events',
+			lead: 'A live show shaped around the room, the guests, and the tone of your celebration.',
+			types: [
+				{ name: 'Weddings' },
+				{ name: 'Private events' },
+				{ name: 'Corporate' },
+				{ name: 'Hotels' },
+				{ name: 'Bars' },
+				{ name: 'Theaters' }
+			],
+			points: [
+				{
+					title: 'Versatile repertoire',
+					text: 'Ballads, boleros, tropical, and rock; in Spanish, English, Portuguese, and Jewish music.'
+				},
+				{
+					title: 'Professionalism',
+					text: 'Punctual, respectful, and present — from the first note to the last.'
+				},
+				{
+					title: 'Adaptation',
+					text: 'The show adjusts to the venue, the guests, and the atmosphere you need.'
+				},
+				{
+					title: 'Experience',
+					text: 'Wedding nights, theaters, hotels, and bars across Costa Rica, with the ease of someone who has already held many important celebrations.'
+				}
+			]
+		}
+	}
+
+	const eventsData = eventsContent[locale] || eventsContent.es

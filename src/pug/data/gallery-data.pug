@@ -3,72 +3,117 @@
 		locale = 'es'
 	}
 
-	const galleryItems = [
+	const galleryItemsEs = [
 		{
-			label: 'Foto 1',
-			tone: 'light',
-			src: './images/fotos/foto_1.jpg',
-			alt: 'Foto 1'
-		},
-		{
-			label: 'Foto 2',
+			label: 'Boda',
 			tone: 'mid',
-			src: './images/fotos/foto_2.jpg',
-			alt: 'Foto 2'
+			src: './images/fotos_artista/boda7.jpg',
+			alt: 'Kike Estrada cantando con su banda en una boda'
 		},
 		{
-			label: 'Foto 3',
+			label: 'Celebración privada',
+			tone: 'light',
+			src: './images/fotos_artista/boda1.jpg',
+			alt: 'Kike Estrada y banda en un evento privado'
+		},
+		{
+			label: 'Escenario',
+			tone: 'dark',
+			src: './images/fotos/foto_2.jpg',
+			alt: 'Kike Estrada cantando en un escenario iluminado'
+		},
+		{
+			label: 'Noche en vivo',
+			tone: 'mid',
+			src: './images/fotos_artista/rumba jam.jpg',
+			alt: 'Kike Estrada en un escenario con banda de viento'
+		},
+		{
+			label: 'Bar y hotel',
+			tone: 'dark',
+			src: './images/fotos_artista/Jazz_cafe.JPG',
+			alt: 'Kike Estrada al piano en un bar'
+		},
+		{
+			label: 'Teatro',
+			tone: 'light',
+			src: './images/fotos_artista/Broadway.JPG',
+			alt: 'Kike Estrada cantando en un teatro'
+		},
+		{
+			label: 'Guitarra en vivo',
+			tone: 'mid',
+			src: './images/fotos/foto_1.jpg',
+			alt: 'Kike Estrada tocando guitarra eléctrica en vivo'
+		},
+		{
+			label: 'Evento',
 			tone: 'light',
 			src: './images/fotos/foto_3.jpg',
-			alt: 'Foto 3'
+			alt: 'Kike Estrada cantando en un evento con invitados'
 		},
 		{
-			label: 'Foto 4',
+			label: 'Jam session',
 			tone: 'dark',
-			src: './images/fotos/foto_4.jpg',
-			alt: 'Foto 4'
-		},
+			src: './images/fotos_artista/jam_session.JPG',
+			alt: 'Kike Estrada en una jam session con otros músicos'
+		}
+	]
+
+	const galleryItemsEn = [
 		{
-			label: 'Foto 5',
+			label: 'Wedding',
 			tone: 'mid',
-			src: './images/fotos/foto_5.JPG',
-			alt: 'Foto 5'
+			src: './images/fotos_artista/boda7.jpg',
+			alt: 'Kike Estrada singing with his band at a wedding'
 		},
 		{
-			label: 'Foto 6',
+			label: 'Private celebration',
 			tone: 'light',
-			src: './images/fotos/foto_6.JPG',
-			alt: 'Foto 6'
+			src: './images/fotos_artista/boda1.jpg',
+			alt: 'Kike Estrada and band at a private event'
 		},
 		{
-			label: 'Foto 7',
+			label: 'On stage',
 			tone: 'dark',
-			src: './images/fotos/foto_7.JPG',
-			alt: 'Foto 7'
+			src: './images/fotos/foto_2.jpg',
+			alt: 'Kike Estrada singing on a lit stage'
 		},
 		{
-			label: 'Foto 8',
+			label: 'Live night',
 			tone: 'mid',
-			src: './images/fotos/foto_8.JPG',
-			alt: 'Foto 8'
+			src: './images/fotos_artista/rumba jam.jpg',
+			alt: 'Kike Estrada on stage with a horn band'
 		},
 		{
-			label: 'Foto 9',
+			label: 'Bar and hotel',
+			tone: 'dark',
+			src: './images/fotos_artista/Jazz_cafe.JPG',
+			alt: 'Kike Estrada at the piano in a bar'
+		},
+		{
+			label: 'Theater',
 			tone: 'light',
-			src: './images/fotos/foto_9.JPG',
-			alt: 'Foto 9'
+			src: './images/fotos_artista/Broadway.JPG',
+			alt: 'Kike Estrada singing in a theater'
 		},
 		{
-			label: 'Foto 10',
-			tone: 'dark',
-			src: './images/fotos/foto_10.JPG',
-			alt: 'Foto 10'
-		},
-		{
-			label: 'Foto 11',
+			label: 'Live guitar',
 			tone: 'mid',
-			src: './images/fotos/foto_11.jpg',
-			alt: 'Foto 11'
+			src: './images/fotos/foto_1.jpg',
+			alt: 'Kike Estrada playing electric guitar live'
+		},
+		{
+			label: 'Event',
+			tone: 'light',
+			src: './images/fotos/foto_3.jpg',
+			alt: 'Kike Estrada singing at an event with guests'
+		},
+		{
+			label: 'Jam session',
+			tone: 'dark',
+			src: './images/fotos_artista/jam_session.JPG',
+			alt: 'Kike Estrada in a jam session with other musicians'
 		}
 	]
 
@@ -76,20 +121,20 @@
 		es: {
 			id: 'galeria',
 			title: 'Galería',
-			lead: 'Retratos, escenarios y momentos detrás de cámaras.',
+			lead: 'Retratos de escenario, bodas y noches en vivo.',
 			closeLabel: 'Cerrar galería',
 			prevLabel: 'Imagen anterior',
 			nextLabel: 'Imagen siguiente',
-			items: galleryItems
+			items: galleryItemsEs
 		},
 		en: {
 			id: 'gallery',
 			title: 'Gallery',
-			lead: 'Portraits, stages, and behind-the-scenes moments.',
+			lead: 'Stage portraits, weddings, and live nights.',
 			closeLabel: 'Close gallery',
 			prevLabel: 'Previous image',
 			nextLabel: 'Next image',
-			items: galleryItems
+			items: galleryItemsEn
 		}
 	}
 

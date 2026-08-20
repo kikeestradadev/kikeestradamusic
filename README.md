@@ -1,6 +1,6 @@
 # Kike Estrada Music
 
-Landing page de una sola página para el artista musical **Kike Estrada**.
+Landing page oficial del artista **Kike Estrada**, orientada a contratación para eventos.
 
 ## Stack
 
@@ -14,11 +14,13 @@ Landing page de una sola página para el artista musical **Kike Estrada**.
 | --- | --- |
 | Menú | `main-menu.pug` / `_main-menu.scss` / `mainMenu.js` |
 | Hero | `hero.pug` / `_hero.scss` |
-| Sobre mí | `about.pug` / `_about.scss` |
-| Proyectos | `projects.pug` / `_projects.scss` |
-| Discografía | `discography.pug` / `_discography.scss` |
-| Música | `music.pug` / `_music.scss` |
-| Galería | `gallery.pug` / `_gallery.scss` |
+| Sobre Kike | `about.pug` / `_about.scss` |
+| Eventos | `events.pug` / `_events.scss` |
+| Videos destacados | `featured-videos.pug` / `_featured-videos.scss` / `featuredVideos.js` |
+| Reseñas | `reviews.pug` / `_reviews.scss` |
+| Trayectoria | `trajectory.pug` / `_trajectory.scss` |
+| Galería | `gallery.pug` / `_gallery.scss` / `gallery.js` |
+| Contacto | `contact.pug` / `_contact.scss` |
 | Footer | `site-footer.pug` / `_site-footer.scss` |
 
 El contenido editable vive en `src/pug/data/*-data.pug`.
@@ -41,4 +43,4 @@ El copy vive en `src/pug/data/*-data.pug` con claves `es` / `en`. El toggle de i
 
 - Swiper 11 (`swiper-bundle` CSS/JS)
 - Google Fonts: Cormorant Garamond + Outfit
-- Embeds de Spotify y YouTube en el módulo `music`
+- Miniaturas y embeds de YouTube en `featured-videos`

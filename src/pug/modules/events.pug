@@ -1,0 +1,19 @@
+include ../data/events-data
+
+section(class='events' id=eventsData.id)
+	div(class='container events__container')
+		header(class='section-intro events__intro')
+			h2(class='section-intro__title')= eventsData.title
+			span(class='section-intro__line')
+			if eventsData.lead
+				p(class='section-intro__lead')= eventsData.lead
+		ul(class='events__types')
+			each type in eventsData.types
+				li(class='events__type')
+					span(class='events__type-name')= type.name
+		ul(class='events__points')
+			each point in eventsData.points
+				li(class='events__point')
+					article(class='events__card')
+						h3(class='events__card-title')= point.title
+						p(class='events__card-text')= point.text

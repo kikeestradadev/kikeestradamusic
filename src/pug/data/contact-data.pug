@@ -1,0 +1,55 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const contactContent = {
+		es: {
+			id: 'contacto',
+			title: 'Hablemos de su evento',
+			lead: 'Cuénteme la fecha, el espacio y el tono que busca. Respondo por WhatsApp para confirmar disponibilidad.',
+			primaryCta: {
+				label: 'Consultar por WhatsApp',
+				href: 'https://wa.me/50670118183',
+				type: 'whatsapp'
+			},
+			alternativesLabel: 'También puede escribir a',
+			alternatives: [
+				{
+					label: 'kikeestradamusic@gmail.com',
+					href: 'mailto:kikeestradamusic@gmail.com',
+					type: 'email'
+				},
+				{
+					label: 'Instagram',
+					href: 'https://www.instagram.com/kikeestradamusic/',
+					type: 'instagram'
+				}
+			]
+		},
+		en: {
+			id: 'contact',
+			title: 'Let\'s talk about your event',
+			lead: 'Share the date, the room, and the tone you want. I reply on WhatsApp to confirm availability.',
+			primaryCta: {
+				label: 'Message on WhatsApp',
+				href: 'https://wa.me/50670118183',
+				type: 'whatsapp'
+			},
+			alternativesLabel: 'You can also reach me at',
+			alternatives: [
+				{
+					label: 'kikeestradamusic@gmail.com',
+					href: 'mailto:kikeestradamusic@gmail.com',
+					type: 'email'
+				},
+				{
+					label: 'Instagram',
+					href: 'https://www.instagram.com/kikeestradamusic/',
+					type: 'instagram'
+				}
+			]
+		}
+	}
+
+	const contactData = contactContent[locale] || contactContent.es

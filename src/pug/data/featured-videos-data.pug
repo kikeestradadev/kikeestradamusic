@@ -1,0 +1,72 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	var featuredVideosItems = [
+		{
+			id: '94700JW2-c0',
+			title: 'Crazy Little Thing Called Love',
+			thumb: 'https://i.ytimg.com/vi/94700JW2-c0/hqdefault.jpg',
+			embedUrl: 'https://www.youtube.com/embed/94700JW2-c0',
+			watchUrl: 'https://www.youtube.com/watch?v=94700JW2-c0'
+		},
+		{
+			id: 'aRDLAtOBI4Y',
+			title: 'Vereda Tropical',
+			thumb: 'https://i.ytimg.com/vi/aRDLAtOBI4Y/hqdefault.jpg',
+			embedUrl: 'https://www.youtube.com/embed/aRDLAtOBI4Y',
+			watchUrl: 'https://www.youtube.com/watch?v=aRDLAtOBI4Y'
+		},
+		{
+			id: 'oc6w9WeGe7I',
+			title: 'La Travesía',
+			thumb: 'https://i.ytimg.com/vi/oc6w9WeGe7I/hqdefault.jpg',
+			embedUrl: 'https://www.youtube.com/embed/oc6w9WeGe7I',
+			watchUrl: 'https://www.youtube.com/watch?v=oc6w9WeGe7I'
+		},
+		{
+			id: 'Qeq0pSV8seQ',
+			title: 'Amor De La Calle',
+			thumb: 'https://i.ytimg.com/vi/Qeq0pSV8seQ/hqdefault.jpg',
+			embedUrl: 'https://www.youtube.com/embed/Qeq0pSV8seQ',
+			watchUrl: 'https://www.youtube.com/watch?v=Qeq0pSV8seQ'
+		},
+		{
+			id: 'YeyQ8y06TTY',
+			title: 'Idilio',
+			thumb: 'https://i.ytimg.com/vi/YeyQ8y06TTY/hqdefault.jpg',
+			embedUrl: 'https://www.youtube.com/embed/YeyQ8y06TTY',
+			watchUrl: 'https://www.youtube.com/watch?v=YeyQ8y06TTY'
+		},
+		{
+			id: 'pAmzELC5aJY',
+			title: 'Frío Frío',
+			thumb: 'https://i.ytimg.com/vi/pAmzELC5aJY/hqdefault.jpg',
+			embedUrl: 'https://www.youtube.com/embed/pAmzELC5aJY',
+			watchUrl: 'https://www.youtube.com/watch?v=pAmzELC5aJY'
+		}
+	]
+
+	var featuredVideosContent = {
+		es: {
+			id: 'videos',
+			title: 'Videos destacados',
+			lead: 'Una selección breve de presentaciones en vivo.',
+			playLabel: 'Reproducir',
+			prevLabel: 'Video anterior',
+			nextLabel: 'Video siguiente',
+			items: featuredVideosItems
+		},
+		en: {
+			id: 'videos',
+			title: 'Featured videos',
+			lead: 'A short selection of live performances.',
+			playLabel: 'Play',
+			prevLabel: 'Previous video',
+			nextLabel: 'Next video',
+			items: featuredVideosItems
+		}
+	}
+
+	var featuredVideosData = featuredVideosContent[locale] || featuredVideosContent.es

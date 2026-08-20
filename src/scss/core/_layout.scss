@@ -104,6 +104,10 @@ body {
 	margin-top: auto;
 }
 
+section[id] {
+	scroll-margin-top: calc(var(--header-height) + 0.75rem);
+}
+
 .container {
 	width: 100%;
 	max-width: var(--container);

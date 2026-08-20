@@ -24,7 +24,7 @@
 		@media (width >= $l) {
 			display: grid !important;
 			gap: 1rem;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
+			grid-template-columns: repeat(3, minmax(0, 1fr));
 			transform: none !important;
 			width: 100% !important;
 			height: auto !important;

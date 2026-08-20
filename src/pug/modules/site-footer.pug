@@ -2,15 +2,15 @@ include ../data/site-footer-data
 include ../data/socials-data
 include social-icon
 
-div(class='site-footer' id=siteFooterData.id)
+div(class='site-footer')
 	div(class='container site-footer__container')
 		a(class='site-footer__brand' href=siteFooterData.items[0].href)
 			img(
 				class='site-footer__logo'
 				src=siteFooterData.brandLogo
 				alt=siteFooterData.brand
-				width='200'
-				height='58'
+				width='300'
+				height='105'
 			)
 		nav(class='site-footer__nav' aria-label=siteFooterData.navLabel)
 			ul(class='site-footer__list')

@@ -1,0 +1,61 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const reviewsContent = {
+		es: {
+			id: 'resenas',
+			title: 'Reseñas',
+			lead: 'Testimonios de quienes han compartido un evento o una colaboración. Los textos actuales son ejemplos para ilustrar el formato y se reemplazarán por reseñas reales.',
+			sampleLabel: 'Ejemplo',
+			items: [
+				{
+					quote: 'Kike entendió el tono de nuestra boda desde el primer mensaje. El repertorio fue elegante y la energía, justa.',
+					name: 'Ana y Roberto',
+					context: 'Boda en el Valle Central',
+					sample: true
+				},
+				{
+					quote: 'Profesional, puntual y con una presencia que elevó la noche. Nuestros invitados todavía hablan de la música.',
+					name: 'María Solano',
+					context: 'Evento corporativo',
+					sample: true
+				},
+				{
+					quote: 'Un aliado en el escenario: se adapta, dirige y cuida cada detalle musical sin perder calidez.',
+					name: 'Daniel Vargas',
+					context: 'Colaboración artística',
+					sample: true
+				}
+			]
+		},
+		en: {
+			id: 'reviews',
+			title: 'Reviews',
+			lead: 'Words from people who have shared an event or a collaboration. The current texts are samples to illustrate the format and will be replaced with real testimonials.',
+			sampleLabel: 'Sample',
+			items: [
+				{
+					quote: 'Kike understood the tone of our wedding from the first message. The repertoire was elegant and the energy was just right.',
+					name: 'Ana and Roberto',
+					context: 'Wedding in the Central Valley',
+					sample: true
+				},
+				{
+					quote: 'Professional, punctual, and present in a way that lifted the whole night. Our guests are still talking about the music.',
+					name: 'María Solano',
+					context: 'Corporate event',
+					sample: true
+				},
+				{
+					quote: 'An ally on stage: he adapts, leads, and cares for every musical detail without losing warmth.',
+					name: 'Daniel Vargas',
+					context: 'Artistic collaboration',
+					sample: true
+				}
+			]
+		}
+	}
+
+	const reviewsData = reviewsContent[locale] || reviewsContent.es
