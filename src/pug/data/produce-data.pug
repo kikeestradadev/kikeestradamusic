@@ -3,13 +3,112 @@
 		locale = 'es'
 	}
 
-	const produceContent = {
+	// Títulos provisionales donde no hay crédito confirmado: editar aquí.
+	var produceVideoCatalog = [
+		{
+			id: '83V1s0BgYNI',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: 'fmJmdzR6csE',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: 'QEvubzshEGI',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: 'wuvbvIKPDww',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: '0aB2eaJeCbk',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: 'DIWgrMs9oLE',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: '4yoiXTDSY4A',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: 'bRjqF6_QCcQ',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: '9f4Nrl99cyA',
+			filterKey: 'productions',
+			categoryKey: 'album',
+			titleKey: 'production'
+		},
+		{
+			id: 'wbf6ncsBIfU',
+			filterKey: 'productions',
+			categoryKey: 'tribute',
+			titleKey: 'tribute'
+		},
+		{
+			id: '0y1TK0lTXbo',
+			filterKey: 'documentaries',
+			categoryKey: 'documentary',
+			titleKey: 'documentary',
+			start: 5
+		},
+		{
+			id: 'HfDls-jK6U8',
+			filterKey: 'commercial',
+			categoryKey: 'jingle',
+			titleKey: 'centrum'
+		},
+		{
+			id: 'h2y-Rrgiuu8',
+			filterKey: 'commercial',
+			categoryKey: 'jingle',
+			titleKey: 'gordo'
+		}
+	]
+
+	var mapProduceVideos = function (items, copy) {
+		return items.map(function (item) {
+			var startQuery = item.start ? '?start=' + item.start : ''
+			var watchTime = item.start ? '&t=' + item.start + 's' : ''
+
+			return {
+				id: item.id,
+				filterKey: item.filterKey,
+				title: copy.titles[item.titleKey] || copy.titles.production,
+				category: copy.categories[item.categoryKey] || '',
+				thumb: 'https://i.ytimg.com/vi/' + item.id + '/hqdefault.jpg',
+				embedUrl: 'https://www.youtube.com/embed/' + item.id + startQuery,
+				watchUrl: 'https://www.youtube.com/watch?v=' + item.id + watchTime
+			}
+		})
+	}
+
+	var produceContent = {
 		es: {
 			id: 'produccion',
 			eyebrow: 'Productor',
 			title: 'Llevemos tu idea del primer acorde a una canción terminada.',
 			lead: 'Producción musical, arreglos y dirección con oído de escenario y criterio de estudio.',
-			note: 'Aquí habrá espacio para portafolio, créditos y testimonios reales de proyectos producidos.',
 			services: [
 				{
 					title: 'Producción musical',
@@ -28,8 +127,33 @@
 					text: 'Acompañamiento cercano para proyectos originales, covers y desarrollo creativo.'
 				}
 			],
-			portfolioTitle: 'Proyectos y créditos',
-			portfolioNote: 'Pendiente: añadir canciones, créditos y enlaces de proyectos producidos.',
+			portfolioTitle: 'Producciones seleccionadas',
+			portfolioLead: 'Canciones, proyectos audiovisuales y trabajos comerciales desarrollados desde el arreglo, la producción y la dirección musical.',
+			filterLabel: 'Filtrar producciones',
+			playLabel: 'Reproducir',
+			closeLabel: 'Cerrar video',
+			dialogLabel: 'Reproductor de video',
+			openOnYoutubeLabel: 'Ver en YouTube',
+			prevLabel: 'Video anterior',
+			nextLabel: 'Video siguiente',
+			filters: [
+				{ key: 'productions', label: 'Producciones' },
+				{ key: 'documentaries', label: 'Documentales' },
+				{ key: 'commercial', label: 'Comercial' }
+			],
+			titles: {
+				production: 'Producción musical',
+				tribute: 'Canción de homenaje',
+				documentary: 'Documental',
+				centrum: 'Centrum — Jingle de radio',
+				gordo: 'Gordo Navideño de Costa Rica — Jingle de radio'
+			},
+			categories: {
+				album: 'Álbum Historia Añeja',
+				tribute: 'Homenaje',
+				documentary: 'Documental',
+				jingle: 'Jingle de radio'
+			},
 			cta: {
 				label: 'Hablemos de tu proyecto',
 				href: '#contacto-produccion'
@@ -42,7 +166,6 @@
 			eyebrow: 'Producer',
 			title: 'Let\'s take your idea from the first chord to a finished song.',
 			lead: 'Music production, arrangements, and direction with a stage ear and studio judgment.',
-			note: 'This section will host portfolio pieces, credits, and real testimonials from produced projects.',
 			services: [
 				{
 					title: 'Music production',
@@ -61,8 +184,33 @@
 					text: 'Close partnership for original projects, covers, and creative development.'
 				}
 			],
-			portfolioTitle: 'Projects and credits',
-			portfolioNote: 'Pending: add songs, credits, and links from produced projects.',
+			portfolioTitle: 'Selected productions',
+			portfolioLead: 'Songs, audiovisual projects, and commercial work developed through arrangement, production, and musical direction.',
+			filterLabel: 'Filter productions',
+			playLabel: 'Play',
+			closeLabel: 'Close video',
+			dialogLabel: 'Video player',
+			openOnYoutubeLabel: 'Watch on YouTube',
+			prevLabel: 'Previous video',
+			nextLabel: 'Next video',
+			filters: [
+				{ key: 'productions', label: 'Productions' },
+				{ key: 'documentaries', label: 'Documentaries' },
+				{ key: 'commercial', label: 'Commercial' }
+			],
+			titles: {
+				production: 'Music production',
+				tribute: 'Tribute song',
+				documentary: 'Documentary',
+				centrum: 'Centrum — Radio jingle',
+				gordo: 'Gordo Navideño de Costa Rica — Radio jingle'
+			},
+			categories: {
+				album: 'Historia Añeja album',
+				tribute: 'Tribute',
+				documentary: 'Documentary',
+				jingle: 'Radio jingle'
+			},
 			cta: {
 				label: 'Talk about your project',
 				href: '#contact-production'
@@ -72,4 +220,8 @@
 		}
 	}
 
-	const produceData = produceContent[locale] || produceContent.es
+	var produceLocale = produceContent[locale] || produceContent.es
+	produceLocale.items = mapProduceVideos(produceVideoCatalog, produceLocale)
+	produceLocale.defaultFilter = 'productions'
+
+	var produceData = produceLocale

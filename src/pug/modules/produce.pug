@@ -2,27 +2,100 @@ include ../data/produce-data
 
 section(class='produce reveal' id=produceData.id)
 	div(class='container produce__container')
-		div(class='produce__content')
-			p(class='produce__eyebrow')= produceData.eyebrow
-			header(class='section-intro section-intro--left produce__intro')
-				h2(class='section-intro__title')= produceData.title
-				span(class='section-intro__line')
-				if produceData.lead
-					p(class='section-intro__lead')= produceData.lead
-			if produceData.note
-				p(class='produce__note')= produceData.note
-			ul(class='produce__services')
-				each service in produceData.services
-					li(class='produce__service')
-						article(class='produce__card')
-							h3(class='produce__card-title')= service.title
-							p(class='produce__card-text')= service.text
-			div(class='produce__portfolio')
+		div(class='produce__layout')
+			div(class='produce__content')
+				p(class='produce__eyebrow')= produceData.eyebrow
+				header(class='section-intro section-intro--left produce__intro')
+					h2(class='section-intro__title')= produceData.title
+					span(class='section-intro__line')
+					if produceData.lead
+						p(class='section-intro__lead')= produceData.lead
+				ul(class='produce__services')
+					each service in produceData.services
+						li(class='produce__service')
+							article(class='produce__card')
+								h3(class='produce__card-title')= service.title
+								p(class='produce__card-text')= service.text
+			div(class='produce__media')
+				div(class='produce__photo')
+					if produceData.imageSrc
+						img(class='produce__image' src=produceData.imageSrc alt=produceData.imageAlt || produceData.title loading='lazy')
+		div(class='produce__portfolio')
+			header(class='produce__portfolio-intro')
 				h3(class='produce__portfolio-title')= produceData.portfolioTitle
-				p(class='produce__portfolio-note')= produceData.portfolioNote
+				if produceData.portfolioLead
+					p(class='produce__portfolio-lead')= produceData.portfolioLead
+			if produceData.filters && produceData.filters.length
+				div(class='produce__filters' role='group' aria-label=produceData.filterLabel)
+					each filter in produceData.filters
+						button(
+							class=`produce__filter${filter.key === produceData.defaultFilter ? ' is-active' : ''}`
+							type='button'
+							data-produce-filter=filter.key
+							aria-pressed=(filter.key === produceData.defaultFilter ? 'true' : 'false')
+						)= filter.label
+			div(class='produce__slider swiper')
+				ul(class='produce__grid swiper-wrapper')
+					each item in produceData.items
+						li(
+							class='produce__item swiper-slide'
+							data-produce-category=item.filterKey
+						)
+							article(class='produce__video')
+								button(
+									class='produce__play'
+									type='button'
+									data-produce-embed=item.embedUrl
+									data-produce-title=item.title
+									data-produce-watch=item.watchUrl
+									aria-haspopup='dialog'
+									aria-controls='produce-dialog'
+									aria-label=`${produceData.playLabel}: ${item.title}`
+								)
+									img(
+										class='produce__thumb'
+										src=item.thumb
+										alt=''
+										loading='lazy'
+										decoding='async'
+									)
+									span(class='produce__play-icon' aria-hidden='true')
+								div(class='produce__meta')
+									p(class='produce__category')= item.category
+									h4(class='produce__video-title')= item.title
+				button(
+					class='produce__nav produce__nav--prev'
+					type='button'
+					aria-label=produceData.prevLabel
+				)
+					span(class='produce__nav-icon' aria-hidden='true') ‹
+				button(
+					class='produce__nav produce__nav--next'
+					type='button'
+					aria-label=produceData.nextLabel
+				)
+					span(class='produce__nav-icon' aria-hidden='true') ›
+			div(class='produce__pagination swiper-pagination')
 			if produceData.cta
 				a(class='btn btn--outline produce__cta' href=produceData.cta.href)= produceData.cta.label
-		div(class='produce__media')
-			div(class='produce__photo')
-				if produceData.imageSrc
-					img(class='produce__image' src=produceData.imageSrc alt=produceData.imageAlt || produceData.title loading='lazy')
+	dialog(
+		class='produce__dialog'
+		id='produce-dialog'
+		aria-label=produceData.dialogLabel
+	)
+		div(class='produce__dialog-shell')
+			button(
+				class='produce__dialog-close'
+				type='button'
+				data-produce-close
+				aria-label=produceData.closeLabel
+			) ×
+			div(class='produce__dialog-frame' data-produce-frame)
+			p(class='produce__dialog-caption' data-produce-caption)
+			a(
+				class='produce__dialog-link'
+				data-produce-external
+				href='#'
+				target='_blank'
+				rel='noopener noreferrer'
+			)= produceData.openOnYoutubeLabel

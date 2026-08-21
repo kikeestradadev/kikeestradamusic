@@ -47,6 +47,7 @@
 		width: auto;
 		height: 2.85rem;
 		max-width: min(62vw, 15.5rem);
+		border-radius: 0.55rem;
 
 		@media (width >= $lg) {
 			height: 3.6rem;
