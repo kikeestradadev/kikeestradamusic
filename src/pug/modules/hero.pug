@@ -10,6 +10,7 @@ section(class='hero' id=heroData.id)
 	div(class='hero__watermark' aria-hidden='true')= heroData.watermark
 	div(class='container hero__container')
 		p(class='hero__eyebrow')= heroData.eyebrow
+		p(class='hero__brand')= heroData.brand
 		h1(class='hero__title')= heroData.title
 		if heroData.text
 			p(class='hero__text')= heroData.text
@@ -19,6 +20,10 @@ section(class='hero' id=heroData.id)
 					a(class='btn btn--primary hero__cta' href=heroData.primaryCta.href)= heroData.primaryCta.label
 				if heroData.secondaryCta
 					a(class='btn btn--outline hero__cta' href=heroData.secondaryCta.href)= heroData.secondaryCta.label
+		if heroData.paths && heroData.paths.length
+			nav(class='hero__paths' aria-label=heroData.pathsLabel)
+				each path in heroData.paths
+					a(class='hero__path' href=path.href)= path.label
 		ul(class='hero__socials')
 			each social in socialsData
 				li(class='hero__social-item')

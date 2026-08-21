@@ -3,17 +3,43 @@
 		locale = 'es'
 	}
 
+	const whatsappBase = 'https://wa.me/50670118183?text='
+
 	const contactContent = {
 		es: {
 			id: 'contacto',
-			title: 'Hablemos de su evento',
-			lead: 'Cuénteme la fecha, el espacio y el tono que busca. Respondo por WhatsApp para confirmar disponibilidad.',
+			title: 'Hablemos de música.',
+			lead: 'Ya sea para un evento, una clase, una producción o una colaboración, cuéntame qué tienes en mente.',
+			optionsLabel: '¿Cómo quieres empezar?',
+			options: [
+				{
+					id: 'contacto-eventos',
+					key: 'events',
+					label: 'Contratar música en vivo',
+					text: 'Fecha, espacio y tono del evento.',
+					href: whatsappBase + encodeURIComponent('Hola Kike, me interesa contratar música en vivo para un evento.')
+				},
+				{
+					id: 'contacto-aprende',
+					key: 'learn',
+					label: 'Consultar clases o mentoría',
+					text: 'Bajo, guitarra acústica o eléctrica, o teclado.',
+					href: whatsappBase + encodeURIComponent('Hola Kike, me interesa consultar sobre clases de bajo, guitarra acústica, guitarra eléctrica o teclado.')
+				},
+				{
+					id: 'contacto-produccion',
+					key: 'produce',
+					label: 'Hablar de una producción',
+					text: 'Idea, etapa del proyecto y qué necesitas.',
+					href: whatsappBase + encodeURIComponent('Hola Kike, me interesa hablar de una producción musical.')
+				}
+			],
 			primaryCta: {
-				label: 'Consultar por WhatsApp',
-				href: 'https://wa.me/50670118183',
+				label: 'Escribir por WhatsApp',
+				href: whatsappBase + encodeURIComponent('Hola Kike, me gustaría hablar de un proyecto musical.'),
 				type: 'whatsapp'
 			},
-			alternativesLabel: 'También puede escribir a',
+			alternativesLabel: 'También puedes escribir a',
 			alternatives: [
 				{
 					label: 'kikeestradamusic@gmail.com',
@@ -29,16 +55,45 @@
 					label: 'TikTok',
 					href: 'https://www.tiktok.com/@kikeestradamusic',
 					type: 'tiktok'
+				},
+				{
+					label: 'Facebook',
+					href: 'https://www.facebook.com/kikeestradamusic/',
+					type: 'facebook'
 				}
 			]
 		},
 		en: {
 			id: 'contact',
-			title: 'Let\'s talk about your event',
-			lead: 'Share the date, the room, and the tone you want. I reply on WhatsApp to confirm availability.',
+			title: 'Let\'s talk about music.',
+			lead: 'Whether it\'s an event, a lesson, a production, or a collaboration, tell me what you have in mind.',
+			optionsLabel: 'How would you like to start?',
+			options: [
+				{
+					id: 'contact-events',
+					key: 'events',
+					label: 'Book live music',
+					text: 'Date, venue, and the tone of the event.',
+					href: whatsappBase + encodeURIComponent('Hi Kike, I\'m interested in booking live music for an event.')
+				},
+				{
+					id: 'contact-learn',
+					key: 'learn',
+					label: 'Ask about lessons or mentoring',
+					text: 'Bass, acoustic or electric guitar, or keyboard.',
+					href: whatsappBase + encodeURIComponent('Hi Kike, I\'m interested in bass, acoustic guitar, electric guitar, or keyboard lessons.')
+				},
+				{
+					id: 'contact-production',
+					key: 'produce',
+					label: 'Talk about a production',
+					text: 'Idea, project stage, and what you need.',
+					href: whatsappBase + encodeURIComponent('Hi Kike, I\'d like to talk about a music production project.')
+				}
+			],
 			primaryCta: {
 				label: 'Message on WhatsApp',
-				href: 'https://wa.me/50670118183',
+				href: whatsappBase + encodeURIComponent('Hi Kike, I\'d like to talk about a music project.'),
 				type: 'whatsapp'
 			},
 			alternativesLabel: 'You can also reach me at',
@@ -57,6 +112,11 @@
 					label: 'TikTok',
 					href: 'https://www.tiktok.com/@kikeestradamusic',
 					type: 'tiktok'
+				},
+				{
+					label: 'Facebook',
+					href: 'https://www.facebook.com/kikeestradamusic/',
+					type: 'facebook'
 				}
 			]
 		}

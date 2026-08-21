@@ -1,0 +1,20 @@
+include ../data/artist-data
+
+section(class='artist reveal' id=artistData.id)
+	div(class='container artist__container')
+		div(class='artist__content')
+			p(class='artist__eyebrow')= artistData.eyebrow
+			header(class='section-intro section-intro--left artist__intro')
+				h2(class='section-intro__title')= artistData.title
+				span(class='section-intro__line')
+				if artistData.lead
+					p(class='section-intro__lead')= artistData.lead
+			ul(class='artist__highlights')
+				each highlight in artistData.highlights
+					li(class='artist__highlight')= highlight
+			if artistData.cta
+				a(class='btn btn--outline artist__cta' href=artistData.cta.href)= artistData.cta.label
+		div(class='artist__media')
+			div(class='artist__photo')
+				if artistData.imageSrc
+					img(class='artist__image' src=artistData.imageSrc alt=artistData.imageAlt || artistData.title loading='lazy')

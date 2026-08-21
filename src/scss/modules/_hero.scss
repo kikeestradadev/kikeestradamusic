@@ -29,7 +29,7 @@
 
 	&__overlay {
 		background:
-			linear-gradient(180deg, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.62) 42%, #000 100%),
+			linear-gradient(180deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.68) 48%, #000 100%),
 			radial-gradient(ellipse at center, rgba(197, 160, 89, 0.12) 0%, transparent 58%);
 	}
 
@@ -55,7 +55,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		max-width: 44rem;
+		max-width: 46rem;
 	}
 
 	&__eyebrow {
@@ -67,18 +67,29 @@
 		text-transform: uppercase;
 	}
 
-	&__title {
-		margin: 0;
+	&__brand {
+		margin: 0 0 0.85rem;
 		color: var(--color-white);
 		font-family: var(--font-serif);
-		font-size: clamp(3rem, 9vw, 5.5rem);
+		font-size: clamp(2.4rem, 7vw, 4rem);
 		font-weight: 500;
 		line-height: 1;
 		letter-spacing: -0.02em;
 	}
 
+	&__title {
+		margin: 0;
+		max-width: 22ch;
+		color: rgba(255, 255, 255, 0.94);
+		font-family: var(--font-serif);
+		font-size: clamp(1.55rem, 4.2vw, 2.35rem);
+		font-weight: 500;
+		line-height: 1.2;
+		letter-spacing: -0.01em;
+	}
+
 	&__text {
-		max-width: 32rem;
+		max-width: 34rem;
 		margin: 1.25rem 0 0;
 		color: rgba(255, 255, 255, 0.82);
 		font-size: 1.05rem;
@@ -91,6 +102,32 @@
 		justify-content: center;
 		gap: 0.85rem;
 		margin-top: 2rem;
+	}
+
+	&__paths {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.65rem 1.25rem;
+		margin-top: 1.75rem;
+	}
+
+	&__path {
+		color: rgba(255, 255, 255, 0.72);
+		font-size: 0.78rem;
+		font-weight: 500;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		text-decoration: none;
+		border-bottom: 1px solid transparent;
+		padding-bottom: 0.15rem;
+		transition: color 0.2s ease, border-color 0.2s ease;
+
+		&:hover,
+		&:focus-visible {
+			color: var(--color-gold);
+			border-bottom-color: var(--color-gold);
+		}
 	}
 
 	&__socials {

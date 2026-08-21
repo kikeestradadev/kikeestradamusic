@@ -1,0 +1,28 @@
+include ../data/produce-data
+
+section(class='produce reveal' id=produceData.id)
+	div(class='container produce__container')
+		div(class='produce__content')
+			p(class='produce__eyebrow')= produceData.eyebrow
+			header(class='section-intro section-intro--left produce__intro')
+				h2(class='section-intro__title')= produceData.title
+				span(class='section-intro__line')
+				if produceData.lead
+					p(class='section-intro__lead')= produceData.lead
+			if produceData.note
+				p(class='produce__note')= produceData.note
+			ul(class='produce__services')
+				each service in produceData.services
+					li(class='produce__service')
+						article(class='produce__card')
+							h3(class='produce__card-title')= service.title
+							p(class='produce__card-text')= service.text
+			div(class='produce__portfolio')
+				h3(class='produce__portfolio-title')= produceData.portfolioTitle
+				p(class='produce__portfolio-note')= produceData.portfolioNote
+			if produceData.cta
+				a(class='btn btn--outline produce__cta' href=produceData.cta.href)= produceData.cta.label
+		div(class='produce__media')
+			div(class='produce__photo')
+				if produceData.imageSrc
+					img(class='produce__image' src=produceData.imageSrc alt=produceData.imageAlt || produceData.title loading='lazy')

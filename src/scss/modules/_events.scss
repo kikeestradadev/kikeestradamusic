@@ -78,4 +78,10 @@
 		font-size: 0.95rem;
 		line-height: 1.7;
 	}
+
+	&__actions {
+		display: flex;
+		justify-content: center;
+		margin-top: 2.25rem;
+	}
 }

@@ -8,7 +8,10 @@ const gallery = () => {
 
 		const slider = root.querySelector('.gallery__slider');
 		const dialog = root.querySelector('.gallery__dialog');
+		const items = [...root.querySelectorAll('.gallery__item')];
 		const triggers = [...root.querySelectorAll('.gallery__trigger')];
+		const filterButtons = [...root.querySelectorAll('[data-gallery-filter]')];
+		const emptyMessage = root.querySelector('[data-gallery-empty]');
 		const image = root.querySelector('[data-gallery-image]');
 		const placeholder = root.querySelector('[data-gallery-placeholder]');
 		const caption = root.querySelector('[data-gallery-caption]');
@@ -27,8 +30,15 @@ const gallery = () => {
 
 		let activeIndex = 0;
 		let swiperInstance = null;
+		let activeFilter = 'all';
 
 		const isDesktop = () => desktopQuery.matches;
+
+		const getVisibleTriggers = () =>
+			triggers.filter((trigger) => {
+				const item = trigger.closest('.gallery__item');
+				return item && !item.classList.contains('is-filtered-out');
+			});
 
 		const getItem = (index) => {
 			const trigger = triggers[index];
@@ -99,8 +109,15 @@ const gallery = () => {
 		};
 
 		const showRelative = (offset) => {
-			const nextIndex = (activeIndex + offset + triggers.length) % triggers.length;
-			renderItem(nextIndex);
+			const visible = getVisibleTriggers();
+			if (!visible.length) {
+				return;
+			}
+
+			const currentVisibleIndex = visible.findIndex((trigger) => triggers.indexOf(trigger) === activeIndex);
+			const safeIndex = currentVisibleIndex >= 0 ? currentVisibleIndex : 0;
+			const nextVisible = visible[(safeIndex + offset + visible.length) % visible.length];
+			renderItem(triggers.indexOf(nextVisible));
 		};
 
 		const destroySlider = () => {
@@ -114,10 +131,11 @@ const gallery = () => {
 		};
 
 		const initSlider = () => {
-			if (swiperInstance || typeof window.Swiper !== 'function') {
+			if (typeof window.Swiper !== 'function') {
 				return;
 			}
 
+			destroySlider();
 			root.classList.add('gallery--slider');
 			swiperInstance = new window.Swiper(slider, {
 				slidesPerView: 1.15,
@@ -127,6 +145,8 @@ const gallery = () => {
 				rewind: false,
 				grabCursor: true,
 				watchOverflow: true,
+				observer: true,
+				observeParents: true,
 				pagination: pagination
 					? {
 							el: pagination,
@@ -151,6 +171,54 @@ const gallery = () => {
 			});
 		};
 
+		const applyFilter = (filterKey) => {
+			activeFilter = filterKey;
+			let visibleCount = 0;
+
+			items.forEach((item) => {
+				const category = item.dataset.galleryCategory || 'stage';
+				const isVisible = filterKey === 'all' || category === filterKey;
+				item.classList.toggle('is-filtered-out', !isVisible);
+				if (isVisible) {
+					visibleCount += 1;
+				}
+			});
+
+			filterButtons.forEach((button) => {
+				const isActive = button.dataset.galleryFilter === filterKey;
+				button.classList.toggle('is-active', isActive);
+				button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+			});
+
+			if (emptyMessage) {
+				emptyMessage.hidden = visibleCount > 0;
+			}
+
+			if (slider) {
+				slider.hidden = visibleCount === 0;
+			}
+
+			if (pagination) {
+				pagination.hidden = visibleCount === 0;
+			}
+
+			if (prevNav) {
+				prevNav.hidden = visibleCount === 0;
+			}
+
+			if (nextNav) {
+				nextNav.hidden = visibleCount === 0;
+			}
+
+			closeDialog();
+
+			if (!isDesktop() && visibleCount > 0) {
+				initSlider();
+			} else {
+				destroySlider();
+			}
+		};
+
 		const syncMode = () => {
 			if (isDesktop()) {
 				destroySlider();
@@ -164,13 +232,26 @@ const gallery = () => {
 			triggers.forEach((trigger) => {
 				trigger.removeAttribute('aria-haspopup');
 			});
-			initSlider();
+			if (getVisibleTriggers().length) {
+				initSlider();
+			}
 		};
+
+		filterButtons.forEach((button) => {
+			button.addEventListener('click', () => {
+				applyFilter(button.dataset.galleryFilter || 'all');
+			});
+		});
 
 		triggers.forEach((trigger, index) => {
 			trigger.addEventListener('click', (event) => {
 				if (!isDesktop()) {
 					event.preventDefault();
+					return;
+				}
+
+				const item = trigger.closest('.gallery__item');
+				if (item?.classList.contains('is-filtered-out')) {
 					return;
 				}
 
@@ -233,6 +314,7 @@ const gallery = () => {
 			desktopQuery.addListener(syncMode);
 		}
 
+		applyFilter(activeFilter);
 		syncMode();
 		root.dataset.galleryReady = 'true';
 	});

@@ -1,6 +1,6 @@
 # Kike Estrada Music
 
-Landing page oficial del artista **Kike Estrada**, orientada a contratación para eventos.
+Landing page oficial de **Kike Estrada Music**: artista, profesor y productor.
 
 ## Stack
 
@@ -14,13 +14,20 @@ Landing page oficial del artista **Kike Estrada**, orientada a contratación par
 | --- | --- |
 | Menú | `main-menu.pug` / `_main-menu.scss` / `mainMenu.js` |
 | Hero | `hero.pug` / `_hero.scss` |
-| Sobre Kike | `about.pug` / `_about.scss` |
-| Eventos | `events.pug` / `_events.scss` |
+| Visión de marca | `brand-vision.pug` / `_brand-vision.scss` |
+| Pilares | `pillars.pug` / `_pillars.scss` |
+| Artista | `artist.pug` / `_artist.scss` |
+| Música en vivo | `events.pug` / `_events.scss` |
 | Videos destacados | `featured-videos.pug` / `_featured-videos.scss` / `featuredVideos.js` |
-| Reseñas | `reviews.pug` / `_reviews.scss` |
+| Aprende | `learn.pug` / `_learn.scss` |
+| Producción | `produce.pug` / `_produce.scss` |
+| Rutas del visitante | `need-paths.pug` / `_need-paths.scss` |
+| Sobre Kike | `about.pug` / `_about.scss` |
+| Testimonios | `reviews.pug` / `_reviews.scss` |
 | Trayectoria | `trajectory.pug` / `_trajectory.scss` |
 | Galería | `gallery.pug` / `_gallery.scss` / `gallery.js` |
 | Contacto | `contact.pug` / `_contact.scss` |
+| Reveal | `_reveal.scss` / `reveal.js` |
 | Footer | `site-footer.pug` / `_site-footer.scss` |
 
 El contenido editable vive en `src/pug/data/*-data.pug`.

@@ -1,15 +1,28 @@
 include ../data/gallery-data
 
-section(class='gallery' id=galleryData.id)
+section(class='gallery reveal' id=galleryData.id)
 	div(class='container gallery__container')
 		header(class='section-intro gallery__intro')
 			h2(class='section-intro__title')= galleryData.title
 			span(class='section-intro__line')
 			p(class='section-intro__lead')= galleryData.lead
+		if galleryData.filters && galleryData.filters.length
+			div(class='gallery__filters' role='group' aria-label=galleryData.filterLabel)
+				each filter in galleryData.filters
+					button(
+						class=`gallery__filter${filter.key === 'all' ? ' is-active' : ''}`
+						type='button'
+						data-gallery-filter=filter.key
+						aria-pressed=(filter.key === 'all' ? 'true' : 'false')
+					)= filter.label
+		p(class='gallery__empty' data-gallery-empty hidden)= galleryData.emptyFilter
 		div(class='gallery__slider swiper')
 			ul(class='gallery__grid swiper-wrapper')
 				each item, index in galleryData.items
-					li(class=`gallery__item gallery__item--${item.tone} swiper-slide`)
+					li(
+						class=`gallery__item gallery__item--${item.tone} swiper-slide`
+						data-gallery-category=item.category || 'stage'
+					)
 						button(
 							class='gallery__trigger'
 							type='button'

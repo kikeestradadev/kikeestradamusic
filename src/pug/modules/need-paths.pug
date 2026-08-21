@@ -1,0 +1,16 @@
+include ../data/need-paths-data
+
+section(class='need-paths reveal' id=needPathsData.id)
+	div(class='container need-paths__container')
+		header(class='section-intro need-paths__intro')
+			h2(class='section-intro__title')= needPathsData.title
+			span(class='section-intro__line')
+			if needPathsData.lead
+				p(class='section-intro__lead')= needPathsData.lead
+		ul(class='need-paths__list')
+			each path in needPathsData.paths
+				li(class=`need-paths__item need-paths__item--${path.key}`)
+					article(class='need-paths__card')
+						h3(class='need-paths__label')= path.label
+						p(class='need-paths__text')= path.text
+						a(class='need-paths__cta' href=path.href)= path.cta

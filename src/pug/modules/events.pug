@@ -1,6 +1,6 @@
 include ../data/events-data
 
-section(class='events' id=eventsData.id)
+section(class='events reveal' id=eventsData.id)
 	div(class='container events__container')
 		header(class='section-intro events__intro')
 			h2(class='section-intro__title')= eventsData.title
@@ -17,3 +17,6 @@ section(class='events' id=eventsData.id)
 					article(class='events__card')
 						h3(class='events__card-title')= point.title
 						p(class='events__card-text')= point.text
+		if eventsData.cta
+			div(class='events__actions')
+				a(class='btn btn--primary events__cta' href=eventsData.cta.href)= eventsData.cta.label

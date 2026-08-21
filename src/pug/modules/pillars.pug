@@ -1,0 +1,11 @@
+include ../data/pillars-data
+
+section(class='pillars reveal' id=pillarsData.id aria-label=pillarsData.ariaLabel)
+	div(class='container pillars__container')
+		ul(class='pillars__list')
+			each item in pillarsData.items
+				li(class=`pillars__item pillars__item--${item.key}`)
+					article(class='pillars__card')
+						p(class='pillars__label')= item.label
+						h3(class='pillars__message')= item.message
+						a(class='pillars__cta' href=item.href)= item.cta

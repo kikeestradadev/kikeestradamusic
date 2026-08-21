@@ -7,54 +7,84 @@
 		{
 			label: 'Boda',
 			tone: 'mid',
+			category: 'stage',
 			src: './images/fotos_artista/boda7.jpg',
 			alt: 'Kike Estrada cantando con su banda en una boda'
 		},
 		{
 			label: 'Celebración privada',
 			tone: 'light',
+			category: 'stage',
 			src: './images/fotos_artista/boda1.jpg',
 			alt: 'Kike Estrada y banda en un evento privado'
 		},
 		{
 			label: 'Escenario',
 			tone: 'dark',
+			category: 'stage',
 			src: './images/fotos/foto_2.jpg',
 			alt: 'Kike Estrada cantando en un escenario iluminado'
 		},
 		{
 			label: 'Noche en vivo',
 			tone: 'mid',
+			category: 'stage',
 			src: './images/fotos_artista/rumba jam.jpg',
 			alt: 'Kike Estrada en un escenario con banda de viento'
 		},
 		{
 			label: 'Bar y hotel',
 			tone: 'dark',
+			category: 'stage',
 			src: './images/fotos_artista/Jazz_cafe.JPG',
 			alt: 'Kike Estrada al piano en un bar'
 		},
 		{
+			label: 'Estudio',
+			tone: 'mid',
+			category: 'studio',
+			src: './images/fotos_studio/studio_1.jpg',
+			alt: 'Ambiente de estudio musical'
+		},
+		{
+			label: 'Sesión de estudio',
+			tone: 'light',
+			category: 'studio',
+			src: './images/fotos_studio/studio_3.jpg',
+			alt: 'Espacio de estudio para producción y práctica'
+		},
+		{
+			label: 'Producción',
+			tone: 'dark',
+			category: 'studio',
+			src: './images/fotos_studio/studio_5.jpeg',
+			alt: 'Detalle de estudio de producción musical'
+		},
+		{
 			label: 'Teatro',
 			tone: 'light',
+			category: 'stage',
 			src: './images/fotos_artista/Broadway.JPG',
 			alt: 'Kike Estrada cantando en un teatro'
 		},
 		{
 			label: 'Guitarra en vivo',
 			tone: 'mid',
+			category: 'stage',
 			src: './images/fotos/foto_1.jpg',
 			alt: 'Kike Estrada tocando guitarra eléctrica en vivo'
 		},
 		{
 			label: 'Evento',
 			tone: 'light',
+			category: 'stage',
 			src: './images/fotos/foto_3.jpg',
 			alt: 'Kike Estrada cantando en un evento con invitados'
 		},
 		{
 			label: 'Jam session',
 			tone: 'dark',
+			category: 'stage',
 			src: './images/fotos_artista/jam_session.JPG',
 			alt: 'Kike Estrada en una jam session con otros músicos'
 		}
@@ -64,54 +94,84 @@
 		{
 			label: 'Wedding',
 			tone: 'mid',
+			category: 'stage',
 			src: './images/fotos_artista/boda7.jpg',
 			alt: 'Kike Estrada singing with his band at a wedding'
 		},
 		{
 			label: 'Private celebration',
 			tone: 'light',
+			category: 'stage',
 			src: './images/fotos_artista/boda1.jpg',
 			alt: 'Kike Estrada and band at a private event'
 		},
 		{
 			label: 'On stage',
 			tone: 'dark',
+			category: 'stage',
 			src: './images/fotos/foto_2.jpg',
 			alt: 'Kike Estrada singing on a lit stage'
 		},
 		{
 			label: 'Live night',
 			tone: 'mid',
+			category: 'stage',
 			src: './images/fotos_artista/rumba jam.jpg',
 			alt: 'Kike Estrada on stage with a horn band'
 		},
 		{
 			label: 'Bar and hotel',
 			tone: 'dark',
+			category: 'stage',
 			src: './images/fotos_artista/Jazz_cafe.JPG',
 			alt: 'Kike Estrada at the piano in a bar'
 		},
 		{
+			label: 'Studio',
+			tone: 'mid',
+			category: 'studio',
+			src: './images/fotos_studio/studio_1.jpg',
+			alt: 'Music studio environment'
+		},
+		{
+			label: 'Studio session',
+			tone: 'light',
+			category: 'studio',
+			src: './images/fotos_studio/studio_3.jpg',
+			alt: 'Studio space for production and practice'
+		},
+		{
+			label: 'Production',
+			tone: 'dark',
+			category: 'studio',
+			src: './images/fotos_studio/studio_5.jpeg',
+			alt: 'Music production studio detail'
+		},
+		{
 			label: 'Theater',
 			tone: 'light',
+			category: 'stage',
 			src: './images/fotos_artista/Broadway.JPG',
 			alt: 'Kike Estrada singing in a theater'
 		},
 		{
 			label: 'Live guitar',
 			tone: 'mid',
+			category: 'stage',
 			src: './images/fotos/foto_1.jpg',
 			alt: 'Kike Estrada playing electric guitar live'
 		},
 		{
 			label: 'Event',
 			tone: 'light',
+			category: 'stage',
 			src: './images/fotos/foto_3.jpg',
 			alt: 'Kike Estrada singing at an event with guests'
 		},
 		{
 			label: 'Jam session',
 			tone: 'dark',
+			category: 'stage',
 			src: './images/fotos_artista/jam_session.JPG',
 			alt: 'Kike Estrada in a jam session with other musicians'
 		}
@@ -121,19 +181,35 @@
 		es: {
 			id: 'galeria',
 			title: 'Galería',
-			lead: 'Retratos de escenario, bodas y noches en vivo.',
+			lead: 'Escenario, estudio y enseñanza: momentos de una misma vida musical.',
 			closeLabel: 'Cerrar galería',
 			prevLabel: 'Imagen anterior',
 			nextLabel: 'Imagen siguiente',
+			filterLabel: 'Filtrar galería',
+			filters: [
+				{ key: 'all', label: 'Todas' },
+				{ key: 'stage', label: 'Escenario' },
+				{ key: 'studio', label: 'Estudio' },
+				{ key: 'teach', label: 'Enseñanza' }
+			],
+			emptyFilter: 'Pronto habrá imágenes de esta área.',
 			items: galleryItemsEs
 		},
 		en: {
 			id: 'gallery',
 			title: 'Gallery',
-			lead: 'Stage portraits, weddings, and live nights.',
+			lead: 'Stage, studio, and teaching: moments from one musical life.',
 			closeLabel: 'Close gallery',
 			prevLabel: 'Previous image',
 			nextLabel: 'Next image',
+			filterLabel: 'Filter gallery',
+			filters: [
+				{ key: 'all', label: 'All' },
+				{ key: 'stage', label: 'Stage' },
+				{ key: 'studio', label: 'Studio' },
+				{ key: 'teach', label: 'Teaching' }
+			],
+			emptyFilter: 'Images from this area will appear here soon.',
 			items: galleryItemsEn
 		}
 	}

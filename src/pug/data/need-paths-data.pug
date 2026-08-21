@@ -1,0 +1,65 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const needPathsContent = {
+		es: {
+			id: 'necesitas',
+			title: '¿Qué necesitas hoy?',
+			lead: 'Elige la ruta que mejor describe lo que buscas. Cada camino lleva al área correspondiente o a un contacto contextual.',
+			paths: [
+				{
+					key: 'events',
+					label: 'Quiero música para un evento',
+					text: 'Contratación de música en vivo para bodas, privados, corporativos y más.',
+					href: '#musica-en-vivo',
+					cta: 'Ver música en vivo'
+				},
+				{
+					key: 'learn',
+					label: 'Quiero aprender música',
+					text: 'Clases de bajo, guitarra acústica y eléctrica, teclado, mentorías y talleres.',
+					href: '#aprende',
+					cta: 'Ver Aprende'
+				},
+				{
+					key: 'produce',
+					label: 'Quiero producir una canción o proyecto',
+					text: 'Producción, arreglos y dirección para llevar tu idea a una canción terminada.',
+					href: '#produccion',
+					cta: 'Ver Producción'
+				}
+			]
+		},
+		en: {
+			id: 'need',
+			title: 'What do you need today?',
+			lead: 'Choose the path that best matches what you are looking for. Each route leads to the right section or a contextual contact.',
+			paths: [
+				{
+					key: 'events',
+					label: 'I want music for an event',
+					text: 'Live music booking for weddings, private events, corporate gatherings, and more.',
+					href: '#live-music',
+					cta: 'See live music'
+				},
+				{
+					key: 'learn',
+					label: 'I want to learn music',
+					text: 'Bass, acoustic and electric guitar, keyboard lessons, plus mentoring and workshops.',
+					href: '#learn',
+					cta: 'See Learn'
+				},
+				{
+					key: 'produce',
+					label: 'I want to produce a song or project',
+					text: 'Production, arrangements, and direction to take your idea to a finished song.',
+					href: '#production',
+					cta: 'See Production'
+				}
+			]
+		}
+	}
+
+	const needPathsData = needPathsContent[locale] || needPathsContent.es

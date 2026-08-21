@@ -5,6 +5,7 @@ import featuredVideos from './modules/featuredVideos';
 import reviews from './modules/reviews';
 import gallery from './modules/gallery';
 import floatingButton from './modules/floatingButton';
+import reveal from './modules/reveal';
 
 const initComponents = () => {
 	coreModule();
@@ -14,6 +15,7 @@ const initComponents = () => {
 	reviews();
 	gallery();
 	floatingButton();
+	reveal();
 };
 
 document.addEventListener('DOMContentLoaded', initComponents);

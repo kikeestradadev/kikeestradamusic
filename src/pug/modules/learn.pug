@@ -1,0 +1,30 @@
+include ../data/learn-data
+
+section(class='learn reveal' id=learnData.id)
+	div(class='container learn__container')
+		div(class='learn__media')
+			div(class='learn__photo')
+				if learnData.imageSrc
+					img(class='learn__image' src=learnData.imageSrc alt=learnData.imageAlt || learnData.title loading='lazy')
+		div(class='learn__content')
+			p(class='learn__eyebrow')= learnData.eyebrow
+			header(class='section-intro section-intro--left learn__intro')
+				h2(class='section-intro__title')= learnData.title
+				span(class='section-intro__line')
+				if learnData.lead
+					p(class='section-intro__lead')= learnData.lead
+			if learnData.disciplines && learnData.disciplines.length
+				ul(class='learn__disciplines' aria-label=learnData.disciplinesLabel)
+					each discipline in learnData.disciplines
+						li(class='learn__discipline')
+							span(class='learn__discipline-name')= discipline.name
+			if learnData.note
+				p(class='learn__note')= learnData.note
+			ul(class='learn__offerings')
+				each offering in learnData.offerings
+					li(class='learn__offering')
+						article(class='learn__card')
+							h3(class='learn__card-title')= offering.title
+							p(class='learn__card-text')= offering.text
+			if learnData.cta
+				a(class='btn btn--outline learn__cta' href=learnData.cta.href)= learnData.cta.label

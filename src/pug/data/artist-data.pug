@@ -1,0 +1,43 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const artistContent = {
+		es: {
+			id: 'artista',
+			eyebrow: 'Artista',
+			title: 'Música que conecta, en el escenario y más allá.',
+			lead: 'Cantante, guitarrista y pianista. Presentaciones en vivo, repertorio versátil y una presencia pensada para el momento.',
+			highlights: [
+				'Presentaciones en vivo con presencia y calidez',
+				'Repertorio versátil en español e inglés',
+				'Música original y colaboraciones artísticas'
+			],
+			cta: {
+				label: 'Conoce mi música',
+				href: '#videos'
+			},
+			imageSrc: './images/fotos/foto_2.jpg',
+			imageAlt: 'Kike Estrada cantando en un escenario iluminado'
+		},
+		en: {
+			id: 'artist',
+			eyebrow: 'Artist',
+			title: 'Music that connects, on stage and beyond.',
+			lead: 'Singer, guitarist, and pianist. Live performances, a versatile repertoire, and a presence shaped for the moment.',
+			highlights: [
+				'Live performances with presence and warmth',
+				'Versatile repertoire in Spanish and English',
+				'Original music and artistic collaborations'
+			],
+			cta: {
+				label: 'Discover my music',
+				href: '#videos'
+			},
+			imageSrc: './images/fotos/foto_2.jpg',
+			imageAlt: 'Kike Estrada singing on a lit stage'
+		}
+	}
+
+	const artistData = artistContent[locale] || artistContent.es

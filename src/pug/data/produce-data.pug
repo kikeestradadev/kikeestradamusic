@@ -1,0 +1,75 @@
+-
+	if (typeof locale === 'undefined') {
+		locale = 'es'
+	}
+
+	const produceContent = {
+		es: {
+			id: 'produccion',
+			eyebrow: 'Productor',
+			title: 'Llevemos tu idea del primer acorde a una canción terminada.',
+			lead: 'Producción musical, arreglos y dirección con oído de escenario y criterio de estudio.',
+			note: 'Aquí habrá espacio para portafolio, créditos y testimonios reales de proyectos producidos.',
+			services: [
+				{
+					title: 'Producción musical',
+					text: 'Desarrollo de ideas, estructura y sonido para llevar un proyecto a una versión sólida.'
+				},
+				{
+					title: 'Arreglos',
+					text: 'Construcción armónica, rítmica y tímbrica al servicio de la canción y del artista.'
+				},
+				{
+					title: 'Dirección musical',
+					text: 'Criterio artístico para ensayos, presentaciones y sesiones de grabación.'
+				},
+				{
+					title: 'Colaboración con artistas',
+					text: 'Acompañamiento cercano para proyectos originales, covers y desarrollo creativo.'
+				}
+			],
+			portfolioTitle: 'Proyectos y créditos',
+			portfolioNote: 'Pendiente: añadir canciones, créditos y enlaces de proyectos producidos.',
+			cta: {
+				label: 'Hablemos de tu proyecto',
+				href: '#contacto-produccion'
+			},
+			imageSrc: './images/fotos_studio/studio_1.jpg',
+			imageAlt: 'Ambiente de estudio para producción musical'
+		},
+		en: {
+			id: 'production',
+			eyebrow: 'Producer',
+			title: 'Let\'s take your idea from the first chord to a finished song.',
+			lead: 'Music production, arrangements, and direction with a stage ear and studio judgment.',
+			note: 'This section will host portfolio pieces, credits, and real testimonials from produced projects.',
+			services: [
+				{
+					title: 'Music production',
+					text: 'Developing ideas, structure, and sound to bring a project to a solid version.'
+				},
+				{
+					title: 'Arrangements',
+					text: 'Harmonic, rhythmic, and timbral craft in service of the song and the artist.'
+				},
+				{
+					title: 'Musical direction',
+					text: 'Artistic judgment for rehearsals, performances, and recording sessions.'
+				},
+				{
+					title: 'Artist collaboration',
+					text: 'Close partnership for original projects, covers, and creative development.'
+				}
+			],
+			portfolioTitle: 'Projects and credits',
+			portfolioNote: 'Pending: add songs, credits, and links from produced projects.',
+			cta: {
+				label: 'Talk about your project',
+				href: '#contact-production'
+			},
+			imageSrc: './images/fotos_studio/studio_1.jpg',
+			imageAlt: 'Studio environment for music production'
+		}
+	}
+
+	const produceData = produceContent[locale] || produceContent.es

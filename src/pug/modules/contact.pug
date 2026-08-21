@@ -1,12 +1,25 @@
 include ../data/contact-data
 
-section(class='contact' id=contactData.id)
+section(class='contact reveal' id=contactData.id)
 	div(class='container contact__container')
 		header(class='section-intro contact__intro')
 			h2(class='section-intro__title')= contactData.title
 			span(class='section-intro__line')
 			if contactData.lead
 				p(class='section-intro__lead')= contactData.lead
+		if contactData.options && contactData.options.length
+			p(class='contact__options-label')= contactData.optionsLabel
+			ul(class='contact__options')
+				each option in contactData.options
+					li(class=`contact__option contact__option--${option.key}` id=option.id)
+						a(
+							class='contact__option-link'
+							href=option.href
+							target='_blank'
+							rel='noopener noreferrer'
+						)
+							span(class='contact__option-label')= option.label
+							span(class='contact__option-text')= option.text
 		a(
 			class='btn btn--primary contact__cta'
 			href=contactData.primaryCta.href
