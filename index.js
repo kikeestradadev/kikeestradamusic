@@ -23,8 +23,8 @@
       }
       const toggle = root.querySelector(".main-menu__toggle");
       const links = root.querySelectorAll(".main-menu__link, .lang-toggle__option");
-      const openLabel = (toggle == null ? void 0 : toggle.dataset.labelOpen) || "Open menu";
-      const closeLabel = (toggle == null ? void 0 : toggle.dataset.labelClose) || "Close menu";
+      const openLabel = toggle?.dataset.labelOpen || "Open menu";
+      const closeLabel = toggle?.dataset.labelClose || "Close menu";
       const setOpen = (isOpen) => {
         root.classList.toggle("main-menu--open", isOpen);
         if (toggle) {
@@ -90,7 +90,7 @@
       };
       embeds.forEach((embed) => {
         const playButton = embed.querySelector(".featured-videos__play");
-        playButton == null ? void 0 : playButton.addEventListener("click", () => {
+        playButton?.addEventListener("click", () => {
           playEmbed(embed);
         });
       });
@@ -214,7 +214,10 @@
       }
       const slider = root.querySelector(".gallery__slider");
       const dialog = root.querySelector(".gallery__dialog");
+      const items = [...root.querySelectorAll(".gallery__item")];
       const triggers = [...root.querySelectorAll(".gallery__trigger")];
+      const filterButtons = [...root.querySelectorAll("[data-gallery-filter]")];
+      const emptyMessage = root.querySelector("[data-gallery-empty]");
       const image = root.querySelector("[data-gallery-image]");
       const placeholder = root.querySelector("[data-gallery-placeholder]");
       const caption = root.querySelector("[data-gallery-caption]");
@@ -231,7 +234,12 @@
       }
       let activeIndex = 0;
       let swiperInstance = null;
+      let activeFilter = "all";
       const isDesktop = () => desktopQuery.matches;
+      const getVisibleTriggers = () => triggers.filter((trigger) => {
+        const item = trigger.closest(".gallery__item");
+        return item && !item.classList.contains("is-filtered-out");
+      });
       const getItem = (index) => {
         const trigger = triggers[index];
         if (!trigger) {
@@ -288,11 +296,17 @@
           dialog.setAttribute("open", "");
         }
         document.body.style.overflow = "hidden";
-        closeButton == null ? void 0 : closeButton.focus();
+        closeButton?.focus();
       };
       const showRelative = (offset) => {
-        const nextIndex = (activeIndex + offset + triggers.length) % triggers.length;
-        renderItem(nextIndex);
+        const visible = getVisibleTriggers();
+        if (!visible.length) {
+          return;
+        }
+        const currentVisibleIndex = visible.findIndex((trigger) => triggers.indexOf(trigger) === activeIndex);
+        const safeIndex = currentVisibleIndex >= 0 ? currentVisibleIndex : 0;
+        const nextVisible = visible[(safeIndex + offset + visible.length) % visible.length];
+        renderItem(triggers.indexOf(nextVisible));
       };
       const destroySlider = () => {
         if (!swiperInstance) {
@@ -303,9 +317,10 @@
         root.classList.remove("gallery--slider");
       };
       const initSlider = () => {
-        if (swiperInstance || typeof window.Swiper !== "function") {
+        if (typeof window.Swiper !== "function") {
           return;
         }
+        destroySlider();
         root.classList.add("gallery--slider");
         swiperInstance = new window.Swiper(slider, {
           slidesPerView: 1.15,
@@ -315,6 +330,8 @@
           rewind: false,
           grabCursor: true,
           watchOverflow: true,
+          observer: true,
+          observeParents: true,
           pagination: pagination ? {
             el: pagination,
             clickable: true
@@ -336,6 +353,44 @@
           }
         });
       };
+      const applyFilter = (filterKey) => {
+        activeFilter = filterKey;
+        let visibleCount = 0;
+        items.forEach((item) => {
+          const category = item.dataset.galleryCategory || "stage";
+          const isVisible = filterKey === "all" || category === filterKey;
+          item.classList.toggle("is-filtered-out", !isVisible);
+          if (isVisible) {
+            visibleCount += 1;
+          }
+        });
+        filterButtons.forEach((button) => {
+          const isActive = button.dataset.galleryFilter === filterKey;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+        if (emptyMessage) {
+          emptyMessage.hidden = visibleCount > 0;
+        }
+        if (slider) {
+          slider.hidden = visibleCount === 0;
+        }
+        if (pagination) {
+          pagination.hidden = visibleCount === 0;
+        }
+        if (prevNav) {
+          prevNav.hidden = visibleCount === 0;
+        }
+        if (nextNav) {
+          nextNav.hidden = visibleCount === 0;
+        }
+        closeDialog();
+        if (!isDesktop() && visibleCount > 0) {
+          initSlider();
+        } else {
+          destroySlider();
+        }
+      };
       const syncMode = () => {
         if (isDesktop()) {
           destroySlider();
@@ -348,27 +403,38 @@
         triggers.forEach((trigger) => {
           trigger.removeAttribute("aria-haspopup");
         });
-        initSlider();
+        if (getVisibleTriggers().length) {
+          initSlider();
+        }
       };
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          applyFilter(button.dataset.galleryFilter || "all");
+        });
+      });
       triggers.forEach((trigger, index) => {
         trigger.addEventListener("click", (event) => {
           if (!isDesktop()) {
             event.preventDefault();
             return;
           }
+          const item = trigger.closest(".gallery__item");
+          if (item?.classList.contains("is-filtered-out")) {
+            return;
+          }
           openAt(index);
         });
       });
-      closeButton == null ? void 0 : closeButton.addEventListener("click", () => {
+      closeButton?.addEventListener("click", () => {
         closeDialog();
       });
-      prevButton == null ? void 0 : prevButton.addEventListener("click", () => {
+      prevButton?.addEventListener("click", () => {
         if (!isDesktop()) {
           return;
         }
         showRelative(-1);
       });
-      nextButton == null ? void 0 : nextButton.addEventListener("click", () => {
+      nextButton?.addEventListener("click", () => {
         if (!isDesktop()) {
           return;
         }
@@ -402,6 +468,7 @@
       } else if (typeof desktopQuery.addListener === "function") {
         desktopQuery.addListener(syncMode);
       }
+      applyFilter(activeFilter);
       syncMode();
       root.dataset.galleryReady = "true";
     });
@@ -442,6 +509,54 @@
   };
   var floatingButton_default = floatingButton;
 
+  // src/js/modules/reveal.js
+  var reveal = () => {
+    const roots = document.querySelectorAll(".reveal");
+    if (!roots.length) {
+      return;
+    }
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const showAll = () => {
+      roots.forEach((root) => {
+        root.classList.add("is-visible");
+      });
+    };
+    if (reduceMotion.matches || typeof window.IntersectionObserver !== "function") {
+      showAll();
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.12
+      }
+    );
+    roots.forEach((root) => {
+      observer.observe(root);
+    });
+    const onMotionPreferenceChange = (event) => {
+      if (event.matches) {
+        observer.disconnect();
+        showAll();
+      }
+    };
+    if (typeof reduceMotion.addEventListener === "function") {
+      reduceMotion.addEventListener("change", onMotionPreferenceChange);
+    } else if (typeof reduceMotion.addListener === "function") {
+      reduceMotion.addListener(onMotionPreferenceChange);
+    }
+  };
+  var reveal_default = reveal;
+
   // src/js/index.js
   var initComponents = () => {
     coreModule_default();
@@ -451,7 +566,7 @@
     reviews_default();
     gallery_default();
     floatingButton_default();
+    reveal_default();
   };
   document.addEventListener("DOMContentLoaded", initComponents);
 })();
-//# sourceMappingURL=index.js.map
