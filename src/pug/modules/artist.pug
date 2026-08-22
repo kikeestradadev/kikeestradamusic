@@ -1,4 +1,5 @@
 include ../data/artist-data
+include thumbs-gallery
 
 section(class='artist reveal' id=artistData.id)
 	div(class='container artist__container')
@@ -16,5 +17,9 @@ section(class='artist reveal' id=artistData.id)
 				a(class='btn btn--outline artist__cta' href=artistData.cta.href)= artistData.cta.label
 		div(class='artist__media')
 			div(class='artist__photo')
-				if artistData.imageSrc
-					img(class='artist__image' src=artistData.imageSrc alt=artistData.imageAlt || artistData.title loading='lazy')
+				+thumbsGallery({
+					label: artistData.galleryLabel,
+					prevLabel: artistData.galleryPrevLabel,
+					nextLabel: artistData.galleryNextLabel,
+					items: artistData.gallery
+				})

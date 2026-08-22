@@ -10,8 +10,9 @@ section(class='hero' id=heroData.id)
 	div(class='hero__watermark' aria-hidden='true')= heroData.watermark
 	div(class='container hero__container')
 		p(class='hero__eyebrow')= heroData.eyebrow
-		p(class='hero__brand')= heroData.brand
-		h1(class='hero__title')= heroData.title
+		h1(class='hero__brand')= heroData.brand
+		if heroData.title
+			p(class='hero__title')= heroData.title
 		if heroData.text
 			p(class='hero__text')= heroData.text
 		if heroData.primaryCta || heroData.secondaryCta

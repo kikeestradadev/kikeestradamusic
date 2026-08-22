@@ -18,20 +18,48 @@ const produce = () => {
 		const pagination = root.querySelector('.produce__pagination');
 		const items = [...root.querySelectorAll('.produce__item')];
 		const filterButtons = [...root.querySelectorAll('[data-produce-filter]')];
+		const filtersSlider = root.querySelector('.produce__filters');
+		const filtersPrevNav = root.querySelector('.produce__filters-nav--prev');
+		const filtersNextNav = root.querySelector('.produce__filters-nav--next');
 		const desktopQuery = window.matchMedia(DESKTOP_MQ);
 
 		if (!dialog || !frame || !slider || !triggers.length) {
+			root.dataset.produceReady = 'true';
 			return;
 		}
 
 		let lastTrigger = null;
 		let swiperInstance = null;
+		let filtersSwiper = null;
 		let activeFilter = filterButtons[0]?.dataset.produceFilter || 'productions';
 
 		const isDesktop = () => desktopQuery.matches;
 
 		const clearFrame = () => {
 			frame.replaceChildren();
+		};
+
+		const initFiltersSlider = () => {
+			if (
+				typeof window.Swiper !== 'function' ||
+				!filtersSlider ||
+				filtersSwiper ||
+				!filterButtons.length
+			) {
+				return;
+			}
+
+			filtersSwiper = new window.Swiper(filtersSlider, {
+				slidesPerView: 'auto',
+				spaceBetween: 10,
+				watchOverflow: true,
+				freeMode: true,
+				navigation: {
+					prevEl: filtersPrevNav,
+					nextEl: filtersNextNav,
+					disabledClass: 'swiper-button-disabled',
+				},
+			});
 		};
 
 		const closeDialog = () => {
@@ -257,6 +285,7 @@ const produce = () => {
 		}
 
 		applyFilter(activeFilter);
+		initFiltersSlider();
 		root.dataset.produceReady = 'true';
 	});
 };

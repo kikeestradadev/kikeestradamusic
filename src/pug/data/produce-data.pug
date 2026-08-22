@@ -130,6 +130,8 @@
 			portfolioTitle: 'Producciones seleccionadas',
 			portfolioLead: 'Canciones, proyectos audiovisuales y trabajos comerciales desarrollados desde el arreglo, la producción y la dirección musical.',
 			filterLabel: 'Filtrar producciones',
+			filtersPrevLabel: 'Categorías anteriores',
+			filtersNextLabel: 'Categorías siguientes',
 			playLabel: 'Reproducir',
 			closeLabel: 'Cerrar video',
 			dialogLabel: 'Reproductor de video',
@@ -158,8 +160,9 @@
 				label: 'Hablemos de tu proyecto',
 				href: '#contacto-produccion'
 			},
-			imageSrc: './images/fotos_studio/studio_1.jpg',
-			imageAlt: 'Ambiente de estudio para producción musical'
+			galleryLabel: 'Galería del estudio',
+			galleryPrevLabel: 'Imagen anterior',
+			galleryNextLabel: 'Imagen siguiente'
 		},
 		en: {
 			id: 'production',
@@ -187,6 +190,8 @@
 			portfolioTitle: 'Selected productions',
 			portfolioLead: 'Songs, audiovisual projects, and commercial work developed through arrangement, production, and musical direction.',
 			filterLabel: 'Filter productions',
+			filtersPrevLabel: 'Previous categories',
+			filtersNextLabel: 'Next categories',
 			playLabel: 'Play',
 			closeLabel: 'Close video',
 			dialogLabel: 'Video player',
@@ -215,13 +220,58 @@
 				label: 'Talk about your project',
 				href: '#contact-production'
 			},
-			imageSrc: './images/fotos_studio/studio_1.jpg',
-			imageAlt: 'Studio environment for music production'
+			galleryLabel: 'Studio gallery',
+			galleryPrevLabel: 'Previous image',
+			galleryNextLabel: 'Next image'
 		}
 	}
+
+	var produceStudioGallery = [
+		{
+			src: './images/fotos_studio/studio_4.jpeg',
+			alt: {
+				es: 'Sesión de estudio de producción musical',
+				en: 'Music production studio session'
+			}
+		},
+		{
+			src: './images/fotos_studio/studio_5.jpeg',
+			alt: {
+				es: 'Detalle del estudio de grabación',
+				en: 'Recording studio detail'
+			}
+		},
+		{
+			src: './images/fotos_studio/studio_6.jpeg',
+			alt: {
+				es: 'Espacio de estudio para producción',
+				en: 'Studio space for production'
+			}
+		},
+		{
+			src: './images/fotos_studio/studio_7.jpeg',
+			alt: {
+				es: 'Ambiente de trabajo en el estudio',
+				en: 'Working environment in the studio'
+			}
+		},
+		{
+			src: './images/fotos_studio/studio_8.jpeg',
+			alt: {
+				es: 'Producción musical en el estudio',
+				en: 'Music production in the studio'
+			}
+		}
+	]
 
 	var produceLocale = produceContent[locale] || produceContent.es
 	produceLocale.items = mapProduceVideos(produceVideoCatalog, produceLocale)
 	produceLocale.defaultFilter = 'productions'
+	produceLocale.gallery = produceStudioGallery.map(function (item) {
+		return {
+			src: item.src,
+			alt: item.alt[locale] || item.alt.es
+		}
+	})
 
 	var produceData = produceLocale

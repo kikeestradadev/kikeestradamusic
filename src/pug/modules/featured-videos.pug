@@ -7,40 +7,31 @@ section(class='featured-videos reveal' id=featuredVideosData.id)
 			span(class='section-intro__line')
 			if featuredVideosData.lead
 				p(class='section-intro__lead')= featuredVideosData.lead
-		div(class='featured-videos__slider swiper')
-			ul(class='featured-videos__grid swiper-wrapper')
-				each item in featuredVideosData.items
-					li(class='featured-videos__item swiper-slide')
-						article(class='featured-videos__card')
-							div(
-								class='featured-videos__embed'
-								data-video-embed=item.embedUrl
-								data-video-title=item.title
+		div(class='featured-videos__duo')
+			each item in featuredVideosData.items
+				article(class=`featured-videos__piece featured-videos__piece--${item.format}`)
+					div(
+						class='featured-videos__embed'
+						data-video-embed=item.embedUrl
+						data-video-title=item.title
+					)
+						button(
+							class='featured-videos__play'
+							type='button'
+							aria-label=`${featuredVideosData.playLabel}: ${item.title}`
+						)
+							img(
+								class='featured-videos__thumb'
+								src=item.thumb
+								alt=''
+								loading='lazy'
+								decoding='async'
 							)
-								button(
-									class='featured-videos__play'
-									type='button'
-									aria-label=`${featuredVideosData.playLabel} ${item.title}`
-								)
-									img(
-										class='featured-videos__thumb'
-										src=item.thumb
-										alt=''
-										loading='lazy'
-									)
-									span(class='featured-videos__play-icon' aria-hidden='true')
-							h3(class='featured-videos__title')
-								a(class='featured-videos__link' href=item.watchUrl target='_blank' rel='noopener noreferrer')= item.title
-			button(
-				class='featured-videos__nav featured-videos__nav--prev'
-				type='button'
-				aria-label=featuredVideosData.prevLabel
-			)
-				span(class='featured-videos__nav-icon' aria-hidden='true') ‹
-			button(
-				class='featured-videos__nav featured-videos__nav--next'
-				type='button'
-				aria-label=featuredVideosData.nextLabel
-			)
-				span(class='featured-videos__nav-icon' aria-hidden='true') ›
-		div(class='featured-videos__pagination swiper-pagination')
+							span(class='featured-videos__play-icon' aria-hidden='true')
+					h3(class='featured-videos__title')
+						a(
+							class='featured-videos__link'
+							href=item.watchUrl
+							target='_blank'
+							rel='noopener noreferrer'
+						)= item.title

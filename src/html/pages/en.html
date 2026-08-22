@@ -39,7 +39,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/prism.css">
-    <link rel="stylesheet" href="styles.css?v=1.0.51">
+    <link rel="stylesheet" href="styles.css?v=1.0.61">
   </head>
   <body class="home locale-en" itemscope itemtype="http://schema.org/WebPage">
     <header class="main-header">
@@ -49,8 +49,8 @@
             <ul class="main-menu__list">
               <li class="main-menu__item"><a class="main-menu__link" href="#home">Home</a></li>
               <li class="main-menu__item"><a class="main-menu__link" href="#artist">Artist</a></li>
-              <li class="main-menu__item"><a class="main-menu__link" href="#learn">Learn</a></li>
-              <li class="main-menu__item"><a class="main-menu__link" href="#production">Production</a></li>
+              <li class="main-menu__item"><a class="main-menu__link" href="#learn">Teacher</a></li>
+              <li class="main-menu__item"><a class="main-menu__link" href="#production">Producer</a></li>
               <li class="main-menu__item"><a class="main-menu__link" href="#about">About</a></li>
               <li class="main-menu__item"><a class="main-menu__link" href="#contact">Contact</a></li>
             </ul>
@@ -86,9 +86,8 @@
         <div class="hero__watermark" aria-hidden="true">Fortunero</div>
         <div class="container hero__container">
           <p class="hero__eyebrow">Artist · Teacher · Producer</p>
-          <p class="hero__brand">Kike Estrada</p>
-          <h1 class="hero__title">Music as craft, stage, and language.</h1>
-          <p class="hero__text">Kike Estrada creates, performs, produces, and shares music. A path built between the stage, the studio, and teaching.</p>
+          <h1 class="hero__brand">Kike Estrada</h1>
+          <p class="hero__text">Creates, performs, produces, and shares music. A path built between the stage, the studio, and teaching.</p>
           <div class="hero__actions"><a class="btn btn--primary hero__cta" href="#artist">Explore my music</a><a class="btn btn--outline hero__cta" href="#contact">Let's work together</a>
           </div>
           <nav class="hero__paths" aria-label="Explore areas"><a class="hero__path" href="#artist">Artist</a><a class="hero__path" href="#learn">Learn</a><a class="hero__path" href="#production">Production</a>
@@ -156,7 +155,37 @@
             </ul><a class="btn btn--outline artist__cta" href="#videos">Discover my music</a>
           </div>
           <div class="artist__media">
-            <div class="artist__photo"><img class="artist__image" src="./assets/kikeguitar.jpg" alt="Kike Estrada playing guitar on stage" loading="lazy">
+            <div class="artist__photo">
+                    <div class="thumbs-gallery" aria-label="Artist gallery">
+                      <div class="thumbs-gallery__main swiper">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/Amauri_Guitierrez.JPG" alt="Live performance" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/Broadway.JPG" alt="Stage performance" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/grupo_skala.jpg" alt="Artistic collaboration" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/presidente_laura_chinchilla.JPG" alt="Special performance" loading="lazy" decoding="async"></div>
+                        </div>
+                      </div>
+                      <div class="thumbs-gallery__thumbs-shell">
+                              <button class="thumbs-gallery__nav thumbs-gallery__nav--prev" type="button" aria-label="Previous image">
+                                <svg class="slider-nav__icon slider-nav__icon--prev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                  <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                                </svg>
+                              </button>
+                        <div class="thumbs-gallery__thumbs swiper">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_artista/Amauri_Guitierrez.JPG" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_artista/Broadway.JPG" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_artista/grupo_skala.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_artista/presidente_laura_chinchilla.JPG" alt="" loading="lazy" decoding="async"></div>
+                          </div>
+                        </div>
+                              <button class="thumbs-gallery__nav thumbs-gallery__nav--next" type="button" aria-label="Next image">
+                                <svg class="slider-nav__icon slider-nav__icon--next" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                  <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                                </svg>
+                              </button>
+                      </div>
+                    </div>
             </div>
           </div>
         </div>
@@ -207,70 +236,63 @@
       <section class="featured-videos reveal" id="videos">
         <div class="container featured-videos__container">
           <header class="section-intro featured-videos__intro">
-            <h2 class="section-intro__title">Featured videos</h2><span class="section-intro__line"></span>
-            <p class="section-intro__lead">Live performances that show the range of the stage.</p>
+            <h2 class="section-intro__title">On stage</h2><span class="section-intro__line"></span>
+            <p class="section-intro__lead">A short format and a live performance to experience the music up close.</p>
           </header>
-          <div class="featured-videos__slider swiper">
-            <ul class="featured-videos__grid swiper-wrapper">
-              <li class="featured-videos__item swiper-slide">
-                <article class="featured-videos__card">
-                  <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/94700JW2-c0" data-video-title="Crazy Little Thing Called Love">
-                    <button class="featured-videos__play" type="button" aria-label="Play Crazy Little Thing Called Love"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/94700JW2-c0/hqdefault.jpg" alt="" loading="lazy"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
-                  </div>
-                  <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/watch?v=94700JW2-c0" target="_blank" rel="noopener noreferrer">Crazy Little Thing Called Love</a></h3>
-                </article>
-              </li>
-              <li class="featured-videos__item swiper-slide">
-                <article class="featured-videos__card">
-                  <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/aRDLAtOBI4Y" data-video-title="Vereda Tropical">
-                    <button class="featured-videos__play" type="button" aria-label="Play Vereda Tropical"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/aRDLAtOBI4Y/hqdefault.jpg" alt="" loading="lazy"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
-                  </div>
-                  <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/watch?v=aRDLAtOBI4Y" target="_blank" rel="noopener noreferrer">Vereda Tropical</a></h3>
-                </article>
-              </li>
-              <li class="featured-videos__item swiper-slide">
-                <article class="featured-videos__card">
-                  <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/oc6w9WeGe7I" data-video-title="La Travesía">
-                    <button class="featured-videos__play" type="button" aria-label="Play La Travesía"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/oc6w9WeGe7I/hqdefault.jpg" alt="" loading="lazy"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
-                  </div>
-                  <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/watch?v=oc6w9WeGe7I" target="_blank" rel="noopener noreferrer">La Travesía</a></h3>
-                </article>
-              </li>
-              <li class="featured-videos__item swiper-slide">
-                <article class="featured-videos__card">
-                  <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/Qeq0pSV8seQ" data-video-title="Amor De La Calle">
-                    <button class="featured-videos__play" type="button" aria-label="Play Amor De La Calle"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/Qeq0pSV8seQ/hqdefault.jpg" alt="" loading="lazy"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
-                  </div>
-                  <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/watch?v=Qeq0pSV8seQ" target="_blank" rel="noopener noreferrer">Amor De La Calle</a></h3>
-                </article>
-              </li>
-              <li class="featured-videos__item swiper-slide">
-                <article class="featured-videos__card">
-                  <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/YeyQ8y06TTY" data-video-title="Idilio">
-                    <button class="featured-videos__play" type="button" aria-label="Play Idilio"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/YeyQ8y06TTY/hqdefault.jpg" alt="" loading="lazy"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
-                  </div>
-                  <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/watch?v=YeyQ8y06TTY" target="_blank" rel="noopener noreferrer">Idilio</a></h3>
-                </article>
-              </li>
-              <li class="featured-videos__item swiper-slide">
-                <article class="featured-videos__card">
-                  <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/pAmzELC5aJY" data-video-title="Frío Frío">
-                    <button class="featured-videos__play" type="button" aria-label="Play Frío Frío"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/pAmzELC5aJY/hqdefault.jpg" alt="" loading="lazy"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
-                  </div>
-                  <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/watch?v=pAmzELC5aJY" target="_blank" rel="noopener noreferrer">Frío Frío</a></h3>
-                </article>
-              </li>
-            </ul>
-            <button class="featured-videos__nav featured-videos__nav--prev" type="button" aria-label="Previous video"><span class="featured-videos__nav-icon" aria-hidden="true">‹</span></button>
-            <button class="featured-videos__nav featured-videos__nav--next" type="button" aria-label="Next video"><span class="featured-videos__nav-icon" aria-hidden="true">›</span></button>
+          <div class="featured-videos__duo">
+            <article class="featured-videos__piece featured-videos__piece--short">
+              <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/5X_7R5TK0rM" data-video-title="Short format">
+                <button class="featured-videos__play" type="button" aria-label="Play: Short format"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/5X_7R5TK0rM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
+              </div>
+              <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/shorts/5X_7R5TK0rM" target="_blank" rel="noopener noreferrer">Short format</a></h3>
+            </article>
+            <article class="featured-videos__piece featured-videos__piece--landscape">
+              <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/eGkO4sAnKbM" data-video-title="Live performance">
+                <button class="featured-videos__play" type="button" aria-label="Play: Live performance"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/eGkO4sAnKbM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
+              </div>
+              <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/watch?v=eGkO4sAnKbM" target="_blank" rel="noopener noreferrer">Live performance</a></h3>
+            </article>
           </div>
-          <div class="featured-videos__pagination swiper-pagination"></div>
         </div>
       </section>
       <section class="learn reveal" id="learn">
         <div class="container learn__container">
           <div class="learn__media">
-            <div class="learn__photo"><img class="learn__image" src="./images/fotos_studio/studio_3.jpg" alt="Music studio space for teaching and practice" loading="lazy">
+            <div class="learn__photo">
+                    <div class="thumbs-gallery" aria-label="Teacher gallery">
+                      <div class="thumbs-gallery__main swiper">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_1.jpg" alt="Music lesson" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_2.jpg" alt="Music teaching" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_3.jpg" alt="Practice with a student" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_4.jpg" alt="Learning session" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_5.jpg" alt="Teaching space" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_6.jpg" alt="Musical guidance" loading="lazy" decoding="async"></div>
+                        </div>
+                      </div>
+                      <div class="thumbs-gallery__thumbs-shell">
+                              <button class="thumbs-gallery__nav thumbs-gallery__nav--prev" type="button" aria-label="Previous image">
+                                <svg class="slider-nav__icon slider-nav__icon--prev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                  <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                                </svg>
+                              </button>
+                        <div class="thumbs-gallery__thumbs swiper">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_1.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_2.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_3.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_4.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_5.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_6.jpg" alt="" loading="lazy" decoding="async"></div>
+                          </div>
+                        </div>
+                              <button class="thumbs-gallery__nav thumbs-gallery__nav--next" type="button" aria-label="Next image">
+                                <svg class="slider-nav__icon slider-nav__icon--next" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                  <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                                </svg>
+                              </button>
+                      </div>
+                    </div>
             </div>
           </div>
           <div class="learn__content">
@@ -352,7 +374,39 @@
               </ul>
             </div>
             <div class="produce__media">
-              <div class="produce__photo"><img class="produce__image" src="./images/fotos_studio/studio_1.jpg" alt="Studio environment for music production" loading="lazy">
+              <div class="produce__photo">
+                      <div class="thumbs-gallery" aria-label="Studio gallery">
+                        <div class="thumbs-gallery__main swiper">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_4.jpeg" alt="Music production studio session" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_5.jpeg" alt="Recording studio detail" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_6.jpeg" alt="Studio space for production" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_7.jpeg" alt="Working environment in the studio" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_8.jpeg" alt="Music production in the studio" loading="lazy" decoding="async"></div>
+                          </div>
+                        </div>
+                        <div class="thumbs-gallery__thumbs-shell">
+                                <button class="thumbs-gallery__nav thumbs-gallery__nav--prev" type="button" aria-label="Previous image">
+                                  <svg class="slider-nav__icon slider-nav__icon--prev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                    <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                                  </svg>
+                                </button>
+                          <div class="thumbs-gallery__thumbs swiper">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_studio/studio_4.jpeg" alt="" loading="lazy" decoding="async"></div>
+                              <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_studio/studio_5.jpeg" alt="" loading="lazy" decoding="async"></div>
+                              <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_studio/studio_6.jpeg" alt="" loading="lazy" decoding="async"></div>
+                              <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_studio/studio_7.jpeg" alt="" loading="lazy" decoding="async"></div>
+                              <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_studio/studio_8.jpeg" alt="" loading="lazy" decoding="async"></div>
+                            </div>
+                          </div>
+                                <button class="thumbs-gallery__nav thumbs-gallery__nav--next" type="button" aria-label="Next image">
+                                  <svg class="slider-nav__icon slider-nav__icon--next" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                                    <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                                  </svg>
+                                </button>
+                        </div>
+                      </div>
               </div>
             </div>
           </div>
@@ -361,10 +415,30 @@
               <h3 class="produce__portfolio-title">Selected productions</h3>
               <p class="produce__portfolio-lead">Songs, audiovisual projects, and commercial work developed through arrangement, production, and musical direction.</p>
             </header>
-            <div class="produce__filters" role="group" aria-label="Filter productions">
-              <button class="produce__filter is-active" type="button" data-produce-filter="productions" aria-pressed="true">Productions</button>
-              <button class="produce__filter" type="button" data-produce-filter="documentaries" aria-pressed="false">Documentaries</button>
-              <button class="produce__filter" type="button" data-produce-filter="commercial" aria-pressed="false">Commercial</button>
+            <div class="produce__filters-shell" aria-label="Filter productions">
+                    <button class="produce__filters-nav produce__filters-nav--prev" type="button" aria-label="Previous categories">
+                      <svg class="slider-nav__icon slider-nav__icon--prev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                        <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                      </svg>
+                    </button>
+              <div class="produce__filters swiper">
+                <div class="produce__filters-track swiper-wrapper">
+                  <div class="produce__filters-slide swiper-slide">
+                    <button class="produce__filter is-active" type="button" data-produce-filter="productions" aria-pressed="true">Productions</button>
+                  </div>
+                  <div class="produce__filters-slide swiper-slide">
+                    <button class="produce__filter" type="button" data-produce-filter="documentaries" aria-pressed="false">Documentaries</button>
+                  </div>
+                  <div class="produce__filters-slide swiper-slide">
+                    <button class="produce__filter" type="button" data-produce-filter="commercial" aria-pressed="false">Commercial</button>
+                  </div>
+                </div>
+              </div>
+                    <button class="produce__filters-nav produce__filters-nav--next" type="button" aria-label="Next categories">
+                      <svg class="slider-nav__icon slider-nav__icon--next" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                        <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                      </svg>
+                    </button>
             </div>
             <div class="produce__slider swiper">
               <ul class="produce__grid swiper-wrapper">
@@ -486,8 +560,16 @@
                   </article>
                 </li>
               </ul>
-              <button class="produce__nav produce__nav--prev" type="button" aria-label="Previous video"><span class="produce__nav-icon" aria-hidden="true">‹</span></button>
-              <button class="produce__nav produce__nav--next" type="button" aria-label="Next video"><span class="produce__nav-icon" aria-hidden="true">›</span></button>
+                    <button class="produce__nav produce__nav--prev" type="button" aria-label="Previous video">
+                      <svg class="slider-nav__icon slider-nav__icon--prev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                        <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                      </svg>
+                    </button>
+                    <button class="produce__nav produce__nav--next" type="button" aria-label="Next video">
+                      <svg class="slider-nav__icon slider-nav__icon--next" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                        <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                      </svg>
+                    </button>
             </div>
             <div class="produce__pagination swiper-pagination"></div><a class="btn btn--outline produce__cta" href="#contact-production">Talk about your project</a>
           </div>
@@ -578,8 +660,16 @@
                 </figure>
               </li>
             </ul>
-            <button class="reviews__nav reviews__nav--prev" type="button" aria-label="Previous review"><span class="reviews__nav-icon" aria-hidden="true">‹</span></button>
-            <button class="reviews__nav reviews__nav--next" type="button" aria-label="Next review"><span class="reviews__nav-icon" aria-hidden="true">›</span></button>
+                  <button class="reviews__nav reviews__nav--prev" type="button" aria-label="Previous review">
+                    <svg class="slider-nav__icon slider-nav__icon--prev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                      <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    </svg>
+                  </button>
+                  <button class="reviews__nav reviews__nav--next" type="button" aria-label="Next review">
+                    <svg class="slider-nav__icon slider-nav__icon--next" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                      <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    </svg>
+                  </button>
           </div>
           <div class="reviews__pagination swiper-pagination"></div>
         </div>
@@ -613,110 +703,6 @@
             <li class="trajectory__collaboration">Orquesta 506</li>
             <li class="trajectory__collaboration">Grupo Fase Alterna</li>
           </ul>
-        </div>
-      </section>
-      <section class="gallery reveal" id="gallery">
-        <div class="container gallery__container">
-          <header class="section-intro gallery__intro">
-            <h2 class="section-intro__title">Gallery</h2><span class="section-intro__line"></span>
-            <p class="section-intro__lead">Stage, studio, and teaching: moments from one musical life.</p>
-          </header>
-          <div class="gallery__filters" role="group" aria-label="Filter gallery">
-            <button class="gallery__filter is-active" type="button" data-gallery-filter="all" aria-pressed="true">All</button>
-            <button class="gallery__filter" type="button" data-gallery-filter="stage" aria-pressed="false">Stage</button>
-            <button class="gallery__filter" type="button" data-gallery-filter="studio" aria-pressed="false">Studio</button>
-            <button class="gallery__filter" type="button" data-gallery-filter="teach" aria-pressed="false">Teaching</button>
-          </div>
-          <p class="gallery__empty" data-gallery-empty hidden>Images from this area will appear here soon.</p>
-          <div class="gallery__slider swiper">
-            <ul class="gallery__grid swiper-wrapper">
-              <li class="gallery__item gallery__item--mid swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="0" data-gallery-label="Wedding" data-gallery-tone="mid" data-gallery-src="./images/fotos_artista/boda7.jpg" data-gallery-alt="Kike Estrada singing with his band at a wedding" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_artista/boda7.jpg" alt="Kike Estrada singing with his band at a wedding" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--light swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="1" data-gallery-label="Private celebration" data-gallery-tone="light" data-gallery-src="./images/fotos_artista/boda1.jpg" data-gallery-alt="Kike Estrada and band at a private event" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_artista/boda1.jpg" alt="Kike Estrada and band at a private event" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--dark swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="2" data-gallery-label="On stage" data-gallery-tone="dark" data-gallery-src="./images/fotos/foto_2.jpg" data-gallery-alt="Kike Estrada singing on a lit stage" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos/foto_2.jpg" alt="Kike Estrada singing on a lit stage" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--mid swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="3" data-gallery-label="Live night" data-gallery-tone="mid" data-gallery-src="./images/fotos_artista/rumba jam.jpg" data-gallery-alt="Kike Estrada on stage with a horn band" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_artista/rumba jam.jpg" alt="Kike Estrada on stage with a horn band" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--dark swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="4" data-gallery-label="Bar and hotel" data-gallery-tone="dark" data-gallery-src="./images/fotos_artista/Jazz_cafe.JPG" data-gallery-alt="Kike Estrada at the piano in a bar" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_artista/Jazz_cafe.JPG" alt="Kike Estrada at the piano in a bar" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--mid swiper-slide" data-gallery-category="studio">
-                <button class="gallery__trigger" type="button" data-gallery-index="5" data-gallery-label="Studio" data-gallery-tone="mid" data-gallery-src="./images/fotos_studio/studio_1.jpg" data-gallery-alt="Music studio environment" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_studio/studio_1.jpg" alt="Music studio environment" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--light swiper-slide" data-gallery-category="studio">
-                <button class="gallery__trigger" type="button" data-gallery-index="6" data-gallery-label="Studio session" data-gallery-tone="light" data-gallery-src="./images/fotos_studio/studio_3.jpg" data-gallery-alt="Studio space for production and practice" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_studio/studio_3.jpg" alt="Studio space for production and practice" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--dark swiper-slide" data-gallery-category="studio">
-                <button class="gallery__trigger" type="button" data-gallery-index="7" data-gallery-label="Production" data-gallery-tone="dark" data-gallery-src="./images/fotos_studio/studio_5.jpeg" data-gallery-alt="Music production studio detail" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_studio/studio_5.jpeg" alt="Music production studio detail" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--light swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="8" data-gallery-label="Theater" data-gallery-tone="light" data-gallery-src="./images/fotos_artista/Broadway.JPG" data-gallery-alt="Kike Estrada singing in a theater" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_artista/Broadway.JPG" alt="Kike Estrada singing in a theater" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--mid swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="9" data-gallery-label="Live guitar" data-gallery-tone="mid" data-gallery-src="./images/fotos/foto_1.jpg" data-gallery-alt="Kike Estrada playing electric guitar live" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos/foto_1.jpg" alt="Kike Estrada playing electric guitar live" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--light swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="10" data-gallery-label="Event" data-gallery-tone="light" data-gallery-src="./images/fotos/foto_3.jpg" data-gallery-alt="Kike Estrada singing at an event with guests" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos/foto_3.jpg" alt="Kike Estrada singing at an event with guests" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-              <li class="gallery__item gallery__item--dark swiper-slide" data-gallery-category="stage">
-                <button class="gallery__trigger" type="button" data-gallery-index="11" data-gallery-label="Jam session" data-gallery-tone="dark" data-gallery-src="./images/fotos_artista/jam_session.JPG" data-gallery-alt="Kike Estrada in a jam session with other musicians" aria-haspopup="dialog" aria-controls="gallery-dialog">
-                  <figure class="gallery__figure"><img class="gallery__image" src="./images/fotos_artista/jam_session.JPG" alt="Kike Estrada in a jam session with other musicians" loading="lazy">
-                  </figure>
-                </button>
-              </li>
-            </ul>
-            <button class="gallery__nav gallery__nav--prev" type="button" aria-label="Previous image"><span class="gallery__nav-icon" aria-hidden="true">‹</span></button>
-            <button class="gallery__nav gallery__nav--next" type="button" aria-label="Next image"><span class="gallery__nav-icon" aria-hidden="true">›</span></button>
-          </div>
-          <div class="gallery__pagination swiper-pagination"></div>
-          <dialog class="gallery__dialog" id="gallery-dialog" aria-label="Gallery">
-            <div class="gallery__dialog-shell">
-              <button class="gallery__dialog-close" type="button" aria-label="Close gallery" data-gallery-close><span aria-hidden="true">×</span></button>
-              <button class="gallery__dialog-nav gallery__dialog-nav--prev" type="button" aria-label="Previous image" data-gallery-prev><span aria-hidden="true">‹</span></button>
-              <button class="gallery__dialog-nav gallery__dialog-nav--next" type="button" aria-label="Next image" data-gallery-next><span aria-hidden="true">›</span></button>
-              <figure class="gallery__dialog-figure" data-gallery-figure><img class="gallery__dialog-image" data-gallery-image alt="" hidden><span class="gallery__dialog-placeholder" data-gallery-placeholder></span>
-                <figcaption class="gallery__dialog-caption" data-gallery-caption></figcaption>
-              </figure>
-            </div>
-          </dialog>
         </div>
       </section>
       <section class="contact reveal" id="contact">
@@ -824,6 +810,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="index.js?v=1.0.51"></script>
+    <script src="index.js?v=1.0.61"></script>
   </body>
 </html>

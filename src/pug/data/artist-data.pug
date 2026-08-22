@@ -3,6 +3,37 @@
 		locale = 'es'
 	}
 
+	const artistGallery = [
+		{
+			src: './images/fotos_artista/Amauri_Guitierrez.JPG',
+			alt: {
+				es: 'Presentación en vivo',
+				en: 'Live performance'
+			}
+		},
+		{
+			src: './images/fotos_artista/Broadway.JPG',
+			alt: {
+				es: 'Presentación en escenario',
+				en: 'Stage performance'
+			}
+		},
+		{
+			src: './images/fotos_artista/grupo_skala.jpg',
+			alt: {
+				es: 'Colaboración artística',
+				en: 'Artistic collaboration'
+			}
+		},
+		{
+			src: './images/fotos_artista/presidente_laura_chinchilla.JPG',
+			alt: {
+				es: 'Presentación especial',
+				en: 'Special performance'
+			}
+		}
+	]
+
 	const artistContent = {
 		es: {
 			id: 'artista',
@@ -18,8 +49,9 @@
 				label: 'Conoce mi música',
 				href: '#videos'
 			},
-			imageSrc: './assets/kikeguitar.jpg',
-			imageAlt: 'Kike Estrada tocando guitarra en el escenario'
+			galleryLabel: 'Galería de artista',
+			galleryPrevLabel: 'Imagen anterior',
+			galleryNextLabel: 'Imagen siguiente'
 		},
 		en: {
 			id: 'artist',
@@ -35,9 +67,18 @@
 				label: 'Discover my music',
 				href: '#videos'
 			},
-			imageSrc: './assets/kikeguitar.jpg',
-			imageAlt: 'Kike Estrada playing guitar on stage'
+			galleryLabel: 'Artist gallery',
+			galleryPrevLabel: 'Previous image',
+			galleryNextLabel: 'Next image'
 		}
 	}
 
-	const artistData = artistContent[locale] || artistContent.es
+	const artistLocale = artistContent[locale] || artistContent.es
+	artistLocale.gallery = artistGallery.map(function (item) {
+		return {
+			src: item.src,
+			alt: item.alt[locale] || item.alt.es
+		}
+	})
+
+	const artistData = artistLocale

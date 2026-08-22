@@ -1,0 +1,33 @@
+//- Botón de navegación circular reutilizable (SVG centrado).
+mixin sliderNavButton(options)
+	button(
+		class=options.className
+		type='button'
+		aria-label=options.label
+	)
+		svg(
+			class=`slider-nav__icon slider-nav__icon--${options.dir === 'next' ? 'next' : 'prev'}`
+			viewBox='0 0 24 24'
+			width='18'
+			height='18'
+			aria-hidden='true'
+			focusable='false'
+		)
+			if options.dir === 'next'
+				polyline(
+					points='9 6 15 12 9 18'
+					fill='none'
+					stroke='currentColor'
+					stroke-width='2'
+					stroke-linecap='round'
+					stroke-linejoin='round'
+				)
+			else
+				polyline(
+					points='15 6 9 12 15 18'
+					fill='none'
+					stroke='currentColor'
+					stroke-width='2'
+					stroke-linecap='round'
+					stroke-linejoin='round'
+				)

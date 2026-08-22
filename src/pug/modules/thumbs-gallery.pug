@@ -1,0 +1,38 @@
+include slider-nav
+
+mixin thumbsGallery(data)
+	if data && data.items && data.items.length
+		div(class='thumbs-gallery' aria-label=data.label)
+			div(class='thumbs-gallery__main swiper')
+				div(class='swiper-wrapper')
+					each image in data.items
+						div(class='swiper-slide')
+							img(
+								class='thumbs-gallery__image'
+								src=image.src
+								alt=image.alt
+								loading='lazy'
+								decoding='async'
+							)
+			div(class='thumbs-gallery__thumbs-shell')
+				+sliderNavButton({
+					className: 'thumbs-gallery__nav thumbs-gallery__nav--prev',
+					label: data.prevLabel,
+					dir: 'prev'
+				})
+				div(class='thumbs-gallery__thumbs swiper')
+					div(class='swiper-wrapper')
+						each image in data.items
+							div(class='swiper-slide')
+								img(
+									class='thumbs-gallery__thumb'
+									src=image.src
+									alt=''
+									loading='lazy'
+									decoding='async'
+								)
+				+sliderNavButton({
+					className: 'thumbs-gallery__nav thumbs-gallery__nav--next',
+					label: data.nextLabel,
+					dir: 'next'
+				})

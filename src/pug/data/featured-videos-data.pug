@@ -5,68 +5,57 @@
 
 	var featuredVideosItems = [
 		{
-			id: '94700JW2-c0',
-			title: 'Crazy Little Thing Called Love',
-			thumb: 'https://i.ytimg.com/vi/94700JW2-c0/hqdefault.jpg',
-			embedUrl: 'https://www.youtube.com/embed/94700JW2-c0',
-			watchUrl: 'https://www.youtube.com/watch?v=94700JW2-c0'
+			id: '5X_7R5TK0rM',
+			format: 'short',
+			titleKey: 'short',
+			thumb: 'https://i.ytimg.com/vi/5X_7R5TK0rM/hqdefault.jpg',
+			embedUrl: 'https://www.youtube.com/embed/5X_7R5TK0rM',
+			watchUrl: 'https://www.youtube.com/shorts/5X_7R5TK0rM'
 		},
 		{
-			id: 'aRDLAtOBI4Y',
-			title: 'Vereda Tropical',
-			thumb: 'https://i.ytimg.com/vi/aRDLAtOBI4Y/hqdefault.jpg',
-			embedUrl: 'https://www.youtube.com/embed/aRDLAtOBI4Y',
-			watchUrl: 'https://www.youtube.com/watch?v=aRDLAtOBI4Y'
-		},
-		{
-			id: 'oc6w9WeGe7I',
-			title: 'La Travesía',
-			thumb: 'https://i.ytimg.com/vi/oc6w9WeGe7I/hqdefault.jpg',
-			embedUrl: 'https://www.youtube.com/embed/oc6w9WeGe7I',
-			watchUrl: 'https://www.youtube.com/watch?v=oc6w9WeGe7I'
-		},
-		{
-			id: 'Qeq0pSV8seQ',
-			title: 'Amor De La Calle',
-			thumb: 'https://i.ytimg.com/vi/Qeq0pSV8seQ/hqdefault.jpg',
-			embedUrl: 'https://www.youtube.com/embed/Qeq0pSV8seQ',
-			watchUrl: 'https://www.youtube.com/watch?v=Qeq0pSV8seQ'
-		},
-		{
-			id: 'YeyQ8y06TTY',
-			title: 'Idilio',
-			thumb: 'https://i.ytimg.com/vi/YeyQ8y06TTY/hqdefault.jpg',
-			embedUrl: 'https://www.youtube.com/embed/YeyQ8y06TTY',
-			watchUrl: 'https://www.youtube.com/watch?v=YeyQ8y06TTY'
-		},
-		{
-			id: 'pAmzELC5aJY',
-			title: 'Frío Frío',
-			thumb: 'https://i.ytimg.com/vi/pAmzELC5aJY/hqdefault.jpg',
-			embedUrl: 'https://www.youtube.com/embed/pAmzELC5aJY',
-			watchUrl: 'https://www.youtube.com/watch?v=pAmzELC5aJY'
+			id: 'eGkO4sAnKbM',
+			format: 'landscape',
+			titleKey: 'live',
+			thumb: 'https://i.ytimg.com/vi/eGkO4sAnKbM/hqdefault.jpg',
+			embedUrl: 'https://www.youtube.com/embed/eGkO4sAnKbM',
+			watchUrl: 'https://www.youtube.com/watch?v=eGkO4sAnKbM'
 		}
 	]
 
 	var featuredVideosContent = {
 		es: {
 			id: 'videos',
-			title: 'Videos destacados',
-			lead: 'Presentaciones en vivo que muestran la versatilidad del escenario.',
+			title: 'En el escenario',
+			lead: 'Un formato corto y una presentación en vivo para conocer la música de cerca.',
 			playLabel: 'Reproducir',
-			prevLabel: 'Video anterior',
-			nextLabel: 'Video siguiente',
-			items: featuredVideosItems
+			titles: {
+				short: 'Formato corto',
+				live: 'Presentación en vivo'
+			}
 		},
 		en: {
 			id: 'videos',
-			title: 'Featured videos',
-			lead: 'Live performances that show the range of the stage.',
+			title: 'On stage',
+			lead: 'A short format and a live performance to experience the music up close.',
 			playLabel: 'Play',
-			prevLabel: 'Previous video',
-			nextLabel: 'Next video',
-			items: featuredVideosItems
+			titles: {
+				short: 'Short format',
+				live: 'Live performance'
+			}
 		}
 	}
 
-	var featuredVideosData = featuredVideosContent[locale] || featuredVideosContent.es
+	var featuredVideosLocale = featuredVideosContent[locale] || featuredVideosContent.es
+
+	featuredVideosLocale.items = featuredVideosItems.map(function (item) {
+		return {
+			id: item.id,
+			format: item.format,
+			title: featuredVideosLocale.titles[item.titleKey] || featuredVideosLocale.titles.live,
+			thumb: item.thumb,
+			embedUrl: item.embedUrl,
+			watchUrl: item.watchUrl
+		}
+	})
+
+	var featuredVideosData = featuredVideosLocale

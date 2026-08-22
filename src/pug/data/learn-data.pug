@@ -3,6 +3,51 @@
 		locale = 'es'
 	}
 
+	const learnGallery = [
+		{
+			src: './images/fotos_profesor/profe_1.jpg',
+			alt: {
+				es: 'Clase de música',
+				en: 'Music lesson'
+			}
+		},
+		{
+			src: './images/fotos_profesor/profe_2.jpg',
+			alt: {
+				es: 'Enseñanza musical',
+				en: 'Music teaching'
+			}
+		},
+		{
+			src: './images/fotos_profesor/profe_3.jpg',
+			alt: {
+				es: 'Práctica con estudiante',
+				en: 'Practice with a student'
+			}
+		},
+		{
+			src: './images/fotos_profesor/profe_4.jpg',
+			alt: {
+				es: 'Sesión de aprendizaje',
+				en: 'Learning session'
+			}
+		},
+		{
+			src: './images/fotos_profesor/profe_5.jpg',
+			alt: {
+				es: 'Espacio de enseñanza',
+				en: 'Teaching space'
+			}
+		},
+		{
+			src: './images/fotos_profesor/profe_6.jpg',
+			alt: {
+				es: 'Acompañamiento musical',
+				en: 'Musical guidance'
+			}
+		}
+	]
+
 	const learnContent = {
 		es: {
 			id: 'aprende',
@@ -39,8 +84,9 @@
 				label: 'Aprender conmigo',
 				href: '#contacto-aprende'
 			},
-			imageSrc: './images/fotos_studio/studio_3.jpg',
-			imageAlt: 'Espacio de estudio musical para enseñanza y práctica'
+			galleryLabel: 'Galería de profesor',
+			galleryPrevLabel: 'Imagen anterior',
+			galleryNextLabel: 'Imagen siguiente'
 		},
 		en: {
 			id: 'learn',
@@ -77,9 +123,18 @@
 				label: 'Learn with me',
 				href: '#contact-learn'
 			},
-			imageSrc: './images/fotos_studio/studio_3.jpg',
-			imageAlt: 'Music studio space for teaching and practice'
+			galleryLabel: 'Teacher gallery',
+			galleryPrevLabel: 'Previous image',
+			galleryNextLabel: 'Next image'
 		}
 	}
 
-	const learnData = learnContent[locale] || learnContent.es
+	const learnLocale = learnContent[locale] || learnContent.es
+	learnLocale.gallery = learnGallery.map(function (item) {
+		return {
+			src: item.src,
+			alt: item.alt[locale] || item.alt.es
+		}
+	})
+
+	const learnData = learnLocale

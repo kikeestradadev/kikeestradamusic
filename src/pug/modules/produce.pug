@@ -1,4 +1,6 @@
 include ../data/produce-data
+include thumbs-gallery
+include slider-nav
 
 section(class='produce reveal' id=produceData.id)
 	div(class='container produce__container')
@@ -18,22 +20,39 @@ section(class='produce reveal' id=produceData.id)
 								p(class='produce__card-text')= service.text
 			div(class='produce__media')
 				div(class='produce__photo')
-					if produceData.imageSrc
-						img(class='produce__image' src=produceData.imageSrc alt=produceData.imageAlt || produceData.title loading='lazy')
+					+thumbsGallery({
+						label: produceData.galleryLabel,
+						prevLabel: produceData.galleryPrevLabel,
+						nextLabel: produceData.galleryNextLabel,
+						items: produceData.gallery
+					})
 		div(class='produce__portfolio')
 			header(class='produce__portfolio-intro')
 				h3(class='produce__portfolio-title')= produceData.portfolioTitle
 				if produceData.portfolioLead
 					p(class='produce__portfolio-lead')= produceData.portfolioLead
 			if produceData.filters && produceData.filters.length
-				div(class='produce__filters' role='group' aria-label=produceData.filterLabel)
-					each filter in produceData.filters
-						button(
-							class=`produce__filter${filter.key === produceData.defaultFilter ? ' is-active' : ''}`
-							type='button'
-							data-produce-filter=filter.key
-							aria-pressed=(filter.key === produceData.defaultFilter ? 'true' : 'false')
-						)= filter.label
+				div(class='produce__filters-shell' aria-label=produceData.filterLabel)
+					+sliderNavButton({
+						className: 'produce__filters-nav produce__filters-nav--prev',
+						label: produceData.filtersPrevLabel,
+						dir: 'prev'
+					})
+					div(class='produce__filters swiper')
+						div(class='produce__filters-track swiper-wrapper')
+							each filter in produceData.filters
+								div(class='produce__filters-slide swiper-slide')
+									button(
+										class=`produce__filter${filter.key === produceData.defaultFilter ? ' is-active' : ''}`
+										type='button'
+										data-produce-filter=filter.key
+										aria-pressed=(filter.key === produceData.defaultFilter ? 'true' : 'false')
+									)= filter.label
+					+sliderNavButton({
+						className: 'produce__filters-nav produce__filters-nav--next',
+						label: produceData.filtersNextLabel,
+						dir: 'next'
+					})
 			div(class='produce__slider swiper')
 				ul(class='produce__grid swiper-wrapper')
 					each item in produceData.items
@@ -63,18 +82,16 @@ section(class='produce reveal' id=produceData.id)
 								div(class='produce__meta')
 									p(class='produce__category')= item.category
 									h4(class='produce__video-title')= item.title
-				button(
-					class='produce__nav produce__nav--prev'
-					type='button'
-					aria-label=produceData.prevLabel
-				)
-					span(class='produce__nav-icon' aria-hidden='true') ‹
-				button(
-					class='produce__nav produce__nav--next'
-					type='button'
-					aria-label=produceData.nextLabel
-				)
-					span(class='produce__nav-icon' aria-hidden='true') ›
+				+sliderNavButton({
+					className: 'produce__nav produce__nav--prev',
+					label: produceData.prevLabel,
+					dir: 'prev'
+				})
+				+sliderNavButton({
+					className: 'produce__nav produce__nav--next',
+					label: produceData.nextLabel,
+					dir: 'next'
+				})
 			div(class='produce__pagination swiper-pagination')
 			if produceData.cta
 				a(class='btn btn--outline produce__cta' href=produceData.cta.href)= produceData.cta.label

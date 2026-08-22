@@ -1,11 +1,16 @@
 include ../data/learn-data
+include thumbs-gallery
 
 section(class='learn reveal' id=learnData.id)
 	div(class='container learn__container')
 		div(class='learn__media')
 			div(class='learn__photo')
-				if learnData.imageSrc
-					img(class='learn__image' src=learnData.imageSrc alt=learnData.imageAlt || learnData.title loading='lazy')
+				+thumbsGallery({
+					label: learnData.galleryLabel,
+					prevLabel: learnData.galleryPrevLabel,
+					nextLabel: learnData.galleryNextLabel,
+					items: learnData.gallery
+				})
 		div(class='learn__content')
 			p(class='learn__eyebrow')= learnData.eyebrow
 			header(class='section-intro section-intro--left learn__intro')
