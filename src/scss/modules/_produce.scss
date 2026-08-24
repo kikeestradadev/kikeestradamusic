@@ -11,6 +11,7 @@
 		gap: 2.5rem;
 		align-items: start;
 		margin-bottom: 3.5rem;
+		min-width: 0;
 
 		@media (width >= $l) {
 			grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
@@ -69,7 +70,8 @@
 
 	&__media {
 		width: 100%;
-		max-width: 500px;
+		max-width: min(500px, 100%);
+		min-width: 0;
 		margin-inline: auto;
 
 		@media (width >= $l) {
@@ -79,6 +81,8 @@
 	}
 
 	&__photo {
+		width: 100%;
+		min-width: 0;
 		overflow: hidden;
 		border: 1px solid var(--color-border);
 		border-radius: 1rem;
@@ -207,10 +211,8 @@
 		container-type: inline-size;
 		container-name: produce-slider;
 		margin-bottom: 1.5rem;
-
-		@media (width >= $l) {
-			overflow: visible;
-		}
+		width: 100%;
+		min-width: 0;
 	}
 
 	&__grid {

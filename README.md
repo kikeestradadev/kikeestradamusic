@@ -22,8 +22,7 @@ Landing page oficial de **Kike Estrada Music**: artista, profesor y productor.
 | Aprende | `learn.pug` / `_learn.scss` |
 | Producción | `produce.pug` / `_produce.scss` |
 | Rutas del visitante | `need-paths.pug` / `_need-paths.scss` |
-| Sobre Kike | `about.pug` / `_about.scss` |
-| Testimonios | `reviews.pug` / `_reviews.scss` |
+| Testimonios | `reviews.pug` / `_reviews.scss` / `reviews.js` |
 | Trayectoria | `trajectory.pug` / `_trajectory.scss` |
 | Contacto | `contact.pug` / `_contact.scss` |
 | Reveal | `_reveal.scss` / `reveal.js` |

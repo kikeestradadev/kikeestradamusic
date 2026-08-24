@@ -39,19 +39,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/prism.css">
-    <link rel="stylesheet" href="styles.css?v=1.0.62">
+    <link rel="stylesheet" href="styles.css?v=1.0.69">
   </head>
   <body class="home locale-en" itemscope itemtype="http://schema.org/WebPage">
     <header class="main-header">
       <nav class="main-menu" aria-label="Main navigation">
-        <div class="container main-menu__container"><a class="main-menu__brand" href="#home"><img class="main-menu__logo" src="./images/logo.webp" alt="Kike Estrada" width="300" height="120"></a>
+        <div class="container main-menu__container"><a class="main-menu__brand" href="#home"><img class="main-menu__logo" src="./images/logo.png" alt="Kike Estrada" width="300" height="120"></a>
           <div class="main-menu__panel" id="mainMenuPanel">
             <ul class="main-menu__list">
               <li class="main-menu__item"><a class="main-menu__link" href="#home">Home</a></li>
               <li class="main-menu__item"><a class="main-menu__link" href="#artist">Artist</a></li>
               <li class="main-menu__item"><a class="main-menu__link" href="#learn">Teacher</a></li>
               <li class="main-menu__item"><a class="main-menu__link" href="#production">Producer</a></li>
-              <li class="main-menu__item"><a class="main-menu__link" href="#about">About</a></li>
               <li class="main-menu__item"><a class="main-menu__link" href="#contact">Contact</a></li>
             </ul>
           </div>
@@ -159,10 +158,22 @@
                     <div class="thumbs-gallery" aria-label="Artist gallery">
                       <div class="thumbs-gallery__main swiper">
                         <div class="swiper-wrapper">
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/Amauri_Guitierrez.JPG" alt="Live performance" loading="lazy" decoding="async"></div>
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/Broadway.JPG" alt="Stage performance" loading="lazy" decoding="async"></div>
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/grupo_skala.jpg" alt="Artistic collaboration" loading="lazy" decoding="async"></div>
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/presidente_laura_chinchilla.JPG" alt="Special performance" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/Amauri_Guitierrez.JPG" alt="Live performance" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Shows</span>
+                            </div>
+                          </div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/Broadway.JPG" alt="Stage performance" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Shows</span>
+                            </div>
+                          </div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/grupo_skala.jpg" alt="Artistic collaboration" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Shows</span>
+                            </div>
+                          </div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_artista/presidente_laura_chinchilla.JPG" alt="Special performance" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Shows</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="thumbs-gallery__thumbs-shell">
@@ -248,7 +259,7 @@
             </article>
             <article class="featured-videos__piece featured-videos__piece--landscape">
               <div class="featured-videos__embed" data-video-embed="https://www.youtube.com/embed/WP1neMk8J70" data-video-title="Live performance">
-                <button class="featured-videos__play" type="button" aria-label="Play: Live performance"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/WP1neMk8J70/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
+                <button class="featured-videos__play" type="button" aria-label="Play: Live performance"><img class="featured-videos__thumb" src="https://i.ytimg.com/vi/WP1neMk8J70/maxresdefault.jpg" alt="" loading="lazy" decoding="async"><span class="featured-videos__play-icon" aria-hidden="true"></span></button>
               </div>
               <h3 class="featured-videos__title"><a class="featured-videos__link" href="https://www.youtube.com/watch?v=WP1neMk8J70" target="_blank" rel="noopener noreferrer">Live performance</a></h3>
             </article>
@@ -262,12 +273,26 @@
                     <div class="thumbs-gallery" aria-label="Teacher gallery">
                       <div class="thumbs-gallery__main swiper">
                         <div class="swiper-wrapper">
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_1.jpg" alt="Music lesson" loading="lazy" decoding="async"></div>
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_2.jpg" alt="Music teaching" loading="lazy" decoding="async"></div>
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_3.jpg" alt="Practice with a student" loading="lazy" decoding="async"></div>
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_4.jpg" alt="Learning session" loading="lazy" decoding="async"></div>
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_5.jpg" alt="Teaching space" loading="lazy" decoding="async"></div>
-                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/profe_6.jpg" alt="Musical guidance" loading="lazy" decoding="async"></div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/Alejandro_castro.jpg" alt="Alejandro Castro, student" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Students</span><span class="thumbs-gallery__caption-name">Alejandro Castro</span>
+                            </div>
+                          </div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/Bairon_Sandoval.jpg" alt="Bairon Sandoval, student" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Students</span><span class="thumbs-gallery__caption-name">Bairon Sandoval</span>
+                            </div>
+                          </div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/Juan_Pablo_rojas.jpg" alt="Juan Pablo Rojas, student" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Students</span><span class="thumbs-gallery__caption-name">Juan Pablo Rojas</span>
+                            </div>
+                          </div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/Lynda_Wridh.jpg" alt="Lynda Wridh, student" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Students</span><span class="thumbs-gallery__caption-name">Lynda Wridh</span>
+                            </div>
+                          </div>
+                          <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_profesor/Michael_Montero.jpg" alt="Michael Montero, student" loading="lazy" decoding="async">
+                            <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Students</span><span class="thumbs-gallery__caption-name">Michael Montero</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       <div class="thumbs-gallery__thumbs-shell">
@@ -278,12 +303,11 @@
                               </button>
                         <div class="thumbs-gallery__thumbs swiper">
                           <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_1.jpg" alt="" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_2.jpg" alt="" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_3.jpg" alt="" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_4.jpg" alt="" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_5.jpg" alt="" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/profe_6.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/Alejandro_castro.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/Bairon_Sandoval.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/Juan_Pablo_rojas.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/Lynda_Wridh.jpg" alt="" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__thumb" src="./images/fotos_profesor/Michael_Montero.jpg" alt="" loading="lazy" decoding="async"></div>
                           </div>
                         </div>
                               <button class="thumbs-gallery__nav thumbs-gallery__nav--next" type="button" aria-label="Next image">
@@ -378,11 +402,26 @@
                       <div class="thumbs-gallery" aria-label="Studio gallery">
                         <div class="thumbs-gallery__main swiper">
                           <div class="swiper-wrapper">
-                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_4.jpeg" alt="Music production studio session" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_5.jpeg" alt="Recording studio detail" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_6.jpeg" alt="Studio space for production" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_7.jpeg" alt="Working environment in the studio" loading="lazy" decoding="async"></div>
-                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_8.jpeg" alt="Music production in the studio" loading="lazy" decoding="async"></div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_4.jpeg" alt="Music production studio session" loading="lazy" decoding="async">
+                              <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Productions</span>
+                              </div>
+                            </div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_5.jpeg" alt="Recording studio detail" loading="lazy" decoding="async">
+                              <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Productions</span>
+                              </div>
+                            </div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_6.jpeg" alt="Studio space for production" loading="lazy" decoding="async">
+                              <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Productions</span>
+                              </div>
+                            </div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_7.jpeg" alt="Working environment in the studio" loading="lazy" decoding="async">
+                              <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Productions</span>
+                              </div>
+                            </div>
+                            <div class="swiper-slide"><img class="thumbs-gallery__image" src="./images/fotos_studio/studio_8.jpeg" alt="Music production in the studio" loading="lazy" decoding="async">
+                              <div class="thumbs-gallery__caption" aria-hidden="true"><span class="thumbs-gallery__caption-label">Productions</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div class="thumbs-gallery__thumbs-shell">
@@ -610,62 +649,74 @@
           </ul>
         </div>
       </section>
-      <section class="about reveal" id="about">
-        <div class="container about__container">
-          <div class="about__media">
-            <div class="about__photo"><img class="about__image" src="./images/fotos/foto_4.jpg" alt="Kike Estrada singing on stage under blue lights">
-            </div>
-          </div>
-          <div class="about__content">
-            <header class="section-intro section-intro--left about__intro">
-              <h2 class="section-intro__title">About Kike</h2><span class="section-intro__line"></span>
-            </header>
-            <div class="about__copy">
-              <p class="about__text">Some artists fill a stage; others hold a moment. Kike Estrada does both: he sings, plays, produces, and teaches with the care of someone who knows music is lived in many places at once.</p>
-              <p class="about__text">His path joins the stage, the studio, and teaching. Those who work with him remember the warmth, the punctuality, and a fine ear for shaping the show, the song, or the lesson to what the moment asks for.</p>
-            </div>
-          </div>
-        </div>
-      </section>
       <section class="reviews reveal" id="reviews">
         <div class="container reviews__container">
           <header class="section-intro reviews__intro">
             <h2 class="section-intro__title">Testimonials</h2><span class="section-intro__line"></span>
-            <p class="section-intro__lead">A place for real voices from events, lessons, and productions. The current texts are sample placeholders and should not be read as real reviews.</p>
+            <p class="section-intro__lead">Real voices recorded on a phone. Filter by area and hear what it is like to work with Kike as an artist, teacher, or producer. The same video can appear in more than one filter. The current videos are a template until the official testimonials go live.</p>
           </header>
+          <div class="reviews__filters" role="group" aria-label="Filter testimonials">
+            <button class="reviews__filter is-active" type="button" data-reviews-filter="artist" aria-pressed="true">Artist</button>
+            <button class="reviews__filter" type="button" data-reviews-filter="teacher" aria-pressed="false">Teacher</button>
+            <button class="reviews__filter" type="button" data-reviews-filter="producer" aria-pressed="false">Producer</button>
+          </div>
           <div class="reviews__slider swiper">
             <ul class="reviews__list swiper-wrapper">
-              <li class="reviews__item swiper-slide">
-                <figure class="reviews__card"><span class="reviews__badge">Pending sample</span>
-                  <blockquote class="reviews__quote">
-                    <p class="reviews__text">Kike understood the tone of our wedding from the first message. The repertoire was elegant and the energy was just right.</p>
-                  </blockquote>
-                  <figcaption class="reviews__meta"><span class="reviews__name">Ana and Roberto</span><span class="reviews__context">Wedding in the Central Valley</span></figcaption>
-                </figure>
+              <li class="reviews__item swiper-slide" data-reviews-categories="artist">
+                <article class="reviews__card">
+                  <div class="reviews__embed" data-video-embed="https://www.youtube.com/embed/5X_7R5TK0rM" data-video-title="Artist testimonial 1">
+                    <button class="reviews__play" type="button" aria-label="Play testimonial: Artist testimonial 1"><img class="reviews__thumb" src="https://i.ytimg.com/vi/5X_7R5TK0rM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="reviews__play-icon" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="reviews__meta"><a class="reviews__link" href="https://www.youtube.com/shorts/5X_7R5TK0rM" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
+                </article>
               </li>
-              <li class="reviews__item swiper-slide">
-                <figure class="reviews__card"><span class="reviews__badge">Pending sample</span>
-                  <blockquote class="reviews__quote">
-                    <p class="reviews__text">Professional, punctual, and present in a way that lifted the whole night. Our guests are still talking about the music.</p>
-                  </blockquote>
-                  <figcaption class="reviews__meta"><span class="reviews__name">María Solano</span><span class="reviews__context">Corporate event</span></figcaption>
-                </figure>
+              <li class="reviews__item swiper-slide" data-reviews-categories="artist teacher">
+                <article class="reviews__card">
+                  <div class="reviews__embed" data-video-embed="https://www.youtube.com/embed/5X_7R5TK0rM" data-video-title="Artist and teacher testimonial">
+                    <button class="reviews__play" type="button" aria-label="Play testimonial: Artist and teacher testimonial"><img class="reviews__thumb" src="https://i.ytimg.com/vi/5X_7R5TK0rM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="reviews__play-icon" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="reviews__meta"><a class="reviews__link" href="https://www.youtube.com/shorts/5X_7R5TK0rM" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
+                </article>
               </li>
-              <li class="reviews__item swiper-slide">
-                <figure class="reviews__card"><span class="reviews__badge">Pending sample</span>
-                  <blockquote class="reviews__quote">
-                    <p class="reviews__text">An ally on stage: he adapts, leads, and cares for every musical detail without losing warmth.</p>
-                  </blockquote>
-                  <figcaption class="reviews__meta"><span class="reviews__name">Daniel Vargas</span><span class="reviews__context">Artistic collaboration</span></figcaption>
-                </figure>
+              <li class="reviews__item swiper-slide is-filtered-out" data-reviews-categories="teacher">
+                <article class="reviews__card">
+                  <div class="reviews__embed" data-video-embed="https://www.youtube.com/embed/5X_7R5TK0rM" data-video-title="Teacher testimonial 1">
+                    <button class="reviews__play" type="button" aria-label="Play testimonial: Teacher testimonial 1"><img class="reviews__thumb" src="https://i.ytimg.com/vi/5X_7R5TK0rM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="reviews__play-icon" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="reviews__meta"><a class="reviews__link" href="https://www.youtube.com/shorts/5X_7R5TK0rM" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
+                </article>
+              </li>
+              <li class="reviews__item swiper-slide is-filtered-out" data-reviews-categories="producer">
+                <article class="reviews__card">
+                  <div class="reviews__embed" data-video-embed="https://www.youtube.com/embed/5X_7R5TK0rM" data-video-title="Producer testimonial 1">
+                    <button class="reviews__play" type="button" aria-label="Play testimonial: Producer testimonial 1"><img class="reviews__thumb" src="https://i.ytimg.com/vi/5X_7R5TK0rM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="reviews__play-icon" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="reviews__meta"><a class="reviews__link" href="https://www.youtube.com/shorts/5X_7R5TK0rM" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
+                </article>
+              </li>
+              <li class="reviews__item swiper-slide" data-reviews-categories="artist teacher producer">
+                <article class="reviews__card">
+                  <div class="reviews__embed" data-video-embed="https://www.youtube.com/embed/5X_7R5TK0rM" data-video-title="All three areas testimonial">
+                    <button class="reviews__play" type="button" aria-label="Play testimonial: All three areas testimonial"><img class="reviews__thumb" src="https://i.ytimg.com/vi/5X_7R5TK0rM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="reviews__play-icon" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="reviews__meta"><a class="reviews__link" href="https://www.youtube.com/shorts/5X_7R5TK0rM" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
+                </article>
+              </li>
+              <li class="reviews__item swiper-slide" data-reviews-categories="artist producer">
+                <article class="reviews__card">
+                  <div class="reviews__embed" data-video-embed="https://www.youtube.com/embed/5X_7R5TK0rM" data-video-title="Artist and producer testimonial">
+                    <button class="reviews__play" type="button" aria-label="Play testimonial: Artist and producer testimonial"><img class="reviews__thumb" src="https://i.ytimg.com/vi/5X_7R5TK0rM/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="reviews__play-icon" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="reviews__meta"><a class="reviews__link" href="https://www.youtube.com/shorts/5X_7R5TK0rM" target="_blank" rel="noopener noreferrer">Watch on YouTube</a></div>
+                </article>
               </li>
             </ul>
-                  <button class="reviews__nav reviews__nav--prev" type="button" aria-label="Previous review">
+                  <button class="reviews__nav reviews__nav--prev" type="button" aria-label="Previous testimonial">
                     <svg class="slider-nav__icon slider-nav__icon--prev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
                       <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
                     </svg>
                   </button>
-                  <button class="reviews__nav reviews__nav--next" type="button" aria-label="Next review">
+                  <button class="reviews__nav reviews__nav--next" type="button" aria-label="Next testimonial">
                     <svg class="slider-nav__icon slider-nav__icon--next" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
                       <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
                     </svg>
@@ -729,14 +780,13 @@
     </main>
     <footer class="main-footer">
       <div class="site-footer">
-        <div class="container site-footer__container"><a class="site-footer__brand" href="#home"><img class="site-footer__logo" src="./images/logo.webp" alt="Kike Estrada" width="300" height="120"></a>
+        <div class="container site-footer__container"><a class="site-footer__brand" href="#home"><img class="site-footer__logo" src="./images/logo.png" alt="Kike Estrada" width="300" height="120"></a>
           <nav class="site-footer__nav" aria-label="Footer navigation">
             <ul class="site-footer__list">
               <li class="site-footer__item"><a class="site-footer__link" href="#home">Home</a></li>
               <li class="site-footer__item"><a class="site-footer__link" href="#artist">Artist</a></li>
               <li class="site-footer__item"><a class="site-footer__link" href="#learn">Learn</a></li>
               <li class="site-footer__item"><a class="site-footer__link" href="#production">Production</a></li>
-              <li class="site-footer__item"><a class="site-footer__link" href="#about">About</a></li>
               <li class="site-footer__item"><a class="site-footer__link" href="#contact">Contact</a></li>
             </ul>
           </nav>
@@ -810,6 +860,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="index.js?v=1.0.62"></script>
+    <script src="index.js?v=1.0.69"></script>
   </body>
 </html>

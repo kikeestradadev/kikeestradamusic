@@ -14,6 +14,12 @@ mixin thumbsGallery(data)
 								loading='lazy'
 								decoding='async'
 							)
+							if data.caption || image.name
+								div(class='thumbs-gallery__caption' aria-hidden='true')
+									if data.caption
+										span(class='thumbs-gallery__caption-label')= data.caption
+									if image.name
+										span(class='thumbs-gallery__caption-name')= image.name
 			div(class='thumbs-gallery__thumbs-shell')
 				+sliderNavButton({
 					className: 'thumbs-gallery__nav thumbs-gallery__nav--prev',

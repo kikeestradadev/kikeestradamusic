@@ -3,63 +3,122 @@
 		locale = 'es'
 	}
 
-	const reviewsContent = {
+	var reviewsTemplateId = '5X_7R5TK0rM'
+	var reviewsTemplateThumb = 'https://i.ytimg.com/vi/' + reviewsTemplateId + '/hqdefault.jpg'
+	var reviewsTemplateEmbed = 'https://www.youtube.com/embed/' + reviewsTemplateId
+	var reviewsTemplateWatch = 'https://www.youtube.com/shorts/' + reviewsTemplateId
+
+	var reviewsVideos = [
+		{
+			id: reviewsTemplateId,
+			categories: ['artist'],
+			thumb: reviewsTemplateThumb,
+			embedUrl: reviewsTemplateEmbed,
+			watchUrl: reviewsTemplateWatch,
+			name: { es: 'Testimonio artista 1', en: 'Artist testimonial 1' },
+			sample: true
+		},
+		{
+			id: reviewsTemplateId,
+			categories: ['artist', 'teacher'],
+			thumb: reviewsTemplateThumb,
+			embedUrl: reviewsTemplateEmbed,
+			watchUrl: reviewsTemplateWatch,
+			name: { es: 'Testimonio artista y profesor', en: 'Artist and teacher testimonial' },
+			sample: true
+		},
+		{
+			id: reviewsTemplateId,
+			categories: ['teacher'],
+			thumb: reviewsTemplateThumb,
+			embedUrl: reviewsTemplateEmbed,
+			watchUrl: reviewsTemplateWatch,
+			name: { es: 'Testimonio profesor 1', en: 'Teacher testimonial 1' },
+			sample: true
+		},
+		{
+			id: reviewsTemplateId,
+			categories: ['producer'],
+			thumb: reviewsTemplateThumb,
+			embedUrl: reviewsTemplateEmbed,
+			watchUrl: reviewsTemplateWatch,
+			name: { es: 'Testimonio productor 1', en: 'Producer testimonial 1' },
+			sample: true
+		},
+		{
+			id: reviewsTemplateId,
+			categories: ['artist', 'teacher', 'producer'],
+			thumb: reviewsTemplateThumb,
+			embedUrl: reviewsTemplateEmbed,
+			watchUrl: reviewsTemplateWatch,
+			name: { es: 'Testimonio en las tres áreas', en: 'All three areas testimonial' },
+			sample: true
+		},
+		{
+			id: reviewsTemplateId,
+			categories: ['artist', 'producer'],
+			thumb: reviewsTemplateThumb,
+			embedUrl: reviewsTemplateEmbed,
+			watchUrl: reviewsTemplateWatch,
+			name: { es: 'Testimonio artista y productor', en: 'Artist and producer testimonial' },
+			sample: true
+		}
+	]
+
+	var reviewsContent = {
 		es: {
 			id: 'resenas',
 			title: 'Testimonios',
-			lead: 'Espacio para voces reales de eventos, clases y producciones. Los textos actuales son ejemplos pendientes de reemplazo y no deben tomarse como reseñas reales.',
-			sampleLabel: 'Ejemplo pendiente',
-			prevLabel: 'Reseña anterior',
-			nextLabel: 'Reseña siguiente',
-			items: [
-				{
-					quote: 'Kike entendió el tono de nuestra boda desde el primer mensaje. El repertorio fue elegante y la energía, justa.',
-					name: 'Ana y Roberto',
-					context: 'Boda en el Valle Central',
-					sample: true
-				},
-				{
-					quote: 'Profesional, puntual y con una presencia que elevó la noche. Nuestros invitados todavía hablan de la música.',
-					name: 'María Solano',
-					context: 'Evento corporativo',
-					sample: true
-				},
-				{
-					quote: 'Un aliado en el escenario: se adapta, dirige y cuida cada detalle musical sin perder calidez.',
-					name: 'Daniel Vargas',
-					context: 'Colaboración artística',
-					sample: true
-				}
+			lead: 'Voces reales grabadas en celular. Filtra por área y escucha cómo se vive trabajar con Kike como artista, profesor o productor. Un mismo video puede aparecer en más de un filtro. Los videos actuales son una plantilla hasta publicar los testimonios oficiales.',
+			filterLabel: 'Filtrar testimonios',
+			playLabel: 'Reproducir testimonio',
+			externalLabel: 'Ver en YouTube',
+			prevLabel: 'Testimonio anterior',
+			nextLabel: 'Testimonio siguiente',
+			defaultFilter: 'artist',
+			filters: [
+				{ key: 'artist', label: 'Artista' },
+				{ key: 'teacher', label: 'Profesor' },
+				{ key: 'producer', label: 'Productor' }
 			]
 		},
 		en: {
 			id: 'reviews',
 			title: 'Testimonials',
-			lead: 'A place for real voices from events, lessons, and productions. The current texts are sample placeholders and should not be read as real reviews.',
-			sampleLabel: 'Pending sample',
-			prevLabel: 'Previous review',
-			nextLabel: 'Next review',
-			items: [
-				{
-					quote: 'Kike understood the tone of our wedding from the first message. The repertoire was elegant and the energy was just right.',
-					name: 'Ana and Roberto',
-					context: 'Wedding in the Central Valley',
-					sample: true
-				},
-				{
-					quote: 'Professional, punctual, and present in a way that lifted the whole night. Our guests are still talking about the music.',
-					name: 'María Solano',
-					context: 'Corporate event',
-					sample: true
-				},
-				{
-					quote: 'An ally on stage: he adapts, leads, and cares for every musical detail without losing warmth.',
-					name: 'Daniel Vargas',
-					context: 'Artistic collaboration',
-					sample: true
-				}
+			lead: 'Real voices recorded on a phone. Filter by area and hear what it is like to work with Kike as an artist, teacher, or producer. The same video can appear in more than one filter. The current videos are a template until the official testimonials go live.',
+			filterLabel: 'Filter testimonials',
+			playLabel: 'Play testimonial',
+			externalLabel: 'Watch on YouTube',
+			prevLabel: 'Previous testimonial',
+			nextLabel: 'Next testimonial',
+			defaultFilter: 'artist',
+			filters: [
+				{ key: 'artist', label: 'Artist' },
+				{ key: 'teacher', label: 'Teacher' },
+				{ key: 'producer', label: 'Producer' }
 			]
 		}
 	}
 
-	const reviewsData = reviewsContent[locale] || reviewsContent.es
+	var reviewsLocale = reviewsContent[locale] || reviewsContent.es
+
+	reviewsLocale.items = reviewsVideos.map(function (item) {
+		var categories = Array.isArray(item.categories)
+			? item.categories
+			: item.category
+				? [item.category]
+				: []
+
+		return {
+			id: item.id,
+			categories: categories,
+			categoriesAttr: categories.join(' '),
+			thumb: item.thumb,
+			embedUrl: item.embedUrl,
+			watchUrl: item.watchUrl,
+			name: item.name[locale] || item.name.es,
+			sample: !!item.sample
+		}
+	})
+
+	var reviewsData = reviewsLocale

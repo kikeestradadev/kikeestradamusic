@@ -8,18 +8,48 @@ section(class='reviews reveal' id=reviewsData.id)
 			span(class='section-intro__line')
 			if reviewsData.lead
 				p(class='section-intro__lead')= reviewsData.lead
+		if reviewsData.filters && reviewsData.filters.length
+			div(class='reviews__filters' role='group' aria-label=reviewsData.filterLabel)
+				each filter in reviewsData.filters
+					button(
+						class=`reviews__filter${filter.key === reviewsData.defaultFilter ? ' is-active' : ''}`
+						type='button'
+						data-reviews-filter=filter.key
+						aria-pressed=(filter.key === reviewsData.defaultFilter ? 'true' : 'false')
+					)= filter.label
 		div(class='reviews__slider swiper')
 			ul(class='reviews__list swiper-wrapper')
 				each item in reviewsData.items
-					li(class='reviews__item swiper-slide')
-						figure(class='reviews__card')
-							if item.sample
-								span(class='reviews__badge')= reviewsData.sampleLabel
-							blockquote(class='reviews__quote')
-								p(class='reviews__text')= item.quote
-							figcaption(class='reviews__meta')
-								span(class='reviews__name')= item.name
-								span(class='reviews__context')= item.context
+					li(
+						class=`reviews__item swiper-slide${item.categories.indexOf(reviewsData.defaultFilter) !== -1 ? '' : ' is-filtered-out'}`
+						data-reviews-categories=item.categoriesAttr
+					)
+						article(class='reviews__card')
+							div(
+								class='reviews__embed'
+								data-video-embed=item.embedUrl
+								data-video-title=item.name
+							)
+								button(
+									class='reviews__play'
+									type='button'
+									aria-label=`${reviewsData.playLabel}: ${item.name}`
+								)
+									img(
+										class='reviews__thumb'
+										src=item.thumb
+										alt=''
+										loading='lazy'
+										decoding='async'
+									)
+									span(class='reviews__play-icon' aria-hidden='true')
+							div(class='reviews__meta')
+								a(
+									class='reviews__link'
+									href=item.watchUrl
+									target='_blank'
+									rel='noopener noreferrer'
+								)= reviewsData.externalLabel
 			+sliderNavButton({
 				className: 'reviews__nav reviews__nav--prev',
 				label: reviewsData.prevLabel,

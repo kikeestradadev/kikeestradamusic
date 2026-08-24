@@ -5,45 +5,43 @@
 
 	const learnGallery = [
 		{
-			src: './images/fotos_profesor/profe_1.jpg',
+			src: './images/fotos_profesor/Alejandro_castro.jpg',
+			name: 'Alejandro Castro',
 			alt: {
-				es: 'Clase de música',
-				en: 'Music lesson'
+				es: 'Alejandro Castro, estudiante',
+				en: 'Alejandro Castro, student'
 			}
 		},
 		{
-			src: './images/fotos_profesor/profe_2.jpg',
+			src: './images/fotos_profesor/Bairon_Sandoval.jpg',
+			name: 'Bairon Sandoval',
 			alt: {
-				es: 'Enseñanza musical',
-				en: 'Music teaching'
+				es: 'Bairon Sandoval, estudiante',
+				en: 'Bairon Sandoval, student'
 			}
 		},
 		{
-			src: './images/fotos_profesor/profe_3.jpg',
+			src: './images/fotos_profesor/Juan_Pablo_rojas.jpg',
+			name: 'Juan Pablo Rojas',
 			alt: {
-				es: 'Práctica con estudiante',
-				en: 'Practice with a student'
+				es: 'Juan Pablo Rojas, estudiante',
+				en: 'Juan Pablo Rojas, student'
 			}
 		},
 		{
-			src: './images/fotos_profesor/profe_4.jpg',
+			src: './images/fotos_profesor/Lynda_Wridh.jpg',
+			name: 'Lynda Wridh',
 			alt: {
-				es: 'Sesión de aprendizaje',
-				en: 'Learning session'
+				es: 'Lynda Wridh, estudiante',
+				en: 'Lynda Wridh, student'
 			}
 		},
 		{
-			src: './images/fotos_profesor/profe_5.jpg',
+			src: './images/fotos_profesor/Michael_Montero.jpg',
+			name: 'Michael Montero',
 			alt: {
-				es: 'Espacio de enseñanza',
-				en: 'Teaching space'
-			}
-		},
-		{
-			src: './images/fotos_profesor/profe_6.jpg',
-			alt: {
-				es: 'Acompañamiento musical',
-				en: 'Musical guidance'
+				es: 'Michael Montero, estudiante',
+				en: 'Michael Montero, student'
 			}
 		}
 	]
@@ -85,6 +83,7 @@
 				href: '#contacto-aprende'
 			},
 			galleryLabel: 'Galería de profesor',
+			galleryCaption: 'Estudiantes',
 			galleryPrevLabel: 'Imagen anterior',
 			galleryNextLabel: 'Imagen siguiente'
 		},
@@ -124,6 +123,7 @@
 				href: '#contact-learn'
 			},
 			galleryLabel: 'Teacher gallery',
+			galleryCaption: 'Students',
 			galleryPrevLabel: 'Previous image',
 			galleryNextLabel: 'Next image'
 		}
@@ -133,6 +133,7 @@
 	learnLocale.gallery = learnGallery.map(function (item) {
 		return {
 			src: item.src,
+			name: item.name,
 			alt: item.alt[locale] || item.alt.es
 		}
 	})
