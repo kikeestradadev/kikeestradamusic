@@ -7,6 +7,7 @@ block config
 	-let pageKeywords 		= ''
 	-let locale 			= 'es'
 include ../data/site-data
+include ../data/socials-data
 -
 	var seoLocale = siteData[locale] || siteData.es
 	var seoTitle = pageTitle || seoLocale.title
@@ -16,6 +17,43 @@ include ../data/site-data
 		? siteData.siteUrl + '/en.html'
 		: siteData.siteUrl + '/'
 	var seoOgImageAlt = (siteData.ogImageAlt && siteData.ogImageAlt[locale]) || siteData.ogImageAlt.es
+	var seoSameAs = socialsData.map(function (item) { return item.href })
+	var seoJsonLdDescription = locale === 'en'
+		? 'Artist, teacher and music producer in Costa Rica.'
+		: 'Artista, profesor y productor musical en Costa Rica.'
+	var seoJsonLdJobTitle = locale === 'en'
+		? 'Artist, teacher and music producer'
+		: 'Artista, profesor y productor musical'
+	var seoPersonId = siteData.siteUrl + '/#person'
+	var seoJsonLd = {
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'Person',
+				'@id': seoPersonId,
+				'name': 'Kike Estrada',
+				'url': siteData.siteUrl + '/',
+				'image': siteData.ogImage,
+				'description': seoJsonLdDescription,
+				'jobTitle': seoJsonLdJobTitle,
+				'sameAs': seoSameAs
+			},
+			{
+				'@type': 'ProfessionalService',
+				'@id': siteData.siteUrl + '/#service',
+				'name': 'Kike Estrada Music',
+				'url': siteData.siteUrl + '/',
+				'image': siteData.ogImage,
+				'description': seoJsonLdDescription,
+				'founder': { '@id': seoPersonId },
+				'sameAs': seoSameAs,
+				'areaServed': {
+					'@type': 'Country',
+					'name': 'Costa Rica'
+				}
+			}
+		]
+	}
 doctype html
 html(lang=locale prefix='og: http://ogp.me/ns#', class='no-js')
 	head
@@ -48,6 +86,7 @@ html(lang=locale prefix='og: http://ogp.me/ns#', class='no-js')
 		meta(name="twitter:title", content=seoTitle)
 		meta(name="twitter:description", content=seoDescription)
 		meta(name="twitter:image", content=siteData.ogImage)
+		script(type='application/ld+json')!= JSON.stringify(seoJsonLd)
 		meta(http-equiv="Content-Security-Policy", content="upgrade-insecure-requests")
 		meta(http-equiv="Cache-Control", content="no-cache, no-store, must-revalidate")
 		meta(http-equiv="Expires", content="0")
