@@ -9,55 +9,70 @@ section(class='reviews reveal' id=reviewsData.id)
 			if reviewsData.lead
 				p(class='section-intro__lead')= reviewsData.lead
 		if reviewsData.filters && reviewsData.filters.length
-			div(class='reviews__filters' role='group' aria-label=reviewsData.filterLabel)
-				each filter in reviewsData.filters
-					button(
-						class=`reviews__filter${filter.key === reviewsData.defaultFilter ? ' is-active' : ''}`
-						type='button'
-						data-reviews-filter=filter.key
-						aria-pressed=(filter.key === reviewsData.defaultFilter ? 'true' : 'false')
-					)= filter.label
-		div(class='reviews__slider swiper')
-			ul(class='reviews__list swiper-wrapper')
-				each item in reviewsData.items
-					li(
-						class=`reviews__item swiper-slide${item.categories.indexOf(reviewsData.defaultFilter) !== -1 ? '' : ' is-filtered-out'}`
-						data-reviews-categories=item.categoriesAttr
-					)
-						article(class='reviews__card')
-							div(
-								class='reviews__embed'
-								data-video-embed=item.embedUrl
-								data-video-title=item.name
-							)
+			div(class='reviews__filters-shell' aria-label=reviewsData.filterLabel)
+				+sliderNavButton({
+					className: 'reviews__filters-nav reviews__filters-nav--prev',
+					label: reviewsData.filtersPrevLabel,
+					dir: 'prev'
+				})
+				div(class='reviews__filters swiper')
+					div(class='reviews__filters-track swiper-wrapper')
+						each filter in reviewsData.filters
+							div(class='reviews__filters-slide swiper-slide')
 								button(
-									class='reviews__play'
+									class=`reviews__filter${filter.key === reviewsData.defaultFilter ? ' is-active' : ''}`
 									type='button'
-									aria-label=`${reviewsData.playLabel}: ${item.name}`
+									data-reviews-filter=filter.key
+									aria-pressed=(filter.key === reviewsData.defaultFilter ? 'true' : 'false')
+								)= filter.label
+				+sliderNavButton({
+					className: 'reviews__filters-nav reviews__filters-nav--next',
+					label: reviewsData.filtersNextLabel,
+					dir: 'next'
+				})
+		div(class='reviews__stage')
+			div(class='reviews__slider swiper')
+				ul(class='reviews__list swiper-wrapper')
+					each item in reviewsData.items
+						li(
+							class=`reviews__item swiper-slide${item.categories.indexOf(reviewsData.defaultFilter) !== -1 ? '' : ' is-filtered-out'}`
+							data-reviews-categories=item.categoriesAttr
+						)
+							article(class='reviews__card')
+								div(
+									class='reviews__embed'
+									data-video-embed=item.embedUrl
+									data-video-title=item.name
 								)
-									img(
-										class='reviews__thumb'
-										src=item.thumb
-										alt=''
-										loading='lazy'
-										decoding='async'
+									button(
+										class='reviews__play'
+										type='button'
+										aria-label=`${reviewsData.playLabel}: ${item.name}`
 									)
-									span(class='reviews__play-icon' aria-hidden='true')
-							div(class='reviews__meta')
-								a(
-									class='reviews__link'
-									href=item.watchUrl
-									target='_blank'
-									rel='noopener noreferrer'
-								)= reviewsData.externalLabel
-			+sliderNavButton({
-				className: 'reviews__nav reviews__nav--prev',
-				label: reviewsData.prevLabel,
-				dir: 'prev'
-			})
-			+sliderNavButton({
-				className: 'reviews__nav reviews__nav--next',
-				label: reviewsData.nextLabel,
-				dir: 'next'
-			})
-		div(class='reviews__pagination swiper-pagination')
+										img(
+											class='reviews__thumb'
+											src=item.thumb
+											alt=''
+											loading='lazy'
+											decoding='async'
+										)
+										span(class='reviews__play-icon' aria-hidden='true')
+								div(class='reviews__meta')
+									a(
+										class='reviews__link'
+										href=item.watchUrl
+										target='_blank'
+										rel='noopener noreferrer'
+									)= reviewsData.externalLabel
+			div(class='reviews__controls')
+				+sliderNavButton({
+					className: 'reviews__nav reviews__nav--prev',
+					label: reviewsData.prevLabel,
+					dir: 'prev'
+				})
+				div(class='reviews__pagination swiper-pagination')
+				+sliderNavButton({
+					className: 'reviews__nav reviews__nav--next',
+					label: reviewsData.nextLabel,
+					dir: 'next'
+				})

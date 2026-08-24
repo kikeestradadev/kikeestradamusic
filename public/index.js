@@ -434,14 +434,34 @@ var reviews = function reviews() {
     var pagination = root.querySelector('.reviews__pagination');
     var items = _toConsumableArray(root.querySelectorAll('.reviews__item'));
     var filterButtons = _toConsumableArray(root.querySelectorAll('[data-reviews-filter]'));
+    var filtersSlider = root.querySelector('.reviews__filters');
+    var filtersPrevNav = root.querySelector('.reviews__filters-nav--prev');
+    var filtersNextNav = root.querySelector('.reviews__filters-nav--next');
     var embeds = _toConsumableArray(root.querySelectorAll('.reviews__embed'));
     if (!slider || !items.length || typeof window.Swiper !== 'function') {
       return;
     }
     var swiperInstance = null;
+    var filtersSwiper = null;
     var activeFilter = ((_filterButtons$find = filterButtons.find(function (button) {
       return button.classList.contains('is-active');
     })) === null || _filterButtons$find === void 0 ? void 0 : _filterButtons$find.dataset.reviewsFilter) || ((_filterButtons$ = filterButtons[0]) === null || _filterButtons$ === void 0 ? void 0 : _filterButtons$.dataset.reviewsFilter) || 'artist';
+    var initFiltersSlider = function initFiltersSlider() {
+      if (!filtersSlider || filtersSwiper || !filterButtons.length) {
+        return;
+      }
+      filtersSwiper = new window.Swiper(filtersSlider, {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        watchOverflow: true,
+        freeMode: true,
+        navigation: {
+          prevEl: filtersPrevNav,
+          nextEl: filtersNextNav,
+          disabledClass: 'swiper-button-disabled'
+        }
+      });
+    };
     var restoreEmbed = function restoreEmbed(embed) {
       if (!embed || embed.querySelector('.reviews__play')) {
         return;
@@ -584,6 +604,7 @@ var reviews = function reviews() {
         applyFilter(filterKey);
       });
     });
+    initFiltersSlider();
     applyFilter(activeFilter);
     root.dataset.reviewsReady = 'true';
   });

@@ -10,6 +10,9 @@ const reviews = () => {
 		const pagination = root.querySelector('.reviews__pagination');
 		const items = [...root.querySelectorAll('.reviews__item')];
 		const filterButtons = [...root.querySelectorAll('[data-reviews-filter]')];
+		const filtersSlider = root.querySelector('.reviews__filters');
+		const filtersPrevNav = root.querySelector('.reviews__filters-nav--prev');
+		const filtersNextNav = root.querySelector('.reviews__filters-nav--next');
 		const embeds = [...root.querySelectorAll('.reviews__embed')];
 
 		if (!slider || !items.length || typeof window.Swiper !== 'function') {
@@ -17,11 +20,30 @@ const reviews = () => {
 		}
 
 		let swiperInstance = null;
+		let filtersSwiper = null;
 		let activeFilter =
 			filterButtons.find((button) => button.classList.contains('is-active'))
 				?.dataset.reviewsFilter ||
 			filterButtons[0]?.dataset.reviewsFilter ||
 			'artist';
+
+		const initFiltersSlider = () => {
+			if (!filtersSlider || filtersSwiper || !filterButtons.length) {
+				return;
+			}
+
+			filtersSwiper = new window.Swiper(filtersSlider, {
+				slidesPerView: 'auto',
+				spaceBetween: 10,
+				watchOverflow: true,
+				freeMode: true,
+				navigation: {
+					prevEl: filtersPrevNav,
+					nextEl: filtersNextNav,
+					disabledClass: 'swiper-button-disabled',
+				},
+			});
+		};
 
 		const restoreEmbed = (embed) => {
 			if (!embed || embed.querySelector('.reviews__play')) {
@@ -200,6 +222,7 @@ const reviews = () => {
 			});
 		});
 
+		initFiltersSlider();
 		applyFilter(activeFilter);
 		root.dataset.reviewsReady = 'true';
 	});
