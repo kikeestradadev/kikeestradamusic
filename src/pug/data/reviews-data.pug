@@ -3,65 +3,13 @@
 		locale = 'es'
 	}
 
-	var reviewsTemplateId = '5X_7R5TK0rM'
-	var reviewsTemplateThumb = 'https://i.ytimg.com/vi/' + reviewsTemplateId + '/hqdefault.jpg'
-	var reviewsTemplateEmbed = 'https://www.youtube.com/embed/' + reviewsTemplateId
-	var reviewsTemplateWatch = 'https://www.youtube.com/shorts/' + reviewsTemplateId
-
+	// Añade testimonios con id de YouTube y categories: artist, teacher, producer.
 	var reviewsVideos = [
 		{
-			id: reviewsTemplateId,
-			categories: ['artist'],
-			thumb: reviewsTemplateThumb,
-			embedUrl: reviewsTemplateEmbed,
-			watchUrl: reviewsTemplateWatch,
-			name: { es: 'Testimonio artista 1', en: 'Artist testimonial 1' },
-			sample: true
-		},
-		{
-			id: reviewsTemplateId,
+			id: '9K3e7ETaivo',
 			categories: ['artist', 'teacher'],
-			thumb: reviewsTemplateThumb,
-			embedUrl: reviewsTemplateEmbed,
-			watchUrl: reviewsTemplateWatch,
-			name: { es: 'Testimonio artista y profesor', en: 'Artist and teacher testimonial' },
-			sample: true
-		},
-		{
-			id: reviewsTemplateId,
-			categories: ['teacher'],
-			thumb: reviewsTemplateThumb,
-			embedUrl: reviewsTemplateEmbed,
-			watchUrl: reviewsTemplateWatch,
-			name: { es: 'Testimonio profesor 1', en: 'Teacher testimonial 1' },
-			sample: true
-		},
-		{
-			id: reviewsTemplateId,
-			categories: ['producer'],
-			thumb: reviewsTemplateThumb,
-			embedUrl: reviewsTemplateEmbed,
-			watchUrl: reviewsTemplateWatch,
-			name: { es: 'Testimonio productor 1', en: 'Producer testimonial 1' },
-			sample: true
-		},
-		{
-			id: reviewsTemplateId,
-			categories: ['artist', 'teacher', 'producer'],
-			thumb: reviewsTemplateThumb,
-			embedUrl: reviewsTemplateEmbed,
-			watchUrl: reviewsTemplateWatch,
-			name: { es: 'Testimonio en las tres áreas', en: 'All three areas testimonial' },
-			sample: true
-		},
-		{
-			id: reviewsTemplateId,
-			categories: ['artist', 'producer'],
-			thumb: reviewsTemplateThumb,
-			embedUrl: reviewsTemplateEmbed,
-			watchUrl: reviewsTemplateWatch,
-			name: { es: 'Testimonio artista y productor', en: 'Artist and producer testimonial' },
-			sample: true
+			name: 'Alejandra François',
+			project: 'W-Arts'
 		}
 	]
 
@@ -69,7 +17,7 @@
 		es: {
 			id: 'resenas',
 			title: 'Testimonios',
-			lead: 'Voces reales grabadas en celular. Filtra por área y escucha cómo se vive trabajar con Kike como artista, profesor o productor. Un mismo video puede aparecer en más de un filtro. Los videos actuales son una plantilla hasta publicar los testimonios oficiales.',
+			lead: 'Voces reales grabadas en celular. Filtra por área y escucha cómo se vive trabajar con Kike como artista, profesor o productor. Un mismo video puede aparecer en más de un filtro.',
 			filterLabel: 'Filtrar testimonios',
 			filtersPrevLabel: 'Filtros anteriores',
 			filtersNextLabel: 'Filtros siguientes',
@@ -87,7 +35,7 @@
 		en: {
 			id: 'reviews',
 			title: 'Testimonials',
-			lead: 'Real voices recorded on a phone. Filter by area and hear what it is like to work with Kike as an artist, teacher, or producer. The same video can appear in more than one filter. The current videos are a template until the official testimonials go live.',
+			lead: 'Real voices recorded on a phone. Filter by area and hear what it is like to work with Kike as an artist, teacher, or producer. The same video can appear in more than one filter.',
 			filterLabel: 'Filter testimonials',
 			filtersPrevLabel: 'Previous filters',
 			filtersNextLabel: 'Next filters',
@@ -113,15 +61,25 @@
 				? [item.category]
 				: []
 
+		var id = item.id
+		var name = typeof item.name === 'object'
+			? (item.name[locale] || item.name.es)
+			: (item.name || '')
+		var project = typeof item.project === 'object'
+			? (item.project[locale] || item.project.es)
+			: (item.project || '')
+		var title = [name, project].filter(Boolean).join(', ')
+
 		return {
-			id: item.id,
+			id: id,
 			categories: categories,
 			categoriesAttr: categories.join(' '),
-			thumb: item.thumb,
-			embedUrl: item.embedUrl,
-			watchUrl: item.watchUrl,
-			name: item.name[locale] || item.name.es,
-			sample: !!item.sample
+			thumb: item.thumb || ('https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'),
+			embedUrl: item.embedUrl || ('https://www.youtube.com/embed/' + id),
+			watchUrl: item.watchUrl || ('https://www.youtube.com/shorts/' + id),
+			name: name,
+			project: project,
+			title: title
 		}
 	})
 

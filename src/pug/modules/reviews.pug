@@ -42,12 +42,12 @@ section(class='reviews reveal' id=reviewsData.id)
 								div(
 									class='reviews__embed'
 									data-video-embed=item.embedUrl
-									data-video-title=item.name
+									data-video-title=item.title
 								)
 									button(
 										class='reviews__play'
 										type='button'
-										aria-label=`${reviewsData.playLabel}: ${item.name}`
+										aria-label=`${reviewsData.playLabel}: ${item.title}`
 									)
 										img(
 											class='reviews__thumb'
@@ -58,6 +58,10 @@ section(class='reviews reveal' id=reviewsData.id)
 										)
 										span(class='reviews__play-icon' aria-hidden='true')
 								div(class='reviews__meta')
+									div(class='reviews__credit')
+										p(class='reviews__name')= item.name
+										if item.project
+											p(class='reviews__project')= item.project
 									a(
 										class='reviews__link'
 										href=item.watchUrl
