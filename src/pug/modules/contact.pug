@@ -29,10 +29,11 @@ section(class='contact reveal' id=contactData.id)
 		p(class='contact__alternatives-label')= contactData.alternativesLabel
 		ul(class='contact__alternatives')
 			each item in contactData.alternatives
-				li(class='contact__alternative')
-					a(
-						class=`contact__link contact__link--${item.type}`
-						href=item.href
-						target=(item.type === 'email' ? false : '_blank')
-						rel=(item.type === 'email' ? false : 'noopener noreferrer')
-					)= item.label
+				unless item.hidden
+					li(class='contact__alternative')
+						a(
+							class=`contact__link contact__link--${item.type}`
+							href=item.href
+							target=(item.type === 'email' ? false : '_blank')
+							rel=(item.type === 'email' ? false : 'noopener noreferrer')
+						)= item.label

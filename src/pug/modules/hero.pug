@@ -27,6 +27,7 @@ section(class='hero' id=heroData.id)
 					a(class='hero__path' href=path.href)= path.label
 		ul(class='hero__socials')
 			each social in socialsData
-				li(class='hero__social-item')
-					a(class='hero__social-link' href=social.href target='_blank' rel='noopener noreferrer' aria-label=social.label)
-						+socialIcon(social.icon, 'hero__social-icon')
+				unless social.hidden
+					li(class='hero__social-item')
+						a(class='hero__social-link' href=social.href target='_blank' rel='noopener noreferrer' aria-label=social.label)
+							+socialIcon(social.icon, 'hero__social-icon')

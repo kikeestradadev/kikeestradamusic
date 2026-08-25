@@ -22,15 +22,16 @@ div(class='floating-button')
 					)= contact.label
 		ul(class='floating-button__socials')
 			each social in socialsData
-				li(class='floating-button__social-item')
-					a(
-						class='floating-button__social-link'
-						href=social.href
-						target='_blank'
-						rel='noopener noreferrer'
-						aria-label=social.label
-					)
-						+socialIcon(social.icon, 'floating-button__social-icon')
+				unless social.hidden
+					li(class='floating-button__social-item')
+						a(
+							class='floating-button__social-link'
+							href=social.href
+							target='_blank'
+							rel='noopener noreferrer'
+							aria-label=social.label
+						)
+							+socialIcon(social.icon, 'floating-button__social-icon')
 	button(
 		class='floating-button__toggle'
 		type='button'

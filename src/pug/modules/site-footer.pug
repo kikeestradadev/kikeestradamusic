@@ -20,9 +20,10 @@ div(class='site-footer')
 		include lang-toggle
 		ul(class='site-footer__socials')
 			each social in socialsData
-				li(class='site-footer__social-item')
-					a(class='site-footer__social-link' href=social.href target='_blank' rel='noopener noreferrer' aria-label=social.label)
-						+socialIcon(social.icon, 'site-footer__social-icon')
+				unless social.hidden
+					li(class='site-footer__social-item')
+						a(class='site-footer__social-link' href=social.href target='_blank' rel='noopener noreferrer' aria-label=social.label)
+							+socialIcon(social.icon, 'site-footer__social-icon')
 		ul(class='site-footer__contacts')
 			each contact in siteFooterData.contacts
 				li(class='site-footer__contact-item')
