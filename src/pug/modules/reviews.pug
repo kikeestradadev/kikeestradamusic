@@ -35,7 +35,7 @@ section(class='reviews reveal' id=reviewsData.id)
 				ul(class='reviews__list swiper-wrapper')
 					each item in reviewsData.items
 						li(
-							class=`reviews__item swiper-slide${item.categories.indexOf(reviewsData.defaultFilter) !== -1 ? '' : ' is-filtered-out'}`
+							class=`reviews__item swiper-slide${reviewsData.defaultFilter === 'all' || item.categories.indexOf(reviewsData.defaultFilter) !== -1 ? '' : ' is-filtered-out'}`
 							data-reviews-categories=item.categoriesAttr
 						)
 							article(class='reviews__card')

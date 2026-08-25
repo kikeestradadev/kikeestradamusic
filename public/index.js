@@ -445,7 +445,7 @@ var reviews = function reviews() {
     var filtersSwiper = null;
     var activeFilter = ((_filterButtons$find = filterButtons.find(function (button) {
       return button.classList.contains('is-active');
-    })) === null || _filterButtons$find === void 0 ? void 0 : _filterButtons$find.dataset.reviewsFilter) || ((_filterButtons$ = filterButtons[0]) === null || _filterButtons$ === void 0 ? void 0 : _filterButtons$.dataset.reviewsFilter) || 'artist';
+    })) === null || _filterButtons$find === void 0 ? void 0 : _filterButtons$find.dataset.reviewsFilter) || ((_filterButtons$ = filterButtons[0]) === null || _filterButtons$ === void 0 ? void 0 : _filterButtons$.dataset.reviewsFilter) || 'all';
     var initFiltersSlider = function initFiltersSlider() {
       if (!filtersSlider || filtersSwiper || !filterButtons.length) {
         return;
@@ -559,7 +559,7 @@ var reviews = function reviews() {
       stopAllEmbeds();
       items.forEach(function (item) {
         var categories = (item.dataset.reviewsCategories || '').trim().split(/\s+/).filter(Boolean);
-        var isVisible = categories.includes(filterKey);
+        var isVisible = filterKey === 'all' || categories.includes(filterKey);
         item.classList.toggle('is-filtered-out', !isVisible);
         if (isVisible) {
           visibleCount += 1;

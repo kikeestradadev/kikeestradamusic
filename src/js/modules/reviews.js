@@ -25,7 +25,7 @@ const reviews = () => {
 			filterButtons.find((button) => button.classList.contains('is-active'))
 				?.dataset.reviewsFilter ||
 			filterButtons[0]?.dataset.reviewsFilter ||
-			'artist';
+			'all';
 
 		const initFiltersSlider = () => {
 			if (!filtersSlider || filtersSwiper || !filterButtons.length) {
@@ -166,7 +166,7 @@ const reviews = () => {
 					.trim()
 					.split(/\s+/)
 					.filter(Boolean);
-				const isVisible = categories.includes(filterKey);
+				const isVisible = filterKey === 'all' || categories.includes(filterKey);
 				item.classList.toggle('is-filtered-out', !isVisible);
 				if (isVisible) {
 					visibleCount += 1;

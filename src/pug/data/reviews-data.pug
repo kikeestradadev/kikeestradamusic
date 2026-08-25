@@ -9,7 +9,17 @@
 			id: '9K3e7ETaivo',
 			categories: ['artist', 'teacher'],
 			name: 'Alejandra François',
-			project: 'W-Arts'
+			project: 'W-Arts',
+			short: true
+		},
+		{
+			id: 'jQyVCsmZlHw',
+			categories: ['producer'],
+			name: 'Otto Vargas',
+			project: {
+				es: 'Compositor y periodista',
+				en: 'Composer and journalist'
+			}
 		}
 	]
 
@@ -25,8 +35,9 @@
 			externalLabel: 'Ver en YouTube',
 			prevLabel: 'Testimonio anterior',
 			nextLabel: 'Testimonio siguiente',
-			defaultFilter: 'artist',
+			defaultFilter: 'all',
 			filters: [
+				{ key: 'all', label: 'Todos' },
 				{ key: 'artist', label: 'Artista' },
 				{ key: 'teacher', label: 'Profesor' },
 				{ key: 'producer', label: 'Productor' }
@@ -43,8 +54,9 @@
 			externalLabel: 'Watch on YouTube',
 			prevLabel: 'Previous testimonial',
 			nextLabel: 'Next testimonial',
-			defaultFilter: 'artist',
+			defaultFilter: 'all',
 			filters: [
+				{ key: 'all', label: 'All' },
 				{ key: 'artist', label: 'Artist' },
 				{ key: 'teacher', label: 'Teacher' },
 				{ key: 'producer', label: 'Producer' }
@@ -76,7 +88,9 @@
 			categoriesAttr: categories.join(' '),
 			thumb: item.thumb || ('https://i.ytimg.com/vi/' + id + '/hqdefault.jpg'),
 			embedUrl: item.embedUrl || ('https://www.youtube.com/embed/' + id),
-			watchUrl: item.watchUrl || ('https://www.youtube.com/shorts/' + id),
+			watchUrl: item.watchUrl || (item.short
+				? 'https://www.youtube.com/shorts/' + id
+				: 'https://www.youtube.com/watch?v=' + id),
 			name: name,
 			project: project,
 			title: title

@@ -40,7 +40,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/prism.css">
-    <link rel="stylesheet" href="styles.css?v=1.0.73">
+    <link rel="stylesheet" href="styles.css?v=1.0.75">
   </head>
   <body class="home locale-en" itemscope itemtype="http://schema.org/WebPage">
     <header class="main-header">
@@ -665,7 +665,10 @@
             <div class="reviews__filters swiper">
               <div class="reviews__filters-track swiper-wrapper">
                 <div class="reviews__filters-slide swiper-slide">
-                  <button class="reviews__filter is-active" type="button" data-reviews-filter="artist" aria-pressed="true">Artist</button>
+                  <button class="reviews__filter is-active" type="button" data-reviews-filter="all" aria-pressed="true">All</button>
+                </div>
+                <div class="reviews__filters-slide swiper-slide">
+                  <button class="reviews__filter" type="button" data-reviews-filter="artist" aria-pressed="false">Artist</button>
                 </div>
                 <div class="reviews__filters-slide swiper-slide">
                   <button class="reviews__filter" type="button" data-reviews-filter="teacher" aria-pressed="false">Teacher</button>
@@ -694,6 +697,19 @@
                         <p class="reviews__name">Alejandra François</p>
                         <p class="reviews__project">W-Arts</p>
                       </div><a class="reviews__link" href="https://www.youtube.com/shorts/9K3e7ETaivo" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                    </div>
+                  </article>
+                </li>
+                <li class="reviews__item swiper-slide" data-reviews-categories="producer">
+                  <article class="reviews__card">
+                    <div class="reviews__embed" data-video-embed="https://www.youtube.com/embed/jQyVCsmZlHw" data-video-title="Otto Vargas, Composer and journalist">
+                      <button class="reviews__play" type="button" aria-label="Play testimonial: Otto Vargas, Composer and journalist"><img class="reviews__thumb" src="https://i.ytimg.com/vi/jQyVCsmZlHw/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="reviews__play-icon" aria-hidden="true"></span></button>
+                    </div>
+                    <div class="reviews__meta">
+                      <div class="reviews__credit">
+                        <p class="reviews__name">Otto Vargas</p>
+                        <p class="reviews__project">Composer and journalist</p>
+                      </div><a class="reviews__link" href="https://www.youtube.com/watch?v=jQyVCsmZlHw" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
                     </div>
                   </article>
                 </li>
@@ -850,6 +866,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="index.js?v=1.0.73"></script>
+    <script src="index.js?v=1.0.75"></script>
   </body>
 </html>
