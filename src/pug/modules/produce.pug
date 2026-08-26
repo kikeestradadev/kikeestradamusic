@@ -67,10 +67,11 @@ section(class='produce reveal' id=produceData.id)
 									type='button'
 									data-produce-embed=item.embedUrl
 									data-produce-title=item.title
+									data-produce-caption=item.caption
 									data-produce-watch=item.watchUrl
 									aria-haspopup='dialog'
 									aria-controls='produce-dialog'
-									aria-label=`${produceData.playLabel}: ${item.title}`
+									aria-label=`${produceData.playLabel}: ${item.caption || item.title}`
 								)
 									img(
 										class='produce__thumb'
@@ -81,8 +82,19 @@ section(class='produce reveal' id=produceData.id)
 									)
 									span(class='produce__play-icon' aria-hidden='true')
 								div(class='produce__meta')
-									p(class='produce__category')= item.category
+									if item.workType
+										p(class='produce__category')
+											span(class='visually-hidden')= item.workTypeLabel + ': '
+											= item.workType
 									h4(class='produce__video-title')= item.title
+									if item.artist
+										p(class='produce__credit')
+											span(class='produce__credit-label')= item.artistLabel + ':'
+											span(class='produce__credit-value')= item.artist
+									if item.role
+										p(class=`produce__credit${item.rolePending ? ' produce__credit--pending' : ''}`)
+											span(class='produce__credit-label')= item.roleLabel + ':'
+											span(class=`produce__credit-value${item.rolePending ? ' content-placeholder' : ''}`)= item.role
 				+sliderNavButton({
 					className: 'produce__nav produce__nav--prev',
 					label: produceData.prevLabel,

@@ -66,6 +66,21 @@
 		line-height: 1.2;
 	}
 
+	&__audience {
+		margin: 0 0 0.85rem;
+		color: var(--color-white);
+		font-size: 0.98rem;
+		line-height: 1.65;
+	}
+
+	&__format {
+		margin: 0 0 0.85rem;
+		color: var(--color-gold-soft);
+		font-size: 0.98rem;
+		font-weight: 500;
+		line-height: 1.6;
+	}
+
 	&__note {
 		margin: 0 0 1.75rem;
 		padding: 0.95rem 1rem;

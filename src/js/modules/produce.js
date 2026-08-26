@@ -81,6 +81,7 @@ const produce = () => {
 		const openDialog = (trigger) => {
 			const embedUrl = trigger.dataset.produceEmbed;
 			const title = trigger.dataset.produceTitle || '';
+			const captionText = trigger.dataset.produceCaption || title;
 			const watchUrl = trigger.dataset.produceWatch || '';
 
 			if (!embedUrl) {
@@ -112,7 +113,7 @@ const produce = () => {
 			frame.append(iframe);
 
 			if (caption) {
-				caption.textContent = title;
+				caption.textContent = captionText;
 			}
 
 			if (externalLink) {

@@ -3,86 +3,137 @@
 		locale = 'es'
 	}
 
-	// Títulos provisionales donde no hay crédito confirmado: editar aquí.
+	var pickLocale = function (value) {
+		if (value == null) {
+			return ''
+		}
+
+		if (typeof value === 'string') {
+			return value
+		}
+
+		return value[locale] || value.es || ''
+	}
+
+	// Títulos y artistas tomados de YouTube y del copy ya publicado.
+	// Rol por defecto: productor artístico y arreglista. Sobrescribe con role si un proyecto es distinto.
 	var produceVideoCatalog = [
 		{
 			id: '83V1s0BgYNI',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'Olvidar',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: 'fmJmdzR6csE',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'Señor Bartender',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: 'QEvubzshEGI',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'Canción de la esperanza',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: 'wuvbvIKPDww',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'Sigo aquí',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: '0aB2eaJeCbk',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'Mi alma gemela',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: 'DIWgrMs9oLE',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'La noche pregunta dónde estás',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: '4yoiXTDSY4A',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'Si tú no estás',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: 'bRjqF6_QCcQ',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'Te pido perdón',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: '9f4Nrl99cyA',
 			filterKey: 'productions',
-			categoryKey: 'album',
-			titleKey: 'production'
+			title: 'La ruta a ti',
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'album',
 		},
 		{
 			id: 'wbf6ncsBIfU',
 			filterKey: 'productions',
-			categoryKey: 'tribute',
-			titleKey: 'tribute'
+			title: {
+				es: 'Te dirán maestro',
+				en: 'Te dirán maestro'
+			},
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'tribute',
 		},
 		{
 			id: '0y1TK0lTXbo',
 			filterKey: 'documentaries',
-			categoryKey: 'documentary',
-			titleKey: 'documentary',
+			title: {
+				es: 'Historia de una canción',
+				en: 'Historia de una canción'
+			},
+			artist: 'Otto Vargas',
+			artistKind: 'artist',
+			workTypeKey: 'documentary',
 			start: 5
 		},
 		{
 			id: 'HfDls-jK6U8',
 			filterKey: 'commercial',
-			categoryKey: 'jingle',
-			titleKey: 'centrum'
+			title: 'Centrum',
+			artist: 'Centrum',
+			artistKind: 'client',
+			workTypeKey: 'jingle',
 		},
 		{
 			id: 'h2y-Rrgiuu8',
 			filterKey: 'commercial',
-			categoryKey: 'jingle',
-			titleKey: 'gordo'
+			title: {
+				es: 'Gordo Navideño de Costa Rica',
+				en: 'Gordo Navideño de Costa Rica'
+			},
+			artist: {
+				es: 'Gordo Navideño de Costa Rica',
+				en: 'Gordo Navideño de Costa Rica'
+			},
+			artistKind: 'client',
+			workTypeKey: 'jingle',
 		}
 	]
 
@@ -90,12 +141,27 @@
 		return items.map(function (item) {
 			var startQuery = item.start ? '?start=' + item.start : ''
 			var watchTime = item.start ? '&t=' + item.start + 's' : ''
+			var title = pickLocale(item.title)
+			var artist = pickLocale(item.artist)
+			var role = item.rolePending
+				? copy.rolePlaceholder
+				: (pickLocale(item.role) || copy.defaultRole)
+			var workType = copy.workTypes[item.workTypeKey] || ''
+			var artistKind = item.artistKind || 'artist'
+			var captionParts = [title, artist, workType].filter(Boolean)
 
 			return {
 				id: item.id,
 				filterKey: item.filterKey,
-				title: copy.titles[item.titleKey] || copy.titles.production,
-				category: copy.categories[item.categoryKey] || '',
+				title: title,
+				artist: artist,
+				artistLabel: copy.creditLabels[artistKind] || copy.creditLabels.artist,
+				role: role,
+				rolePending: !!item.rolePending,
+				roleLabel: copy.creditLabels.role,
+				workType: workType,
+				workTypeLabel: copy.creditLabels.workType,
+				caption: captionParts.join(' · '),
 				thumb: 'https://i.ytimg.com/vi/' + item.id + '/hqdefault.jpg',
 				embedUrl: 'https://www.youtube.com/embed/' + item.id + startQuery,
 				watchUrl: 'https://www.youtube.com/watch?v=' + item.id + watchTime
@@ -128,7 +194,7 @@
 				}
 			],
 			portfolioTitle: 'Producciones seleccionadas',
-			portfolioLead: 'Canciones, proyectos audiovisuales y trabajos comerciales desarrollados desde el arreglo, la producción y la dirección musical.',
+			portfolioLead: 'Cada pieza muestra el nombre del proyecto, el artista o cliente, el tipo de trabajo y el rol de Kike.',
 			filterLabel: 'Filtrar producciones',
 			filtersPrevLabel: 'Categorías anteriores',
 			filtersNextLabel: 'Categorías siguientes',
@@ -138,24 +204,25 @@
 			openOnYoutubeLabel: 'Ver en YouTube',
 			prevLabel: 'Video anterior',
 			nextLabel: 'Video siguiente',
+			creditLabels: {
+				artist: 'Artista',
+				client: 'Cliente',
+				role: 'Rol',
+				workType: 'Tipo de trabajo'
+			},
+			rolePlaceholder: '[Definir el rol de Kike en este proyecto]',
+			defaultRole: 'Productor artístico y arreglista',
+			workTypes: {
+				album: 'Álbum Historia Añeja',
+				tribute: 'Canción de homenaje',
+				documentary: 'Documental',
+				jingle: 'Jingle de radio'
+			},
 			filters: [
 				{ key: 'productions', label: 'Producciones' },
 				{ key: 'documentaries', label: 'Documentales' },
 				{ key: 'commercial', label: 'Comercial' }
 			],
-			titles: {
-				production: 'Producción musical',
-				tribute: 'Canción de homenaje',
-				documentary: 'Documental',
-				centrum: 'Centrum — Jingle de radio',
-				gordo: 'Gordo Navideño de Costa Rica — Jingle de radio'
-			},
-			categories: {
-				album: 'Álbum Historia Añeja',
-				tribute: 'Homenaje',
-				documentary: 'Documental',
-				jingle: 'Jingle de radio'
-			},
 			cta: {
 				label: 'Hablemos de tu proyecto',
 				href: '#contacto-produccion'
@@ -189,7 +256,7 @@
 				}
 			],
 			portfolioTitle: 'Selected productions',
-			portfolioLead: 'Songs, audiovisual projects, and commercial work developed through arrangement, production, and musical direction.',
+			portfolioLead: 'Each piece shows the project name, the artist or client, the type of work, and Kike\'s role.',
 			filterLabel: 'Filter productions',
 			filtersPrevLabel: 'Previous categories',
 			filtersNextLabel: 'Next categories',
@@ -199,24 +266,25 @@
 			openOnYoutubeLabel: 'Watch on YouTube',
 			prevLabel: 'Previous video',
 			nextLabel: 'Next video',
+			creditLabels: {
+				artist: 'Artist',
+				client: 'Client',
+				role: 'Role',
+				workType: 'Type of work'
+			},
+			rolePlaceholder: '[Define Kike\'s role on this project]',
+			defaultRole: 'Artistic producer and arranger',
+			workTypes: {
+				album: 'Historia Añeja album',
+				tribute: 'Tribute song',
+				documentary: 'Documentary',
+				jingle: 'Radio jingle'
+			},
 			filters: [
 				{ key: 'productions', label: 'Productions' },
 				{ key: 'documentaries', label: 'Documentaries' },
 				{ key: 'commercial', label: 'Commercial' }
 			],
-			titles: {
-				production: 'Music production',
-				tribute: 'Tribute song',
-				documentary: 'Documentary',
-				centrum: 'Centrum — Radio jingle',
-				gordo: 'Gordo Navideño de Costa Rica — Radio jingle'
-			},
-			categories: {
-				album: 'Historia Añeja album',
-				tribute: 'Tribute',
-				documentary: 'Documentary',
-				jingle: 'Radio jingle'
-			},
 			cta: {
 				label: 'Talk about your project',
 				href: '#contact-production'

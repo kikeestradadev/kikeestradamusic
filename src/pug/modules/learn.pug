@@ -24,6 +24,10 @@ section(class='learn reveal' id=learnData.id)
 					each discipline in learnData.disciplines
 						li(class='learn__discipline')
 							span(class='learn__discipline-name')= discipline.name
+			if learnData.audience
+				p(class='learn__audience')= learnData.audience
+			if learnData.format
+				p(class='learn__format')= learnData.format
 			if learnData.note
 				p(class='learn__note')= learnData.note
 			ul(class='learn__offerings')

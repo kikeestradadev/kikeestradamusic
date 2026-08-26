@@ -234,6 +234,7 @@ var produce = function produce() {
     var openDialog = function openDialog(trigger) {
       var embedUrl = trigger.dataset.produceEmbed;
       var title = trigger.dataset.produceTitle || '';
+      var captionText = trigger.dataset.produceCaption || title;
       var watchUrl = trigger.dataset.produceWatch || '';
       if (!embedUrl) {
         if (watchUrl) {
@@ -259,7 +260,7 @@ var produce = function produce() {
       iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       frame.append(iframe);
       if (caption) {
-        caption.textContent = title;
+        caption.textContent = captionText;
       }
       if (externalLink) {
         externalLink.href = watchUrl || embedUrl;

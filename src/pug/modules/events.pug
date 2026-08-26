@@ -19,4 +19,6 @@ section(class='events reveal' id=eventsData.id)
 						p(class='events__card-text')= point.text
 		if eventsData.cta
 			div(class='events__actions')
+				if eventsData.ctaNote
+					p(class='events__cta-note')= eventsData.ctaNote
 				a(class='btn btn--primary events__cta' href=eventsData.cta.href)= eventsData.cta.label

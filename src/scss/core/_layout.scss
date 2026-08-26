@@ -110,6 +110,36 @@ section[id] {
 	scroll-margin-top: calc(var(--header-height) + 0.75rem);
 }
 
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.content-placeholder {
+	display: inline-block;
+	max-width: 100%;
+	margin: 0;
+	padding: 0.28rem 0.55rem;
+	border: 1px dashed rgba(197, 160, 89, 0.75);
+	background: rgba(197, 160, 89, 0.08);
+	color: var(--color-gold-soft);
+	font-size: 0.86rem;
+	font-style: italic;
+	line-height: 1.5;
+}
+
+p.content-placeholder {
+	display: block;
+	width: fit-content;
+}
+
 .container {
 	width: 100%;
 	max-width: var(--container);
