@@ -2,8 +2,8 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 0.35rem;
-	padding: 0.25rem;
-	border: 1px solid rgba(255, 255, 255, 0.16);
+	padding: 0.3rem;
+	border: 1px solid rgba(255, 255, 255, 0.28);
 	border-radius: 999px;
 	background: rgba(255, 255, 255, 0.04);
 
@@ -11,8 +11,8 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 2rem;
-		height: 2rem;
+		width: 2.2rem;
+		height: 2.2rem;
 		border-radius: 50%;
 		opacity: 0.55;
 		transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;

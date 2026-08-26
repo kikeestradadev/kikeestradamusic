@@ -88,13 +88,11 @@ section(class='produce reveal' id=produceData.id)
 											= item.workType
 									h4(class='produce__video-title')= item.title
 									if item.artist
-										p(class='produce__credit')
-											span(class='produce__credit-label')= item.artistLabel + ':'
-											span(class='produce__credit-value')= item.artist
-									if item.role
-										p(class=`produce__credit${item.rolePending ? ' produce__credit--pending' : ''}`)
-											span(class='produce__credit-label')= item.roleLabel + ':'
-											span(class=`produce__credit-value${item.rolePending ? ' content-placeholder' : ''}`)= item.role
+										p(class='produce__artist')= item.artist
+									if item.roleShort
+										p(class='produce__role')= item.roleShort
+									else if item.role
+										p(class=`produce__role${item.rolePending ? ' content-placeholder' : ''}`)= item.role
 				+sliderNavButton({
 					className: 'produce__nav produce__nav--prev',
 					label: produceData.prevLabel,
@@ -106,8 +104,17 @@ section(class='produce reveal' id=produceData.id)
 					dir: 'next'
 				})
 			div(class='produce__pagination swiper-pagination')
-			if produceData.cta
-				a(class='btn btn--outline produce__cta' href=produceData.cta.href)= produceData.cta.label
+			div(class='produce__actions')
+				if produceData.moreLabel
+					button(
+						class='btn btn--outline produce__more'
+						type='button'
+						data-produce-more
+						data-produce-limit=produceData.initialLimit || 6
+						hidden
+					)= produceData.moreLabel
+				if produceData.cta
+					a(class='btn btn--primary produce__cta' href=produceData.cta.href)= produceData.cta.label
 	dialog(
 		class='produce__dialog'
 		id='produce-dialog'

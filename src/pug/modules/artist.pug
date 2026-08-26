@@ -14,7 +14,7 @@ section(class='artist reveal' id=artistData.id)
 				each highlight in artistData.highlights
 					li(class='artist__highlight')= highlight
 			if artistData.cta
-				a(class='btn btn--outline artist__cta' href=artistData.cta.href)= artistData.cta.label
+				a(class='btn btn--primary artist__cta' href=artistData.cta.href)= artistData.cta.label
 		div(class='artist__media')
 			div(class='artist__photo')
 				+thumbsGallery({

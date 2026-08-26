@@ -5,7 +5,7 @@
 	z-index: 50;
 	width: 100%;
 	background: var(--color-black);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 
 	@media (width >= $lg) {
 		background: var(--header-bg);
@@ -45,13 +45,13 @@
 	&__logo {
 		display: block;
 		width: auto;
-		height: 2.85rem;
-		max-width: min(62vw, 15.5rem);
+		height: 3.05rem;
+		max-width: min(62vw, 16rem);
 		border-radius: 0.55rem;
 
 		@media (width >= $lg) {
-			height: 3.6rem;
-			max-width: 18.5rem;
+			height: 3.85rem;
+			max-width: 19.5rem;
 		}
 	}
 
@@ -75,8 +75,8 @@
 		flex-direction: column;
 		justify-content: center;
 		gap: 0.35rem;
-		width: 2.5rem;
-		height: 2.5rem;
+		width: 2.75rem;
+		height: 2.75rem;
 		padding: 0.5rem;
 		border: 0;
 		background: transparent;
@@ -90,7 +90,7 @@
 	&__toggle-line {
 		display: block;
 		width: 100%;
-		height: 1.5px;
+		height: 2px;
 		background: var(--color-white);
 		transition: transform 0.25s ease, opacity 0.25s ease;
 	}
@@ -141,13 +141,13 @@
 			flex-direction: row;
 			flex-wrap: nowrap;
 			justify-content: center;
-			gap: 0.85rem;
+			gap: 1.05rem;
 		}
 	}
 
 	&__link {
 		color: var(--color-white);
-		font-size: 0.9rem;
+		font-size: 1.05rem;
 		font-weight: 500;
 		letter-spacing: 0.12em;
 		text-transform: uppercase;
@@ -155,8 +155,8 @@
 		transition: color 0.2s ease;
 
 		@media (width >= $lg) {
-			font-size: 0.78rem;
-			letter-spacing: 0.1em;
+			font-size: 0.86rem;
+			letter-spacing: 0.08em;
 		}
 
 		&:hover,
@@ -172,7 +172,7 @@
 	}
 
 	&--open &__toggle-line:nth-child(1) {
-		transform: translateY(7px) rotate(45deg);
+		transform: translateY(8px) rotate(45deg);
 	}
 
 	&--open &__toggle-line:nth-child(2) {
@@ -180,6 +180,6 @@
 	}
 
 	&--open &__toggle-line:nth-child(3) {
-		transform: translateY(-7px) rotate(-45deg);
+		transform: translateY(-8px) rotate(-45deg);
 	}
 }

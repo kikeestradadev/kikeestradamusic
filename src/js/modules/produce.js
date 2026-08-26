@@ -21,6 +21,7 @@ const produce = () => {
 		const filtersSlider = root.querySelector('.produce__filters');
 		const filtersPrevNav = root.querySelector('.produce__filters-nav--prev');
 		const filtersNextNav = root.querySelector('.produce__filters-nav--next');
+		const moreButton = root.querySelector('[data-produce-more]');
 		const desktopQuery = window.matchMedia(DESKTOP_MQ);
 
 		if (!dialog || !frame || !slider || !triggers.length) {
@@ -32,6 +33,8 @@ const produce = () => {
 		let swiperInstance = null;
 		let filtersSwiper = null;
 		let activeFilter = filterButtons[0]?.dataset.produceFilter || 'productions';
+		let expanded = false;
+		const initialLimit = Number(moreButton?.dataset.produceLimit) || 6;
 
 		const isDesktop = () => desktopQuery.matches;
 
@@ -136,7 +139,11 @@ const produce = () => {
 		};
 
 		const getVisibleItems = () =>
-			items.filter((item) => !item.classList.contains('is-filtered-out'));
+			items.filter(
+				(item) =>
+					!item.classList.contains('is-filtered-out') &&
+					!item.classList.contains('is-collapsed')
+			);
 
 		const initSlider = () => {
 			if (typeof window.Swiper !== 'function') {
@@ -184,17 +191,26 @@ const produce = () => {
 			});
 		};
 
-		const applyFilter = (filterKey) => {
+		const applyFilter = (filterKey, resetExpanded = true) => {
 			activeFilter = filterKey;
-			let visibleCount = 0;
+			if (resetExpanded) {
+				expanded = false;
+			}
+
+			let matchCount = 0;
 
 			items.forEach((item) => {
 				const category = item.dataset.produceCategory || 'productions';
-				const isVisible = category === filterKey;
-				item.classList.toggle('is-filtered-out', !isVisible);
-				if (isVisible) {
-					visibleCount += 1;
+				const matchesFilter = category === filterKey;
+				let collapsed = false;
+
+				if (matchesFilter) {
+					matchCount += 1;
+					collapsed = !expanded && matchCount > initialLimit;
 				}
+
+				item.classList.toggle('is-filtered-out', !matchesFilter);
+				item.classList.toggle('is-collapsed', collapsed);
 			});
 
 			filterButtons.forEach((button) => {
@@ -202,6 +218,14 @@ const produce = () => {
 				button.classList.toggle('is-active', isActive);
 				button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
 			});
+
+			if (moreButton) {
+				const showMore = matchCount > initialLimit && !expanded;
+				moreButton.hidden = !showMore;
+				moreButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+			}
+
+			const visibleCount = getVisibleItems().length;
 
 			if (pagination) {
 				pagination.hidden = visibleCount === 0 || isDesktop();
@@ -225,21 +249,7 @@ const produce = () => {
 		};
 
 		const syncMode = () => {
-			if (isDesktop()) {
-				destroySlider();
-				if (pagination) {
-					pagination.hidden = true;
-				}
-				if (prevNav) {
-					prevNav.hidden = true;
-				}
-				if (nextNav) {
-					nextNav.hidden = true;
-				}
-				return;
-			}
-
-			applyFilter(activeFilter);
+			applyFilter(activeFilter, false);
 		};
 
 		filterButtons.forEach((button) => {
@@ -248,10 +258,15 @@ const produce = () => {
 			});
 		});
 
+		moreButton?.addEventListener('click', () => {
+			expanded = true;
+			applyFilter(activeFilter, false);
+		});
+
 		triggers.forEach((trigger) => {
 			trigger.addEventListener('click', () => {
 				const item = trigger.closest('.produce__item');
-				if (item?.classList.contains('is-filtered-out')) {
+				if (item?.classList.contains('is-filtered-out') || item?.classList.contains('is-collapsed')) {
 					return;
 				}
 

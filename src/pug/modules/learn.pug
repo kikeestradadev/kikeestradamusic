@@ -24,10 +24,16 @@ section(class='learn reveal' id=learnData.id)
 					each discipline in learnData.disciplines
 						li(class='learn__discipline')
 							span(class='learn__discipline-name')= discipline.name
-			if learnData.audience
-				p(class='learn__audience')= learnData.audience
-			if learnData.format
-				p(class='learn__format')= learnData.format
+			if learnData.format || learnData.audience
+				dl(class='learn__facts')
+					if learnData.format
+						div(class='learn__fact')
+							dt(class='learn__fact-label')= learnData.formatLabel || 'Modalidad'
+							dd(class='learn__fact-value')= learnData.format
+					if learnData.audience
+						div(class='learn__fact')
+							dt(class='learn__fact-label')= learnData.audienceLabel || 'Para quién'
+							dd(class='learn__fact-value')= learnData.audience
 			if learnData.note
 				p(class='learn__note')= learnData.note
 			ul(class='learn__offerings')
@@ -37,4 +43,4 @@ section(class='learn reveal' id=learnData.id)
 							h3(class='learn__card-title')= offering.title
 							p(class='learn__card-text')= offering.text
 			if learnData.cta
-				a(class='btn btn--outline learn__cta' href=learnData.cta.href)= learnData.cta.label
+				a(class='btn btn--primary learn__cta' href=learnData.cta.href)= learnData.cta.label

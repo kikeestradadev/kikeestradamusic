@@ -146,6 +146,9 @@
 			var role = item.rolePending
 				? copy.rolePlaceholder
 				: (pickLocale(item.role) || copy.defaultRole)
+			var roleShort = item.rolePending
+				? ''
+				: (pickLocale(item.roleShort) || copy.defaultRoleShort || role)
 			var workType = copy.workTypes[item.workTypeKey] || ''
 			var artistKind = item.artistKind || 'artist'
 			var captionParts = [title, artist, workType].filter(Boolean)
@@ -157,6 +160,7 @@
 				artist: artist,
 				artistLabel: copy.creditLabels[artistKind] || copy.creditLabels.artist,
 				role: role,
+				roleShort: roleShort,
 				rolePending: !!item.rolePending,
 				roleLabel: copy.creditLabels.role,
 				workType: workType,
@@ -194,7 +198,7 @@
 				}
 			],
 			portfolioTitle: 'Producciones seleccionadas',
-			portfolioLead: 'Cada pieza muestra el nombre del proyecto, el artista o cliente, el tipo de trabajo y el rol de Kike.',
+			portfolioLead: 'Canciones y trabajos seleccionados. Cada pieza indica el artista o cliente y el rol de Kike.',
 			filterLabel: 'Filtrar producciones',
 			filtersPrevLabel: 'Categorías anteriores',
 			filtersNextLabel: 'Categorías siguientes',
@@ -204,6 +208,8 @@
 			openOnYoutubeLabel: 'Ver en YouTube',
 			prevLabel: 'Video anterior',
 			nextLabel: 'Video siguiente',
+			moreLabel: 'Ver más producciones',
+			initialLimit: 6,
 			creditLabels: {
 				artist: 'Artista',
 				client: 'Cliente',
@@ -212,6 +218,7 @@
 			},
 			rolePlaceholder: '[Definir el rol de Kike en este proyecto]',
 			defaultRole: 'Productor artístico y arreglista',
+			defaultRoleShort: 'Producción y arreglos',
 			workTypes: {
 				album: 'Álbum Historia Añeja',
 				tribute: 'Canción de homenaje',
@@ -256,7 +263,7 @@
 				}
 			],
 			portfolioTitle: 'Selected productions',
-			portfolioLead: 'Each piece shows the project name, the artist or client, the type of work, and Kike\'s role.',
+			portfolioLead: 'Selected songs and work. Each piece shows the artist or client and Kike\'s role.',
 			filterLabel: 'Filter productions',
 			filtersPrevLabel: 'Previous categories',
 			filtersNextLabel: 'Next categories',
@@ -266,6 +273,8 @@
 			openOnYoutubeLabel: 'Watch on YouTube',
 			prevLabel: 'Previous video',
 			nextLabel: 'Next video',
+			moreLabel: 'See more productions',
+			initialLimit: 6,
 			creditLabels: {
 				artist: 'Artist',
 				client: 'Client',
@@ -274,6 +283,7 @@
 			},
 			rolePlaceholder: '[Define Kike\'s role on this project]',
 			defaultRole: 'Artistic producer and arranger',
+			defaultRoleShort: 'Production and arrangements',
 			workTypes: {
 				album: 'Historia Añeja album',
 				tribute: 'Tribute song',

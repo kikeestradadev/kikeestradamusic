@@ -134,7 +134,8 @@ const reviews = () => {
 			root.classList.add('reviews--slider');
 			swiperInstance = new window.Swiper(slider, {
 				slidesPerView: 'auto',
-				spaceBetween: 18,
+				centeredSlides: true,
+				spaceBetween: 16,
 				loop: false,
 				rewind: false,
 				grabCursor: true,
@@ -151,6 +152,12 @@ const reviews = () => {
 					prevEl: prevNav,
 					nextEl: nextNav,
 					disabledClass: 'swiper-button-disabled',
+				},
+				breakpoints: {
+					640: {
+						centeredSlides: false,
+						spaceBetween: 22,
+					},
 				},
 			});
 		};

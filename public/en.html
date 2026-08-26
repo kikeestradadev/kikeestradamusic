@@ -40,7 +40,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/prism.css">
-    <link rel="stylesheet" href="styles.css?v=1.0.77">
+    <link rel="stylesheet" href="styles.css?v=1.0.79">
   </head>
   <body class="home locale-en" itemscope itemtype="http://schema.org/WebPage">
     <header class="main-header">
@@ -144,7 +144,7 @@
               <li class="artist__highlight">Live performances with presence and warmth</li>
               <li class="artist__highlight">Versatile repertoire in Spanish and English</li>
               <li class="artist__highlight">Original music and artistic collaborations</li>
-            </ul><a class="btn btn--outline artist__cta" href="#videos">Discover my music</a>
+            </ul><a class="btn btn--primary artist__cta" href="#videos">Discover my music</a>
           </div>
           <div class="artist__media">
             <div class="artist__photo">
@@ -326,8 +326,16 @@
               <li class="learn__discipline"><span class="learn__discipline-name">Electric guitar</span></li>
               <li class="learn__discipline"><span class="learn__discipline-name">Keyboard</span></li>
             </ul>
-            <p class="learn__audience">For people who want to learn or deepen an instrument, and for musicians seeking mentoring, workshops, or stage preparation.</p>
-            <p class="learn__format">Lessons are in person and online.</p>
+            <dl class="learn__facts">
+              <div class="learn__fact">
+                <dt class="learn__fact-label">Format</dt>
+                <dd class="learn__fact-value">In person and online</dd>
+              </div>
+              <div class="learn__fact">
+                <dt class="learn__fact-label">Best for</dt>
+                <dd class="learn__fact-value">For people who want to learn or deepen an instrument, and for musicians seeking mentoring, workshops, or stage preparation.</dd>
+              </div>
+            </dl>
             <p class="learn__note">Availability is confirmed when you get in touch.</p>
             <ul class="learn__offerings">
               <li class="learn__offering">
@@ -354,7 +362,7 @@
                   <p class="learn__card-text">Rehearsal, presence, and judgment to present your music with clarity and confidence.</p>
                 </article>
               </li>
-            </ul><a class="btn btn--outline learn__cta" href="#contact-learn">Learn with me</a>
+            </ul><a class="btn btn--primary learn__cta" href="#contact-learn">Learn with me</a>
           </div>
         </div>
       </section>
@@ -449,7 +457,7 @@
           <div class="produce__portfolio">
             <header class="produce__portfolio-intro">
               <h3 class="produce__portfolio-title">Selected productions</h3>
-              <p class="produce__portfolio-lead">Each piece shows the project name, the artist or client, the type of work, and Kike's role.</p>
+              <p class="produce__portfolio-lead">Selected songs and work. Each piece shows the artist or client and Kike's role.</p>
             </header>
             <div class="produce__filters-shell" aria-label="Filter productions">
                     <button class="produce__filters-nav produce__filters-nav--prev" type="button" aria-label="Previous categories">
@@ -485,8 +493,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">Olvidar</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -497,8 +505,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">Señor Bartender</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -509,8 +517,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">Canción de la esperanza</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -521,8 +529,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">Sigo aquí</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -533,8 +541,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">Mi alma gemela</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -545,8 +553,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">La noche pregunta dónde estás</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -557,8 +565,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">Si tú no estás</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -569,8 +577,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">Te pido perdón</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -581,8 +589,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Historia Añeja album
                       </p>
                       <h4 class="produce__video-title">La ruta a ti</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -593,8 +601,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Tribute song
                       </p>
                       <h4 class="produce__video-title">Te dirán maestro</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -605,8 +613,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Documentary
                       </p>
                       <h4 class="produce__video-title">Historia de una canción</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Artist:</span><span class="produce__credit-value">Otto Vargas</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Otto Vargas</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -617,8 +625,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Radio jingle
                       </p>
                       <h4 class="produce__video-title">Centrum</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Client:</span><span class="produce__credit-value">Centrum</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Centrum</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -629,8 +637,8 @@
                       <p class="produce__category"><span class="visually-hidden">Type of work: </span>Radio jingle
                       </p>
                       <h4 class="produce__video-title">Gordo Navideño de Costa Rica</h4>
-                      <p class="produce__credit"><span class="produce__credit-label">Client:</span><span class="produce__credit-value">Gordo Navideño de Costa Rica</span></p>
-                      <p class="produce__credit"><span class="produce__credit-label">Role:</span><span class="produce__credit-value">Artistic producer and arranger</span></p>
+                      <p class="produce__artist">Gordo Navideño de Costa Rica</p>
+                      <p class="produce__role">Production and arrangements</p>
                     </div>
                   </article>
                 </li>
@@ -646,7 +654,10 @@
                       </svg>
                     </button>
             </div>
-            <div class="produce__pagination swiper-pagination"></div><a class="btn btn--outline produce__cta" href="#contact-production">Talk about your project</a>
+            <div class="produce__pagination swiper-pagination"></div>
+            <div class="produce__actions">
+              <button class="btn btn--outline produce__more" type="button" data-produce-more data-produce-limit="6" hidden>See more productions</button><a class="btn btn--primary produce__cta" href="#contact-production">Talk about your project</a>
+            </div>
           </div>
         </div>
         <dialog class="produce__dialog" id="produce-dialog" aria-label="Video player">
@@ -926,6 +937,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="index.js?v=1.0.77"></script>
+    <script src="index.js?v=1.0.79"></script>
   </body>
 </html>
