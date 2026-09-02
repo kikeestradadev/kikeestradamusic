@@ -188,6 +188,7 @@ var produce = function produce() {
     var filtersSlider = root.querySelector('.produce__filters');
     var filtersPrevNav = root.querySelector('.produce__filters-nav--prev');
     var filtersNextNav = root.querySelector('.produce__filters-nav--next');
+    var moreButton = root.querySelector('[data-produce-more]');
     var desktopQuery = window.matchMedia(DESKTOP_MQ);
     if (!dialog || !frame || !slider || !triggers.length) {
       root.dataset.produceReady = 'true';
@@ -197,6 +198,8 @@ var produce = function produce() {
     var swiperInstance = null;
     var filtersSwiper = null;
     var activeFilter = ((_filterButtons$ = filterButtons[0]) === null || _filterButtons$ === void 0 ? void 0 : _filterButtons$.dataset.produceFilter) || 'productions';
+    var expanded = false;
+    var initialLimit = Number(moreButton === null || moreButton === void 0 ? void 0 : moreButton.dataset.produceLimit) || 6;
     var isDesktop = function isDesktop() {
       return desktopQuery.matches;
     };
@@ -234,6 +237,7 @@ var produce = function produce() {
     var openDialog = function openDialog(trigger) {
       var embedUrl = trigger.dataset.produceEmbed;
       var title = trigger.dataset.produceTitle || '';
+      var captionText = trigger.dataset.produceCaption || title;
       var watchUrl = trigger.dataset.produceWatch || '';
       if (!embedUrl) {
         if (watchUrl) {
@@ -259,7 +263,7 @@ var produce = function produce() {
       iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       frame.append(iframe);
       if (caption) {
-        caption.textContent = title;
+        caption.textContent = captionText;
       }
       if (externalLink) {
         externalLink.href = watchUrl || embedUrl;
@@ -278,7 +282,7 @@ var produce = function produce() {
     };
     var getVisibleItems = function getVisibleItems() {
       return items.filter(function (item) {
-        return !item.classList.contains('is-filtered-out');
+        return !item.classList.contains('is-filtered-out') && !item.classList.contains('is-collapsed');
       });
     };
     var initSlider = function initSlider() {
@@ -322,21 +326,34 @@ var produce = function produce() {
       });
     };
     var applyFilter = function applyFilter(filterKey) {
+      var resetExpanded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
       activeFilter = filterKey;
-      var visibleCount = 0;
+      if (resetExpanded) {
+        expanded = false;
+      }
+      var matchCount = 0;
       items.forEach(function (item) {
         var category = item.dataset.produceCategory || 'productions';
-        var isVisible = category === filterKey;
-        item.classList.toggle('is-filtered-out', !isVisible);
-        if (isVisible) {
-          visibleCount += 1;
+        var matchesFilter = category === filterKey;
+        var collapsed = false;
+        if (matchesFilter) {
+          matchCount += 1;
+          collapsed = !expanded && matchCount > initialLimit;
         }
+        item.classList.toggle('is-filtered-out', !matchesFilter);
+        item.classList.toggle('is-collapsed', collapsed);
       });
       filterButtons.forEach(function (button) {
         var isActive = button.dataset.produceFilter === filterKey;
         button.classList.toggle('is-active', isActive);
         button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
+      if (moreButton) {
+        var showMore = matchCount > initialLimit && !expanded;
+        moreButton.hidden = !showMore;
+        moreButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      }
+      var visibleCount = getVisibleItems().length;
       if (pagination) {
         pagination.hidden = visibleCount === 0 || isDesktop();
       }
@@ -354,30 +371,21 @@ var produce = function produce() {
       }
     };
     var syncMode = function syncMode() {
-      if (isDesktop()) {
-        destroySlider();
-        if (pagination) {
-          pagination.hidden = true;
-        }
-        if (prevNav) {
-          prevNav.hidden = true;
-        }
-        if (nextNav) {
-          nextNav.hidden = true;
-        }
-        return;
-      }
-      applyFilter(activeFilter);
+      applyFilter(activeFilter, false);
     };
     filterButtons.forEach(function (button) {
       button.addEventListener('click', function () {
         applyFilter(button.dataset.produceFilter || 'productions');
       });
     });
+    moreButton === null || moreButton === void 0 || moreButton.addEventListener('click', function () {
+      expanded = true;
+      applyFilter(activeFilter, false);
+    });
     triggers.forEach(function (trigger) {
       trigger.addEventListener('click', function () {
         var item = trigger.closest('.produce__item');
-        if (item !== null && item !== void 0 && item.classList.contains('is-filtered-out')) {
+        if (item !== null && item !== void 0 && item.classList.contains('is-filtered-out') || item !== null && item !== void 0 && item.classList.contains('is-collapsed')) {
           return;
         }
         openDialog(trigger);
@@ -445,7 +453,7 @@ var reviews = function reviews() {
     var filtersSwiper = null;
     var activeFilter = ((_filterButtons$find = filterButtons.find(function (button) {
       return button.classList.contains('is-active');
-    })) === null || _filterButtons$find === void 0 ? void 0 : _filterButtons$find.dataset.reviewsFilter) || ((_filterButtons$ = filterButtons[0]) === null || _filterButtons$ === void 0 ? void 0 : _filterButtons$.dataset.reviewsFilter) || 'artist';
+    })) === null || _filterButtons$find === void 0 ? void 0 : _filterButtons$find.dataset.reviewsFilter) || ((_filterButtons$ = filterButtons[0]) === null || _filterButtons$ === void 0 ? void 0 : _filterButtons$.dataset.reviewsFilter) || 'all';
     var initFiltersSlider = function initFiltersSlider() {
       if (!filtersSlider || filtersSwiper || !filterButtons.length) {
         return;
@@ -535,7 +543,8 @@ var reviews = function reviews() {
       root.classList.add('reviews--slider');
       swiperInstance = new window.Swiper(slider, {
         slidesPerView: 'auto',
-        spaceBetween: 18,
+        centeredSlides: true,
+        spaceBetween: 16,
         loop: false,
         rewind: false,
         grabCursor: true,
@@ -550,6 +559,12 @@ var reviews = function reviews() {
           prevEl: prevNav,
           nextEl: nextNav,
           disabledClass: 'swiper-button-disabled'
+        },
+        breakpoints: {
+          640: {
+            centeredSlides: false,
+            spaceBetween: 22
+          }
         }
       });
     };
@@ -559,7 +574,7 @@ var reviews = function reviews() {
       stopAllEmbeds();
       items.forEach(function (item) {
         var categories = (item.dataset.reviewsCategories || '').trim().split(/\s+/).filter(Boolean);
-        var isVisible = categories.includes(filterKey);
+        var isVisible = filterKey === 'all' || categories.includes(filterKey);
         item.classList.toggle('is-filtered-out', !isVisible);
         if (isVisible) {
           visibleCount += 1;

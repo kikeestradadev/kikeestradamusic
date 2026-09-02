@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /style-guide.html
+
+Sitemap: https://kikeestradamusic.com/sitemap.xml
