@@ -34,13 +34,5 @@ section(class='learn reveal' id=learnData.id)
 						div(class='learn__fact')
 							dt(class='learn__fact-label')= learnData.audienceLabel || 'Para quién'
 							dd(class='learn__fact-value')= learnData.audience
-			if learnData.note
-				p(class='learn__note')= learnData.note
-			ul(class='learn__offerings')
-				each offering in learnData.offerings
-					li(class='learn__offering')
-						article(class='learn__card')
-							h3(class='learn__card-title')= offering.title
-							p(class='learn__card-text')= offering.text
 			if learnData.cta
 				a(class='btn btn--primary learn__cta' href=learnData.cta.href)= learnData.cta.label
