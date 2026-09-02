@@ -18,38 +18,69 @@ include ../data/socials-data
 		: siteData.siteUrl + '/'
 	var seoOgImageAlt = (siteData.ogImageAlt && siteData.ogImageAlt[locale]) || siteData.ogImageAlt.es
 	var seoSameAs = socialsData.map(function (item) { return item.href })
-	var seoJsonLdDescription = locale === 'en'
-		? 'Artist, teacher and music producer in Costa Rica.'
-		: 'Artista, profesor y productor musical en Costa Rica.'
-	var seoJsonLdJobTitle = locale === 'en'
-		? 'Artist, teacher and music producer'
-		: 'Artista, profesor y productor musical'
 	var seoPersonId = siteData.siteUrl + '/#person'
+	var seoWebsiteId = siteData.siteUrl + '/#website'
+	var seoServiceId = siteData.siteUrl + '/#service'
 	var seoJsonLd = {
 		'@context': 'https://schema.org',
 		'@graph': [
 			{
+				'@type': 'WebSite',
+				'@id': seoWebsiteId,
+				'name': siteData.siteName,
+				'url': siteData.siteUrl + '/',
+				'inLanguage': locale === 'en' ? 'en' : 'es',
+				'description': seoDescription,
+				'publisher': { '@id': seoPersonId }
+			},
+			{
 				'@type': 'Person',
 				'@id': seoPersonId,
 				'name': 'Kike Estrada',
+				'alternateName': 'Enrique Estrada',
 				'url': siteData.siteUrl + '/',
 				'image': siteData.ogImage,
-				'description': seoJsonLdDescription,
-				'jobTitle': seoJsonLdJobTitle,
+				'description': seoDescription,
+				'jobTitle': seoLocale.jobTitle,
+				'email': siteData.email,
+				'telephone': siteData.telephone,
+				'knowsAbout': seoLocale.knowsAbout,
+				'knowsLanguage': ['es', 'en'],
+				'address': {
+					'@type': 'PostalAddress',
+					'addressCountry': 'CR'
+				},
 				'sameAs': seoSameAs
 			},
 			{
 				'@type': 'ProfessionalService',
-				'@id': siteData.siteUrl + '/#service',
-				'name': 'Kike Estrada Music',
+				'@id': seoServiceId,
+				'name': siteData.siteName,
 				'url': siteData.siteUrl + '/',
 				'image': siteData.ogImage,
-				'description': seoJsonLdDescription,
+				'description': seoDescription,
+				'email': siteData.email,
+				'telephone': siteData.telephone,
 				'founder': { '@id': seoPersonId },
 				'sameAs': seoSameAs,
 				'areaServed': {
 					'@type': 'Country',
 					'name': 'Costa Rica'
+				},
+				'availableLanguage': ['Spanish', 'English'],
+				'hasOfferCatalog': {
+					'@type': 'OfferCatalog',
+					'name': locale === 'en' ? 'Services' : 'Servicios',
+					'itemListElement': seoLocale.services.map(function (service) {
+						return {
+							'@type': 'Offer',
+							'itemOffered': {
+								'@type': 'Service',
+								'name': service.name,
+								'description': service.description
+							}
+						}
+					})
 				}
 			}
 		]
@@ -86,6 +117,7 @@ html(lang=locale prefix='og: http://ogp.me/ns#', class='no-js')
 		meta(name="twitter:title", content=seoTitle)
 		meta(name="twitter:description", content=seoDescription)
 		meta(name="twitter:image", content=siteData.ogImage)
+		meta(name="twitter:image:alt", content=seoOgImageAlt)
 		script(type='application/ld+json')!= JSON.stringify(seoJsonLd)
 		meta(http-equiv="Content-Security-Policy", content="upgrade-insecure-requests")
 		meta(http-equiv="Cache-Control", content="no-cache, no-store, must-revalidate")
