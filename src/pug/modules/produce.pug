@@ -56,10 +56,13 @@ section(class='produce reveal' id=produceData.id)
 					})
 			div(class='produce__slider swiper')
 				ul(class='produce__grid swiper-wrapper')
-					each item in produceData.items
+					each item, index in produceData.items
+						-
+							var matchesDefault = produceData.defaultFilter === 'all' || item.filterKeys.indexOf(produceData.defaultFilter) !== -1
+							var isCollapsed = produceData.defaultFilter === 'all' && index >= (produceData.initialLimit || 5)
 						li(
-							class='produce__item swiper-slide'
-							data-produce-category=item.filterKey
+							class=`produce__item swiper-slide${matchesDefault ? '' : ' is-filtered-out'}${isCollapsed ? ' is-collapsed' : ''}`
+							data-produce-categories=item.categoriesAttr
 						)
 							article(class='produce__video')
 								button(
@@ -103,16 +106,24 @@ section(class='produce reveal' id=produceData.id)
 					label: produceData.nextLabel,
 					dir: 'next'
 				})
-			div(class='produce__pagination swiper-pagination')
+			div(
+				class='produce__pages'
+				data-produce-pages
+				data-produce-limit=produceData.initialLimit || 5
+				hidden
+			)
+				+sliderNavButton({
+					className: 'produce__page-nav produce__page-nav--prev',
+					label: produceData.pagePrevLabel,
+					dir: 'prev'
+				})
+				div(class='produce__page-list' data-produce-page-list aria-label=produceData.pagesLabel)
+				+sliderNavButton({
+					className: 'produce__page-nav produce__page-nav--next',
+					label: produceData.pageNextLabel,
+					dir: 'next'
+				})
 			div(class='produce__actions')
-				if produceData.moreLabel
-					button(
-						class='btn btn--outline produce__more'
-						type='button'
-						data-produce-more
-						data-produce-limit=produceData.initialLimit || 6
-						hidden
-					)= produceData.moreLabel
 				if produceData.cta
 					a(class='btn btn--primary produce__cta' href=produceData.cta.href)= produceData.cta.label
 	dialog(

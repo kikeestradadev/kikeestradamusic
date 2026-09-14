@@ -213,6 +213,10 @@
 		margin-bottom: 1.85rem;
 		width: 100%;
 		min-width: 0;
+
+		@media (width >= $l) {
+			overflow: visible;
+		}
 	}
 
 	&__grid {
@@ -369,6 +373,88 @@
 		}
 	}
 
+	&__pages {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.65rem;
+		margin: 0 0 1.5rem;
+
+		&[hidden] {
+			display: none !important;
+		}
+	}
+
+	&__page-list {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.4rem;
+	}
+
+	&__page {
+		min-width: 2.35rem;
+		height: 2.35rem;
+		padding: 0 0.65rem;
+		border: 1px solid rgba(255, 255, 255, 0.45);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--color-white);
+		font-size: 0.88rem;
+		font-weight: 500;
+		line-height: 1;
+		cursor: pointer;
+		transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+		&:hover {
+			border-color: var(--color-gold);
+			color: var(--color-gold);
+		}
+
+		&:focus-visible {
+			outline: 3px solid var(--color-gold);
+			outline-offset: 2px;
+		}
+
+		&.is-active {
+			color: var(--color-black);
+			background: var(--color-gold);
+			border-color: var(--color-gold);
+		}
+	}
+
+	&__page-nav {
+		display: grid;
+		place-items: center;
+		width: 2.35rem;
+		height: 2.35rem;
+		padding: 0;
+		margin: 0;
+		border: 1px solid rgba(255, 255, 255, 0.45);
+		border-radius: 50%;
+		background: transparent;
+		color: var(--color-white);
+		cursor: pointer;
+		transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+
+		&:hover:not(:disabled) {
+			border-color: var(--color-gold);
+			color: var(--color-gold);
+		}
+
+		&:focus-visible {
+			outline: 3px solid var(--color-gold);
+			outline-offset: 2px;
+		}
+
+		&:disabled {
+			opacity: 0.35;
+			cursor: default;
+			pointer-events: none;
+		}
+	}
+
 	&__nav {
 		position: absolute;
 		top: calc(100cqw / 1.08 * 9 / 16 / 2);
@@ -460,7 +546,8 @@
 
 	&__more[hidden],
 	&__nav[hidden],
-	&__pagination[hidden] {
+	&__pagination[hidden],
+	&__pages[hidden] {
 		display: none !important;
 	}
 
