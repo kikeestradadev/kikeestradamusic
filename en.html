@@ -41,7 +41,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/prism.css">
-    <link rel="stylesheet" href="styles.css?v=1.0.86">
+    <link rel="stylesheet" href="styles.css?v=1.0.89">
   </head>
   <body class="home locale-en" itemscope itemtype="http://schema.org/WebPage">
     <header class="main-header">
@@ -344,7 +344,7 @@
           <div class="produce__portfolio">
             <header class="produce__portfolio-intro">
               <h3 class="produce__portfolio-title">Selected productions</h3>
-              <p class="produce__portfolio-lead">Selected songs and work. Each piece shows the artist or client and Kike's role.</p>
+              <p class="produce__portfolio-lead">Selected songs and work. Each piece shows the artist or client and Kike's role. The same video can appear in more than one filter.</p>
             </header>
             <div class="produce__filters-shell" aria-label="Filter productions">
                     <button class="produce__filters-nav produce__filters-nav--prev" type="button" aria-label="Previous categories">
@@ -355,13 +355,22 @@
               <div class="produce__filters swiper">
                 <div class="produce__filters-track swiper-wrapper">
                   <div class="produce__filters-slide swiper-slide">
-                    <button class="produce__filter is-active" type="button" data-produce-filter="productions" aria-pressed="true">Productions</button>
+                    <button class="produce__filter is-active" type="button" data-produce-filter="all" aria-pressed="true">All</button>
+                  </div>
+                  <div class="produce__filters-slide swiper-slide">
+                    <button class="produce__filter" type="button" data-produce-filter="original" aria-pressed="false">Original</button>
+                  </div>
+                  <div class="produce__filters-slide swiper-slide">
+                    <button class="produce__filter" type="button" data-produce-filter="commercial" aria-pressed="false">Commercial</button>
                   </div>
                   <div class="produce__filters-slide swiper-slide">
                     <button class="produce__filter" type="button" data-produce-filter="documentaries" aria-pressed="false">Documentaries</button>
                   </div>
                   <div class="produce__filters-slide swiper-slide">
-                    <button class="produce__filter" type="button" data-produce-filter="commercial" aria-pressed="false">Commercial</button>
+                    <button class="produce__filter" type="button" data-produce-filter="otto-vargas" aria-pressed="false">Otto Vargas</button>
+                  </div>
+                  <div class="produce__filters-slide swiper-slide">
+                    <button class="produce__filter" type="button" data-produce-filter="marco-vega" aria-pressed="false">Marco Vega</button>
                   </div>
                 </div>
               </div>
@@ -373,7 +382,138 @@
             </div>
             <div class="produce__slider swiper">
               <ul class="produce__grid swiper-wrapper">
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide" data-produce-categories="commercial">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/03kHeXOB7cc" data-produce-title="Shadai 1" data-produce-caption="Shadai 1 · Enrique Estrada · Radio jingle" data-produce-watch="https://www.youtube.com/watch?v=03kHeXOB7cc" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Shadai 1 · Enrique Estrada · Radio jingle"><img class="produce__thumb" src="https://i.ytimg.com/vi/03kHeXOB7cc/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Radio jingle
+                      </p>
+                      <h4 class="produce__video-title">Shadai 1</h4>
+                      <p class="produce__artist">Enrique Estrada</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide" data-produce-categories="commercial">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/B-BtVtXRuPA" data-produce-title="Shadai 2" data-produce-caption="Shadai 2 · Enrique Estrada · Radio jingle" data-produce-watch="https://www.youtube.com/watch?v=B-BtVtXRuPA" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Shadai 2 · Enrique Estrada · Radio jingle"><img class="produce__thumb" src="https://i.ytimg.com/vi/B-BtVtXRuPA/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Radio jingle
+                      </p>
+                      <h4 class="produce__video-title">Shadai 2</h4>
+                      <p class="produce__artist">Enrique Estrada</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide" data-produce-categories="original">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/Y3FJT41sv0Y" data-produce-title="Si supieras" data-produce-caption="Si supieras · Enrique Estrada · Original song" data-produce-watch="https://www.youtube.com/watch?v=Y3FJT41sv0Y" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Si supieras · Enrique Estrada · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/Y3FJT41sv0Y/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">Si supieras</h4>
+                      <p class="produce__artist">Enrique Estrada</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide" data-produce-categories="original">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/u1HAXt_qTpo" data-produce-title="La fe" data-produce-caption="La fe · Original song" data-produce-watch="https://www.youtube.com/watch?v=u1HAXt_qTpo" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: La fe · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/u1HAXt_qTpo/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">La fe</h4>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide" data-produce-categories="original">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/_Y5K5Wukdec" data-produce-title="Dame" data-produce-caption="Dame · Albert Castro · Original song" data-produce-watch="https://www.youtube.com/watch?v=_Y5K5Wukdec" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Dame · Albert Castro · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/_Y5K5Wukdec/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">Dame</h4>
+                      <p class="produce__artist">Albert Castro</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="marco-vega">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/ej9m3P_CumQ" data-produce-title="Nuestro escudo" data-produce-caption="Nuestro escudo · Marco Vega · Original song" data-produce-watch="https://www.youtube.com/watch?v=ej9m3P_CumQ" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Nuestro escudo · Marco Vega · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/ej9m3P_CumQ/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">Nuestro escudo</h4>
+                      <p class="produce__artist">Marco Vega</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="marco-vega">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/MdTBrw_Etfo" data-produce-title="Tuya es la gloria" data-produce-caption="Tuya es la gloria · Marco Vega · Original song" data-produce-watch="https://www.youtube.com/watch?v=MdTBrw_Etfo" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Tuya es la gloria · Marco Vega · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/MdTBrw_Etfo/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">Tuya es la gloria</h4>
+                      <p class="produce__artist">Marco Vega</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="marco-vega">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/DPu3IGVZElE" data-produce-title="Escúchame" data-produce-caption="Escúchame · Marco Vega · Original song" data-produce-watch="https://www.youtube.com/watch?v=DPu3IGVZElE" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Escúchame · Marco Vega · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/DPu3IGVZElE/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">Escúchame</h4>
+                      <p class="produce__artist">Marco Vega</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="marco-vega">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/SQerHyF5d7o" data-produce-title="En el nombre de Jesús" data-produce-caption="En el nombre de Jesús · Marco Vega · Original song" data-produce-watch="https://www.youtube.com/watch?v=SQerHyF5d7o" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: En el nombre de Jesús · Marco Vega · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/SQerHyF5d7o/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">En el nombre de Jesús</h4>
+                      <p class="produce__artist">Marco Vega</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="marco-vega">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/BQwQksZdFK8" data-produce-title="Él me oyó" data-produce-caption="Él me oyó · Marco Vega · Original song" data-produce-watch="https://www.youtube.com/watch?v=BQwQksZdFK8" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Él me oyó · Marco Vega · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/BQwQksZdFK8/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">Él me oyó</h4>
+                      <p class="produce__artist">Marco Vega</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="marco-vega">
+                  <article class="produce__video">
+                    <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/SZwN9lAytSI" data-produce-title="Aplaudid" data-produce-caption="Aplaudid · Marco Vega · Original song" data-produce-watch="https://www.youtube.com/watch?v=SZwN9lAytSI" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Aplaudid · Marco Vega · Original song"><img class="produce__thumb" src="https://i.ytimg.com/vi/SZwN9lAytSI/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
+                    <div class="produce__meta">
+                      <p class="produce__category"><span class="visually-hidden">Type of work: </span>Original song
+                      </p>
+                      <h4 class="produce__video-title">Aplaudid</h4>
+                      <p class="produce__artist">Marco Vega</p>
+                      <p class="produce__role">Production and arrangements</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/83V1s0BgYNI" data-produce-title="Olvidar" data-produce-caption="Olvidar · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=83V1s0BgYNI" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Olvidar · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/83V1s0BgYNI/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -385,7 +525,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/fmJmdzR6csE" data-produce-title="Señor Bartender" data-produce-caption="Señor Bartender · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=fmJmdzR6csE" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Señor Bartender · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/fmJmdzR6csE/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -397,7 +537,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/QEvubzshEGI" data-produce-title="Canción de la esperanza" data-produce-caption="Canción de la esperanza · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=QEvubzshEGI" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Canción de la esperanza · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/QEvubzshEGI/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -409,7 +549,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/wuvbvIKPDww" data-produce-title="Sigo aquí" data-produce-caption="Sigo aquí · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=wuvbvIKPDww" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Sigo aquí · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/wuvbvIKPDww/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -421,7 +561,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/0aB2eaJeCbk" data-produce-title="Mi alma gemela" data-produce-caption="Mi alma gemela · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=0aB2eaJeCbk" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Mi alma gemela · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/0aB2eaJeCbk/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -433,7 +573,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/DIWgrMs9oLE" data-produce-title="La noche pregunta dónde estás" data-produce-caption="La noche pregunta dónde estás · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=DIWgrMs9oLE" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: La noche pregunta dónde estás · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/DIWgrMs9oLE/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -445,7 +585,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/4yoiXTDSY4A" data-produce-title="Si tú no estás" data-produce-caption="Si tú no estás · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=4yoiXTDSY4A" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Si tú no estás · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/4yoiXTDSY4A/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -457,7 +597,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/bRjqF6_QCcQ" data-produce-title="Te pido perdón" data-produce-caption="Te pido perdón · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=bRjqF6_QCcQ" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Te pido perdón · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/bRjqF6_QCcQ/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -469,7 +609,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/9f4Nrl99cyA" data-produce-title="La ruta a ti" data-produce-caption="La ruta a ti · Otto Vargas · Historia Añeja album" data-produce-watch="https://www.youtube.com/watch?v=9f4Nrl99cyA" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: La ruta a ti · Otto Vargas · Historia Añeja album"><img class="produce__thumb" src="https://i.ytimg.com/vi/9f4Nrl99cyA/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -481,7 +621,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="productions">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/wbf6ncsBIfU" data-produce-title="Te dirán maestro" data-produce-caption="Te dirán maestro · Otto Vargas · Tribute song" data-produce-watch="https://www.youtube.com/watch?v=wbf6ncsBIfU" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Te dirán maestro · Otto Vargas · Tribute song"><img class="produce__thumb" src="https://i.ytimg.com/vi/wbf6ncsBIfU/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -493,7 +633,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="documentaries">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="documentaries otto-vargas">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/0y1TK0lTXbo?start=5" data-produce-title="Historia de una canción" data-produce-caption="Historia de una canción · Otto Vargas · Documentary" data-produce-watch="https://www.youtube.com/watch?v=0y1TK0lTXbo&amp;t=5s" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Historia de una canción · Otto Vargas · Documentary"><img class="produce__thumb" src="https://i.ytimg.com/vi/0y1TK0lTXbo/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -505,7 +645,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="commercial">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="commercial">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/HfDls-jK6U8" data-produce-title="Centrum" data-produce-caption="Centrum · Centrum · Radio jingle" data-produce-watch="https://www.youtube.com/watch?v=HfDls-jK6U8" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Centrum · Centrum · Radio jingle"><img class="produce__thumb" src="https://i.ytimg.com/vi/HfDls-jK6U8/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -517,7 +657,7 @@
                     </div>
                   </article>
                 </li>
-                <li class="produce__item swiper-slide" data-produce-category="commercial">
+                <li class="produce__item swiper-slide is-collapsed" data-produce-categories="commercial">
                   <article class="produce__video">
                     <button class="produce__play" type="button" data-produce-embed="https://www.youtube.com/embed/h2y-Rrgiuu8" data-produce-title="Gordo Navideño de Costa Rica" data-produce-caption="Gordo Navideño de Costa Rica · Gordo Navideño de Costa Rica · Radio jingle" data-produce-watch="https://www.youtube.com/watch?v=h2y-Rrgiuu8" aria-haspopup="dialog" aria-controls="produce-dialog" aria-label="Play: Gordo Navideño de Costa Rica · Gordo Navideño de Costa Rica · Radio jingle"><img class="produce__thumb" src="https://i.ytimg.com/vi/h2y-Rrgiuu8/hqdefault.jpg" alt="" loading="lazy" decoding="async"><span class="produce__play-icon" aria-hidden="true"></span></button>
                     <div class="produce__meta">
@@ -541,9 +681,20 @@
                       </svg>
                     </button>
             </div>
-            <div class="produce__pagination swiper-pagination"></div>
-            <div class="produce__actions">
-              <button class="btn btn--outline produce__more" type="button" data-produce-more data-produce-limit="6" hidden>See more productions</button><a class="btn btn--primary produce__cta" href="#contact-production">Talk about your project</a>
+            <div class="produce__pages" data-produce-pages data-produce-limit="5" hidden>
+                    <button class="produce__page-nav produce__page-nav--prev" type="button" aria-label="Previous page">
+                      <svg class="slider-nav__icon slider-nav__icon--prev" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                        <polyline points="15 6 9 12 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                      </svg>
+                    </button>
+              <div class="produce__page-list" data-produce-page-list aria-label="Pages"></div>
+                    <button class="produce__page-nav produce__page-nav--next" type="button" aria-label="Next page">
+                      <svg class="slider-nav__icon slider-nav__icon--next" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                        <polyline points="9 6 15 12 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                      </svg>
+                    </button>
+            </div>
+            <div class="produce__actions"><a class="btn btn--primary produce__cta" href="#contact-production">Talk about your project</a>
             </div>
           </div>
         </div>
@@ -802,6 +953,6 @@
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="index.js?v=1.0.86"></script>
+    <script src="index.js?v=1.0.89"></script>
   </body>
 </html>

@@ -166,10 +166,11 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+var ALL_FILTER = 'all';
 var DESKTOP_MQ = '(width >= 960px)';
 var produce = function produce() {
   document.querySelectorAll('.produce').forEach(function (root) {
-    var _filterButtons$;
+    var _filterButtons$find, _filterButtons$;
     if (root.dataset.produceReady === 'true') {
       return;
     }
@@ -182,13 +183,15 @@ var produce = function produce() {
     var slider = root.querySelector('.produce__slider');
     var prevNav = root.querySelector('.produce__nav--prev');
     var nextNav = root.querySelector('.produce__nav--next');
-    var pagination = root.querySelector('.produce__pagination');
     var items = _toConsumableArray(root.querySelectorAll('.produce__item'));
     var filterButtons = _toConsumableArray(root.querySelectorAll('[data-produce-filter]'));
     var filtersSlider = root.querySelector('.produce__filters');
     var filtersPrevNav = root.querySelector('.produce__filters-nav--prev');
     var filtersNextNav = root.querySelector('.produce__filters-nav--next');
-    var moreButton = root.querySelector('[data-produce-more]');
+    var pagesRoot = root.querySelector('[data-produce-pages]');
+    var pageList = root.querySelector('[data-produce-page-list]');
+    var pagePrev = root.querySelector('.produce__page-nav--prev');
+    var pageNext = root.querySelector('.produce__page-nav--next');
     var desktopQuery = window.matchMedia(DESKTOP_MQ);
     if (!dialog || !frame || !slider || !triggers.length) {
       root.dataset.produceReady = 'true';
@@ -197,9 +200,12 @@ var produce = function produce() {
     var lastTrigger = null;
     var swiperInstance = null;
     var filtersSwiper = null;
-    var activeFilter = ((_filterButtons$ = filterButtons[0]) === null || _filterButtons$ === void 0 ? void 0 : _filterButtons$.dataset.produceFilter) || 'productions';
-    var expanded = false;
-    var initialLimit = Number(moreButton === null || moreButton === void 0 ? void 0 : moreButton.dataset.produceLimit) || 6;
+    var activeFilter = ((_filterButtons$find = filterButtons.find(function (button) {
+      return button.classList.contains('is-active');
+    })) === null || _filterButtons$find === void 0 ? void 0 : _filterButtons$find.dataset.produceFilter) || ((_filterButtons$ = filterButtons[0]) === null || _filterButtons$ === void 0 ? void 0 : _filterButtons$.dataset.produceFilter) || ALL_FILTER;
+    var currentPage = 1;
+    var pageCount = 1;
+    var pageSize = Number(pagesRoot === null || pagesRoot === void 0 ? void 0 : pagesRoot.dataset.produceLimit) || 5;
     var isDesktop = function isDesktop() {
       return desktopQuery.matches;
     };
@@ -304,10 +310,6 @@ var produce = function produce() {
         watchOverflow: true,
         observer: true,
         observeParents: true,
-        pagination: pagination ? {
-          el: pagination,
-          clickable: true
-        } : undefined,
         navigation: {
           prevEl: prevNav,
           nextEl: nextNav,
@@ -325,61 +327,114 @@ var produce = function produce() {
         }
       });
     };
-    var applyFilter = function applyFilter(filterKey) {
-      var resetExpanded = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
-      activeFilter = filterKey;
-      if (resetExpanded) {
-        expanded = false;
+    var getItemCategories = function getItemCategories(item) {
+      return (item.dataset.produceCategories || item.dataset.produceCategory || '').trim().split(/\s+/).filter(Boolean);
+    };
+    var matchesFilter = function matchesFilter(item, filterKey) {
+      return filterKey === ALL_FILTER || getItemCategories(item).includes(filterKey);
+    };
+    var renderPager = function renderPager() {
+      if (!pagesRoot || !pageList) {
+        return;
       }
-      var matchCount = 0;
-      items.forEach(function (item) {
-        var category = item.dataset.produceCategory || 'productions';
-        var matchesFilter = category === filterKey;
-        var collapsed = false;
-        if (matchesFilter) {
-          matchCount += 1;
-          collapsed = !expanded && matchCount > initialLimit;
-        }
-        item.classList.toggle('is-filtered-out', !matchesFilter);
-        item.classList.toggle('is-collapsed', collapsed);
-      });
-      filterButtons.forEach(function (button) {
-        var isActive = button.dataset.produceFilter === filterKey;
-        button.classList.toggle('is-active', isActive);
-        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      });
-      if (moreButton) {
-        var showMore = matchCount > initialLimit && !expanded;
-        moreButton.hidden = !showMore;
-        moreButton.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      var showPager = activeFilter === ALL_FILTER && pageCount > 1;
+      pagesRoot.hidden = !showPager;
+      pageList.replaceChildren();
+      if (!showPager) {
+        return;
       }
+      var _loop = function _loop(page) {
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = "produce__page".concat(page === currentPage ? ' is-active' : '');
+        button.textContent = String(page);
+        button.setAttribute('aria-label', String(page));
+        button.setAttribute('aria-current', page === currentPage ? 'page' : 'false');
+        button.addEventListener('click', function () {
+          if (page === currentPage) {
+            return;
+          }
+          currentPage = page;
+          applyFilter(activeFilter, false);
+        });
+        pageList.append(button);
+      };
+      for (var page = 1; page <= pageCount; page += 1) {
+        _loop(page);
+      }
+      if (pagePrev) {
+        pagePrev.disabled = currentPage <= 1;
+      }
+      if (pageNext) {
+        pageNext.disabled = currentPage >= pageCount;
+      }
+    };
+    var syncSlider = function syncSlider() {
       var visibleCount = getVisibleItems().length;
-      if (pagination) {
-        pagination.hidden = visibleCount === 0 || isDesktop();
-      }
       if (prevNav) {
         prevNav.hidden = visibleCount === 0 || isDesktop();
       }
       if (nextNav) {
         nextNav.hidden = visibleCount === 0 || isDesktop();
       }
-      closeDialog();
       if (!isDesktop() && visibleCount > 0) {
         initSlider();
       } else {
         destroySlider();
       }
     };
-    var syncMode = function syncMode() {
-      applyFilter(activeFilter, false);
+    var applyFilter = function applyFilter(filterKey) {
+      var resetPage = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+      activeFilter = filterKey || ALL_FILTER;
+      if (resetPage) {
+        currentPage = 1;
+      }
+      var matchedItems = items.filter(function (item) {
+        return matchesFilter(item, activeFilter);
+      });
+      var paged = activeFilter === ALL_FILTER;
+      pageCount = paged ? Math.max(1, Math.ceil(matchedItems.length / pageSize)) : 1;
+      if (currentPage > pageCount) {
+        currentPage = pageCount;
+      }
+      var pageStart = (currentPage - 1) * pageSize;
+      var pageEnd = pageStart + pageSize;
+      items.forEach(function (item) {
+        var matched = matchesFilter(item, activeFilter);
+        var collapsed = false;
+        if (matched && paged) {
+          var index = matchedItems.indexOf(item);
+          collapsed = index < pageStart || index >= pageEnd;
+        }
+        item.classList.toggle('is-filtered-out', !matched);
+        item.classList.toggle('is-collapsed', collapsed);
+      });
+      filterButtons.forEach(function (button) {
+        var isActive = button.dataset.produceFilter === activeFilter;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      renderPager();
+      closeDialog();
+      syncSlider();
     };
     filterButtons.forEach(function (button) {
       button.addEventListener('click', function () {
-        applyFilter(button.dataset.produceFilter || 'productions');
+        applyFilter(button.dataset.produceFilter || ALL_FILTER);
       });
     });
-    moreButton === null || moreButton === void 0 || moreButton.addEventListener('click', function () {
-      expanded = true;
+    pagePrev === null || pagePrev === void 0 || pagePrev.addEventListener('click', function () {
+      if (currentPage <= 1) {
+        return;
+      }
+      currentPage -= 1;
+      applyFilter(activeFilter, false);
+    });
+    pageNext === null || pageNext === void 0 || pageNext.addEventListener('click', function () {
+      if (currentPage >= pageCount) {
+        return;
+      }
+      currentPage += 1;
       applyFilter(activeFilter, false);
     });
     triggers.forEach(function (trigger) {
@@ -408,9 +463,13 @@ var produce = function produce() {
       document.body.style.overflow = '';
     });
     if (typeof desktopQuery.addEventListener === 'function') {
-      desktopQuery.addEventListener('change', syncMode);
+      desktopQuery.addEventListener('change', function () {
+        applyFilter(activeFilter, false);
+      });
     } else if (typeof desktopQuery.addListener === 'function') {
-      desktopQuery.addListener(syncMode);
+      desktopQuery.addListener(function () {
+        applyFilter(activeFilter, false);
+      });
     }
     applyFilter(activeFilter);
     initFiltersSlider();
